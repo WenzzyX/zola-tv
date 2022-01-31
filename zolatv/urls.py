@@ -16,7 +16,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include("main.urls")),
-    path('sreg/', include('social.apps.django_app.urls', namespace='social')),
+    # path('sreg/', include('social.apps.django_app.urls', namespace='social')),
 )
 handler404 = PnfView.as_view()
 handler403 = PnfView.as_view()

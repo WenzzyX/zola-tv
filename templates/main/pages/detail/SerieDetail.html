@@ -18,25 +18,10 @@
     </div>
     <main class="main-main vido video-body movie-card serie-card">
         <div class="main-video">
-            <div class="main-video__content" id="mainpl"></div>
-            {% if midroll %}
-                <div class="ad-midroll__wrapper" data-links="{{ midroll.links }}" data-bid="{{ midroll.id }}"
-                     data-skiptime="{{ midroll.time_to_skip }}" data-timing="{{ midroll.timings }}"
-                     data-poster="{{ serie.get_poster }}" data-pixel="{{ midroll.pixel }}" data-remad="{% if not request.user.is_anonymous and request.user.user_profile.first %}{% with request.user.user_profile.first as user_p %}{% if user_p.ad_free_time > 0 %}true{% endif %}{% endwith %}{% endif %}">
-                    <a href="" class="ad-midroll_link" target="_blank"
-                       onclick="SaveEventAlanytics('cl_vid_midroll_b', {{ midroll.id }}); gtag('event', 'click_video_midroll');"></a>
-                    <div class="ad-midroll" id="admid"></div>
-                </div>
-            {% endif %}
-        </div>
-        {% if advideo %}
-            <div class="ad-click">
-                <div class="ad-click__wrapper" style="background: url('{{ serie.get_poster }}'); background-position: center; background-repeat: no-repeat; background-size: cover"
-                     onclick="adCreateFrame(this, '{{ advideo.video.get_video }}', '{{ advideo.video.get_type }}', {{ advideo.time_to_skip }}, '{{ serie.get_poster }}', '{{ advideo.links }}', '{{ advideo.pixel }}', '{{ advideo.id }}' {% if not request.user.is_anonymous and request.user.user_profile.first %}{% with request.user.user_profile.first as user_p%}{% if user_p.ad_free_time > 0 %}, true{% endif %}{% endwith %}{% endif %});SaveEventAlanytics('sh_vid_b', {{ advideo.id }})"></div>
-                <a href="" class="ad-click__link" target="_blank" onclick="SaveEventAlanytics('cl_vid_b', {{ advideo.id }}); gtag('event', 'click_video_preroll');"></a>
-                <div class="ad-click__content" id="pljs"></div>
+            <div class="main-video__content" id="mplr">
+                <img src="{{ serie.get_poster }}" alt="">
             </div>
-        {% endif %}
+        </div>
         <button class="video__back" onclick="history.back()">
             <img src="{% static 'main/img/icons/video-back.svg' %}" alt="">
         </button>

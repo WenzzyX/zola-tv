@@ -8,28 +8,6 @@
             <div class="main-slider__slide swiper-slide">
                 <a href="{% url 'movie-page' pk=element.id %}" class="slide__image">
                     <img src="{{ element.get_big_poster }}" alt="">
-                    <button class="main-slider__play">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
-                            <g filter="url(#filter0_d)">
-                                <path
-                                        d="M14.5643 7.34556C15.7326 8.13913 15.7326 9.86087 14.5643 10.6544L7.37376 15.5385C6.04587 16.4404 4.25 15.4893 4.25 13.884L4.25 4.11595C4.25 2.51072 6.04587 1.55956 7.37376 2.46151L14.5643 7.34556Z"
-                                        fill="white"/>
-                            </g>
-                            <defs>
-                                <filter id="filter0_d" x="0.25" y="0.112541" width="19.1905" height="21.7749"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                                    <feColorMatrix in="SourceAlpha" type="matrix"
-                                                   values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                                    <feOffset dy="2"/>
-                                    <feGaussianBlur stdDeviation="2"/>
-                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                                </filter>
-                            </defs>
-                        </svg>
-                    </button>
                 </a>
                 {% check_added_to_watchlist user=request.user model=element as added %}
                 <button class="main-slider__add bsld-add-to-wl-btn {% if added %}bsld-add-to-wl-btn_added{% endif %}"

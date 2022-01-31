@@ -40,16 +40,6 @@
                 {% trans 'Log Out' %}
             </a>
         {% endif %}
-        <div class="login__time">
-            <div class="login__time_count">
-                <h2>{% trans 'Ad free time' %}:</h2>
-                <span>{% if ad_free_time %}{{ ad_free_time }}{% else %}00:00:00{% endif %}</span>
-            </div>
-            <a href="{% url 'get-bonus-page' %}" class="login__time_btn">
-                <img src="{% static 'main/img/icons/stars.png' %}" alt="">
-                {% trans 'GET MORE TIME' %}
-            </a>
-        </div>
 
     </div>
 {#    {% if settings.ITS_APP %}#}
