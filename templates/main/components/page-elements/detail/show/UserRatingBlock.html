@@ -1,0 +1,14 @@
+{% load i18n %}
+<div class="video__rating">
+    <div class="video__rating_number">
+        {{ rating.grade }}
+    </div>
+    <div class="video__rating_agency">Zola TV<br>{% trans 'Rating' %}</div>
+    <div class="video__rating_basedOn">
+        {% trans 'based on' %} <span class="video__span-based">{{ rating.based }}</span> {% trans 'people' %}
+    </div>
+    <button class="video__rating_rate" onclick="openRating()">
+        {% trans 'Rate' %}
+    </button>
+
+</div>

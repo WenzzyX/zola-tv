@@ -1,0 +1,110 @@
+{% extends "../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="bonus__wrapper">
+        <div class="bonus">
+            <button type="button" onclick="history.back()" class="bonus__close">
+                <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+            </button>
+            <div class="bonus__circles">
+                <div></div>
+                <div></div>
+            </div>
+            <div class="bonus__content">
+                <div class="bonus__img">
+                    <img src="{% static 'main/img/get-bonus/stars.svg' %}" alt="">
+                </div>
+                <div class="bonus__title">
+                    {% trans 'Get 30 minutes ad free time.' %}
+                </div>
+                <p class="bonus__subtitle">{% trans 'Complete any task below to get Bonus' %}</p>
+                <div class="bonus__btns">
+                    <button type="button" data-elurl="{% url 'main_page' %}" data-elname="" onclick="shareEl(this);" class="bonus-grad-btn"><img
+                            src="{% static 'main/img/get-bonus/s-share.png' %}"
+                            alt="share">
+                        {% trans 'Invite friends to Register' %}
+                    </button>
+                    {#                    <a href="{% url 'work-in-progress-page' %}" class="bonus-grad-btn"><img src="{% static 'main/img/get-bonus/s-alien.png' %}"#}
+                    {#                                                            alt="share">#}
+                    {#                        {% trans 'Complete quick survey' %}#}
+                    {#                    </a>#}
+                </div>
+                <div class="bonus__completely completely">
+                    <div class="completely__title"><img src="{% static 'main/img/get-bonus/s-block.svg' %}"
+                                                        alt="">{% trans 'Hide ads completely' %}</div>
+                    <div class="subscription__plans">
+                        {#                        {% for subscription in allsubs %}#}
+                        {#                            <div class="subscription__plan plan {% if subscription == sub.subscription %}plan_active{% endif %}"#}
+                        {#                                 data-planid="{{ subscription.id }}">#}
+                        {#                                <div class="plan__checkbox"></div>#}
+                        {#                                <span class="plan__term">{{ subscription.get_term_in_months }} {% trans 'Month' %}</span>#}
+                        {#                                <span class="plan__discount-price">${{ subscription.discount_price }}</span>#}
+                        {#                                <span class="plan__price">${{ subscription.price }}</span>#}
+                        {#                                {% if subscription.get_economy %}#}
+                        {#                                    <span class="plan__economy"><span#}
+                        {#                                            class="plan__economy_large">{% trans 'Economy' %}</span><span#}
+                        {#                                            class="plan__economy_small">{% trans 'Eco.' %}</span> {{ subscription.get_economy }}</span>#}
+                        {#                                {% endif %}#}
+                        {#                            </div>#}
+                        {#                        {% endfor %}#}
+                        <a href="{% url 'buy1' %}" class="subscription__plan plan" data-planid="1">
+                            <div class="plan__checkbox"></div>
+                            <span class="plan__term">1 Month</span>
+                            <span class="plan__discount-price">$4.99</span>
+                            <span class="plan__price">$2.99</span>
+                        </a>
+                        <a href="{% url 'buy2' %}" class="subscription__plan plan " data-planid="2">
+                            <div class="plan__checkbox"></div>
+                            <span class="plan__term">3 Month</span>
+                            <span class="plan__discount-price">$9.99</span>
+                            <span class="plan__price">$7.99</span>
+                            <span class="plan__economy"><span class="plan__economy_large">Economy</span>
+                            <span class="plan__economy_small">Eco.</span> 10%</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'work-in-progress-page' %}" class="work__btn bonus__btn">{% trans 'CONTINUE' %}</a>
+        </div>
+
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+        let plans = document.querySelectorAll('.plan')
+
+        function closeAllPlans() {
+            plans.forEach((plan => {
+                plan.classList.remove('plan_active')
+            }))
+        }
+
+        function sendQChangePlan(plan) {
+            console.log(true)
+            return true
+        }
+
+        plans.forEach((plan => {
+            plan.addEventListener('click', (event) => {
+                closeAllPlans()
+                plan.classList.add('plan_active')
+                let selectedPlan = plan.getAttribute('data-planid')
+                sendQChangePlan(selectedPlan)
+            })
+        }))
+    </script>
+
+{% endblock scripts %}

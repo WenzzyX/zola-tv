@@ -1,0 +1,82 @@
+{% extends "../base.html" %}
+{% load settings_tag %}
+{% block title %}{{ page.title }}{% endblock title %}
+{% block content %}
+    {% get_settings as settings %}
+    {% if settings.SHOW_HEADERS %}
+        {% if settings.ITS_APP %}
+            {% include 'main/components/header.html' with popup=0 %}
+        {% else %}
+            {% include 'main/components/header.html'%}
+        {% endif %}
+        <main class="main-main" style="padding: 76px 0 60px 0">
+    {% else %}
+        <main class="main-main hide-header-footer" style="padding: 5px 0 60px 0">
+    {% endif %}
+
+{% if page.element1 != None %}
+    {% include page.element1.path with component=page.element1 %}
+{% endif %}
+{% if page.element2 != None %}
+    {% include page.element2.path with component=page.element2 %}
+{% endif %}
+{% if page.element3 != None %}
+    {% include page.element3.path with component=page.element3 %}
+{% endif %}
+{% if page.element4 != None %}
+    {% include page.element4.path with component=page.element4 %}
+{% endif %}
+{% if page.element5 != None %}
+    {% include page.element5.path with component=page.element5 %}
+{% endif %}
+
+{% if page.element6 != None %}
+    {% include page.element6.path with component=page.element6 %}
+{% endif %}
+{% if page.element7 != None %}
+    {% include page.element7.path with component=page.element7 %}
+{% endif %}
+{% if page.element8 != None %}
+    {% include page.element8.path with component=page.element8 %}
+{% endif %}
+{% if page.element9 != None %}
+    {% include page.element9.path with component=page.element9 %}
+{% endif %}
+{% if page.element10 != None %}
+    {% include page.element10.path with component=page.element10 %}
+{% endif %}
+</main>
+    {% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="main" %} {% endif %}
+
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+
+        let request = getUrlVars()
+        if (request.ref) {
+            if (getCookie('ref_url') === undefined) {
+                setCookie('ref_url', window.location.href)
+            }
+        }
+
+        function AddToWLBtn(btn) {
+            let csrf = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request = $.ajax({
+                url: `${btn.getAttribute('data-mvid')}/add-to-watchlist`,
+                type: "post",
+                data: {
+                    "csrfmiddlewaretoken": csrf,
+                }
+            })
+            request.done(function (response, textStatus, jqXHR) {
+                response = JSON.parse(response)
+                if (response.resp == "OK") {
+                    btn.classList.toggle('bsld-add-to-wl-btn_added')
+                } else if (response.resp == "redirect") {
+                    window.location.replace(document.location.protocol + "//" + document.location.hostname + response.rev)
+                }
+            })
+        }
+    </script>
+{% endblock scripts %}

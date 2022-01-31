@@ -1,0 +1,70 @@
+{% extends "../../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="register">
+        <a href="{% url 'main_page' %}" class="popup__close register__close" id="popup-close">
+            <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+        </a>
+        <div class="register__wrapper">
+            <div class="register__title">
+                <h3>{% trans 'Sign in to existing account' %}</h3>
+                <p>{% trans 'Haven’t Register yet?' %} <a href="{% url 'register-page' %}">{% trans 'Register' %}</a></p>
+            </div>
+            <div class="regtypes">
+                <a href="{% url 'login-form-page' %}" class="regtypes__item">
+                    <div class="regtypes__icon">
+                        <img src="{% static 'main/img/icons/register/local.svg' %}" alt="">
+                    </div>
+                    <span class="regtypes__description">
+                        {% trans 'via Phone or Email' %}
+                    </span>
+                </a>
+                <a href="{% url 'work-in-progress-page' %}" class="regtypes__item">
+                    <div class="regtypes__icon">
+                        <img src="{% static 'main/img/icons/register/google.svg' %}" alt="">
+                    </div>
+                    <span class="regtypes__description">
+                        {% trans 'Continue with Google' %}
+                    </span>
+                </a>
+                <a href="{% url 'work-in-progress-page' %}" class="regtypes__item">
+                    <div class="regtypes__icon">
+                        <img src="{% static 'main/img/icons/register/facebook.svg' %}" alt="">
+                    </div>
+                    <span class="regtypes__description">
+                        {% trans 'Continue with Facebook' %}
+                    </span>
+                </a>
+                <a href="{% url 'work-in-progress-page' %}" class="regtypes__item">
+                    <div class="regtypes__icon">
+                        <img src="{% static 'main/img/icons/register/twitter.svg' %}" alt="">
+                    </div>
+                    <span class="regtypes__description">
+                        {% trans 'Continue with Twitter' %}
+                    </span>
+                </a>
+            </div>
+            <div class="register__terms">
+                <p>{% trans 'By continuing, you agree to Zola TV' %}</p>
+                <p><a href="{% url 'privacy-policy-page' %}">{% trans 'Privacy Policy' %}</a> {% trans 'and' %} <a href="{% url 'terms-of-use-page' %}">{% trans 'Terms of Use' %}</a></p>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+{% endblock scripts %}

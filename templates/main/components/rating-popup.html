@@ -1,0 +1,67 @@
+{% load rating_tag %}
+{% load static %}
+{% load i18n %}
+{% check_rating_user object=c_model user=request.user as checked %}
+<div class="u-rating" data-slideto="{{ checked }}">
+    <div class="u-rating_g_content">
+        <button type="button" class="u-rating__close" onclick="openRating()">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/popup-close.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+            {% endif %}
+        </button>
+        <div class="u-rating__card r-card">
+            <div class="r-card__title">
+                {% trans 'Rate this' %} {{ obj_title }}
+            </div>
+            <div class="r-card__content">
+                <div class="r-card__img">
+                    <img src="{{ c_model.get_poster }}" alt="">
+                </div>
+                <div class="r-card__name">{{ c_model.name }}</div>
+                <div class="r-card__genres">{{ c_model.get_two_genres }}</div>
+            </div>
+        </div>
+        <div class="u-rating__slider-container swiper-container {% if checked %}u-rating_blocked{% endif %}">
+            <div class="u-rating__slider-wrapper swiper-wrapper">
+                {% for i in '1234567891'|make_list %}
+                    <div class="u-rating__slide swiper-slide">
+                        <div class="u-rating_digid">{{ i }}{% if forloop.last %}0{% endif %}</div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="u-rating__based u-rating__based_a {% if not checked %}u-rating__based_active{% endif %}">
+            {% get_rating object=c_model as rating %}
+            <p class="u-rating__based-text">{% trans 'Rating' %} <span
+                    class="u-rating__span-rating">{{ rating.grade }}</span> {% trans 'based on' %} <span
+                    class="u-rating__span-based">{{ rating.based }}</span> {% trans 'people' %}
+            </p>
+
+        </div>
+        <div class="u-rating__based u-rating__based_b {% if checked %}u-rating__based_active{% endif %}">
+            {% get_rating object=c_model as rating %}
+            <button class="u-rating__based-upd" onclick="updateRating()">{% trans 'UPDATE RATING' %}</button>
+
+        </div>
+    </div>
+
+    <div class="u-rating_btns">
+        <button class="u-rating__btn u-rating__share {% if checked %}u-rating__btn_active{% endif %}" type="button"
+                data-elurl="{% url 'movie-page' pk=c_model.id %}" data-elname="{{ c_model.get_name }}"
+                onclick="shareEl(this);">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/share.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+            {% endif %}
+            {% trans 'SHARE THIS MOVIE' %}
+        </button>
+        {% get_ct_model model=c_model as grto %}
+        <button class="u-rating__btn u-rating__rate {% if not checked %}u-rating__btn_active{% endif %}" type="button"
+                onclick="sendNewRating({{ grto }}, {{ c_model.id }})">{% trans 'RATE' %}
+        </button>
+    </div>
+</div>

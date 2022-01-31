@@ -1,0 +1,18 @@
+{% load static %}
+{% load content_type_tag %}
+{% check_added_to_watchlist user=request.user model=episode as added %}
+<button class="video__decription_share" onclick="openComments()">
+    {% if request.session.dark %}
+        <img src="{% static 'main/img/icons_dark/comments.svg' %}" alt="">
+    {% else %}
+        <img src="{% static 'main/img/icons/comments.svg' %}" alt="">
+    {% endif %}
+</button>
+<button class="video__decription_share m-add-to-wl-btn {% if added %}add-to-wl-btn_added{% endif %}"
+        data-epid="{{ episode.id }}" onclick="AddToWLBtn(this);" style="margin-top: 50px;">
+</button>
+<button class="video__decription_share share-button"
+        data-elurl="{% url 'serie-page' pk=episode.season.serie.id %}?season={{ episode.season.season_num }}&episode={{ episode.episode }}"
+        data-elname="{{ episode.season.serie.name }}" onclick="shareEl(this);" style="top: 140px">
+    <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+</button>

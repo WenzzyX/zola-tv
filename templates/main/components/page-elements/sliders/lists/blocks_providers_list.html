@@ -1,0 +1,16 @@
+{% load sliders_tag %}
+{% load i18n %}
+{% channel_provider_list sort=component.sort_method as elements %}
+<div class="tabChannels">
+    {% for element in elements %}
+        <a href="/provider/{{ element.id }}" class="tabChannels__item">
+            <img src="{{ element.get_poster }}" alt="">
+            <div class="tabChannels__item_name">
+                {{ element.name }}
+            </div>
+            <div class="tabChannels__item_amount">
+                {{ element.get_count_channels }} {% trans 'channels' %}
+            </div>
+        </a>
+    {% endfor %}
+</div>

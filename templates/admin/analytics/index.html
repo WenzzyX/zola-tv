@@ -1,0 +1,291 @@
+{% extends 'admin/base.html' %}
+{% load i18n static %}
+{% load analytics_filter %}
+{% block title %}
+    {{ title_top }}
+{% endblock title %}
+{% block branding %}
+    <h1 id="site-name"><a href="{% url 'analytics-page' %}">{{ site_header|default:_('Analytics') }}</a></h1>
+{% endblock %}
+{% block header_custom_css %}an_header{% endblock header_custom_css %}
+{% block nav-global %}
+    {% if has_permissions %}
+        <div id="user-tools">
+            {% block welcome-msg %}
+                {% translate 'Welcome,' %}
+                <strong>{% firstof user.user_profile.first.name user.email user.phone %}</strong>.
+            {% endblock %}
+            {% block userlinks %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">{% translate 'Documentation' %}</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                    <a href="{% url 'admin:password_change' %}">{% translate 'Change password' %}</a> /
+                {% endif %}
+                <a href="{% url 'admin:index' %}">{% translate 'Admin panel' %}</a> /
+                <a href="{% url 'admin:logout' %}">{% translate 'Log out' %}</a>
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
+{% block breadcrumbs %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="an_content">
+        <div class="an_func_btns">
+            <h2 class="an_func_btns_title">Functions</h2>
+            <form action="{% url 'clear-views-get' %}"><button type="submit" class="an_clear_views_btn">CLEAR ALL VIEWS</button></form>
+        </div>
+        <div class="an_slide_blocks an_top_blocks an_blocks_mt">
+            <div class="an_block an_top_block">
+                <h2 class="an_block_title">{% translate 'top 30 movies' %}</h2>
+                <table class="an_table">
+                    <thead>
+                    <tr>
+                        <th>{% translate 'id' %}</th>
+                        <th>{% translate 'infomation' %}</th>
+                        <th>{% translate 'views' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in top_10_movies %}
+                        <tr class="an_block_element">
+                            <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                            <td class="an_block_element_info"><a href="/admin/main/movie/{{ element.id }}"
+                                                                 class="an_block_element_link"><img
+                                    src="{{ element.get_poster }}"
+                                    class="an_block_element_poster" alt="el_poster">
+                                <span class="an_block_element_name">{{ element.name }}</span></a></td>
+                            <td class="an_numbers an_block_element_views">{{ element.watch_counter }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="an_block an_top_block">
+                <h2 class="an_block_title">{% translate 'top 30 series' %}</h2>
+                <table class="an_table">
+                    <thead>
+                    <tr>
+                        <th>{% translate 'id' %}</th>
+                        <th>{% translate 'infomation' %}</th>
+                        <th>{% translate 'views' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in top_10_series %}
+                        <tr class="an_block_element">
+                            <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                            <td class="an_block_element_info"><a href="/admin/main/serie/{{ element.id }}"
+                                                                 class="an_block_element_link"><img
+                                    src="{{ element.get_poster }}"
+                                    class="an_block_element_poster" alt="el_poster">
+                                <span class="an_block_element_name">{{ element.name }}</span></a></td>
+                            <td class="an_numbers an_block_element_views">{{ element.watch_counter }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="an_block an_top_block">
+                <h2 class="an_block_title">{% translate 'top 30 channels' %}</h2>
+                <table class="an_table">
+                    <thead>
+                    <tr>
+                        <th>{% translate 'id' %}</th>
+                        <th>{% translate 'infomation' %}</th>
+                        <th>{% translate 'views' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in top_10_channels %}
+                        <tr class="an_block_element">
+                            <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                            <td class="an_block_element_info"><a href="/admin/main/channel/{{ element.id }}"
+                                                                 class="an_block_element_link"><img
+                                    src="{{ element.get_poster }}"
+                                    class="an_block_element_poster" alt="el_poster">
+                                <span class="an_block_element_name">{{ element.name }}</span></a></td>
+                            <td class="an_numbers an_block_element_views">{{ element.watch_counter }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="an_block an_top_block">
+                <h2 class="an_block_title">{% translate 'top 30 tv-shows' %}</h2>
+                <table class="an_table">
+                    <thead>
+                    <tr>
+                        <th>{% translate 'id' %}</th>
+                        <th>{% translate 'infomation' %}</th>
+                        <th>{% translate 'views' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in top_10_shows %}
+                        <tr class="an_block_element">
+                            <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                            <td class="an_block_element_info"><a href="/admin/main/show/{{ element.id }}"
+                                                                 class="an_block_element_link"><img
+                                    src="{{ element.get_poster }}"
+                                    class="an_block_element_poster" alt="el_poster">
+                                <span class="an_block_element_name">{{ element.name }}</span></a></td>
+                            <td class="an_numbers an_block_element_views">{{ element.watch_counter }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="an_block an_top_block">
+                <h2 class="an_block_title">{% translate 'top 30 sports' %}</h2>
+                <table class="an_table">
+                    <thead>
+                    <tr>
+                        <th>{% translate 'id' %}</th>
+                        <th>{% translate 'infomation' %}</th>
+                        <th>{% translate 'views' %}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for element in top_10_sports %}
+                        <tr class="an_block_element">
+                            <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                            <td class="an_block_element_info"><a href="/admin/main/sport/{{ element.id }}"
+                                                                 class="an_block_element_link"><img
+                                    src="{{ element.get_poster }}"
+                                    class="an_block_element_poster" alt="el_poster">
+                                <span class="an_block_element_name">{{ element.name }}</span></a></td>
+                            <td class="an_numbers an_block_element_views">{{ element.watch_counter }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="an_block an_top_ten_views_block an_blocks_mt">
+            <h2 class="an_block_title">{% translate 'top 30 by views' %}</h2>
+            <table class="an_table">
+                <thead>
+                <tr>
+                    <th>{% translate 'id' %}</th>
+                    <th>{% translate 'infomation' %}</th>
+                    <th>{% translate 'views' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for element in top_10_by_views %}
+                    <tr class="an_block_element">
+                        <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                        <td class="an_block_element_info"><a href="/admin/main/movie/{{ element.id }}"
+                                                             class="an_block_element_link"><img
+                                src="{{ element.get_poster }}"
+                                class="an_block_element_poster" alt="el_poster">
+                            <span class="an_block_element_name">{{ element.name }}</span> <span
+                                    class="an_block_watermark">{{ element | get_class_name }}</span></a></td>
+                        <td class="an_numbers an_block_element_views">{{ element.watch_counter }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {#    ---------------------    #}
+
+        <form class="an_date_filter an_blocks_mt" action="" method="GET">
+            <span class="an_date_filter_input_label">From: </span><input class="an_date_filter_input" type="datetime-local"
+                                                                         name="date_lte"
+                                                                         value="{% firstof d_lte default_date %}">
+            <span class="an_date_filter_input_label">To: </span><input class="an_date_filter_input" type="datetime-local"
+                                                                       name="date_gte"
+                                                                       value="{% firstof d_gte default_date %}">
+            <button class="an_date_send_btn" type="submit">LOAD</button>
+        </form>
+        {#  ------------------  #}
+        <div class="an_slide_blocks an_banner_blocks an_blocks_mt">
+            {% for key, values in banners.items %}
+                <div class="an_block an_banner_block">
+                    <a href="{{ values.link }}"
+                       class="an_block_title {% if not values.link %}an_banner_link_invalid{% endif %}">{{ values.name }}</a>
+                    <table class="an_table">
+                        <thead>
+                        <tr>
+                            <th>{% translate 'id' %}</th>
+                            <th>{% translate 'country' %}</th>
+                            <th>{% translate 'clicks' %}</th>
+                            {% if values.shows_on %}
+                                <th>{% translate 'shows' %}</th>
+                            {% endif %}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for bcontnet in values.content %}
+                            <tr class="an_block_element">
+                                <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                                <td class="an_block_element_info"><span
+                                        class="an_block_element_name">{{ bcontnet.country }}</span></td>
+                                <td class="an_numbers an_block_element_views">{{ bcontnet.clicks }}</td>
+                                {% if values.shows_on %}
+                                    <td class="an_numbers an_block_element_views">{{ bcontnet.shows }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="an_slide_blocks an_event_blocks an_blocks_mt">
+            {% for key, values in events.items %}
+                <div class="an_block an_event_block">
+                    <a href="{{ values.link }}"
+                       class="an_block_title {% if not values.link %}an_banner_link_invalid{% endif %}">{{ values.name }}</a>
+                    <table class="an_table">
+                        <thead>
+                        <tr>
+                            <th>{% translate 'id' %}</th>
+                            <th>{% translate 'country' %}</th>
+                            <th>{% translate 'clicks' %}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for bcontnet in values.content %}
+                            <tr class="an_block_element">
+                                <td class="an_numbers an_block_element_id">{{ forloop.counter }}</td>
+                                <td class="an_block_element_info"><span
+                                        class="an_block_element_name">{{ bcontnet.country }}</span></td>
+                                <td class="an_numbers an_block_element_views">{{ bcontnet.clicks }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="an_block an_main_stats ad_blocks_mt">
+            <h2 class="an_block_title">{% translate 'Main statistic' %}</h2>
+            <table class="an_table">
+                <thead>
+                <tr>
+                    <th>{% translate 'parameter' %}</th>
+                    <th>{% translate 'value' %}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for stats in main_stats %}
+                    <tr class="an_block_element">
+                        <td class="an_block_element_info"><span
+                                class="an_block_element_name">{% translate stats.name %}</span></td>
+                        <td class="an_numbers an_block_element_views">{{ stats.value }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

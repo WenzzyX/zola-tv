@@ -1,0 +1,63 @@
+{% load i18n %}
+<div class="filters">
+    <div class="filters__item filters__item_popup" data-popupid="1">
+        <div class="filters__item_name">
+            {% trans 'TYPES' %}
+        </div>
+        <div class="filters__item_options">
+            <span class="filter-popup__options_item" data-filterpopupitemname="1">{% trans 'Movies' %}</span>
+        </div>
+    </div>
+    <div class="filters__item filters__item_popup" data-popupid="2">
+        <div class="filters__item_name">
+            {% trans 'GENRES' %}
+        </div>
+        <div class=" filters__item_options">
+            <span class="filter-popup__options_item" data-filterpopupitemname="0">{% trans 'ALL' %}</span>
+        </div>
+    </div>
+    <div class="filters__item" style="border: none; margin-bottom: 0px;">
+        <div class="filters__item_name">
+            {% trans 'YEARS' %}
+        </div>
+        <div>
+            <input type="text" id="amount" readonly class="filters__item_options">
+        </div>
+
+    </div>
+    <div class="filters__range">
+        <div id="slider-range"></div>
+    </div>
+    <div class="filters__item filters__item_popup" data-popupid="3">
+        <div class="filters__item_name">
+            {% trans 'COUNTRY' %}
+        </div>
+        <div class="filters__item_options">
+            <span class="filter-popup__options_item" data-filterpopupitemname="0">{% trans 'ALL' %}</span>
+        </div>
+    </div>
+    <div class="filters__item filters__item_popup" data-popupid="4">
+        <div class="filters__item_name">
+            {% trans 'LANGUAGE' %}
+        </div>
+        <div class="filters__item_options">
+            <span class="filter-popup__options_item" data-filterpopupitemname="0">{% trans 'ALL' %}</span>
+        </div>
+    </div>
+    <div class="filters__item" style="border: none; margin-bottom: 0px;">
+        <div class="filters__item_name">
+            {% trans 'RATING' %}
+        </div>
+        <div>
+            <input type="text" id="rating-amount" readonly class="filters__item_options">
+        </div>
+
+    </div>
+    <div class="filters__range">
+        <div id="rating"></div>
+    </div>
+
+    <button class="filters__btn button-to-submit">
+        {% trans 'SHOW' %}
+    </button>
+</div>

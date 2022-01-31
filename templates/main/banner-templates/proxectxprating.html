@@ -1,0 +1,22 @@
+{% load static %}
+<div class="appInstall">
+    <div class="appInstall__img">
+        {% if params.get_banner %}
+        <img src="{{ params.get_banner }}" alt="">
+            {% else %}
+            <img src="{% static 'main/img/icons/pre-loader-logo-dark.svg' %}" alt="">
+        {% endif %}
+    </div>
+    <div class="appInstall__text">
+        <h5>Zola TV app</h5>
+        <span>Install to get Bonus</span>
+        <div class="appInstall__text_rating">
+                <img src="{% static 'main/img/icons/stars.svg' %}" alt="">
+            (3.1k)
+        </div>
+    </div>
+    <a href="{% url 'app-download-page' %}" class="appInstall__btn" onclick="SaveEventAlanytics('cl_b', {% if not settings.ITS_APP %}3{% else %}{{ params.id }}{% endif %}); gtag('event', 'click_banner_download_app');">
+            <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+        INSTALL
+    </a>
+</div>

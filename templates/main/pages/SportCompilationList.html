@@ -1,0 +1,60 @@
+{% extends "../base.html" %}
+{% block title %}{{ list.name }}{% endblock title %}
+{% load static %}
+{% load lists_tag %}
+{% block content %}
+    <div class="trending__header">
+        <button onclick="history.back()">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+            {% endif %}
+        </button>
+        <span>{{ list.name }}</span>
+    </div>
+    <div class="trending__items sample">
+    {% get_sport_f_list sort=list.sort_method as sports %}
+        {% for element in sports %}
+            <a href="{% url 'sport-page' pk=element.id %}" class="sport__item">
+                <div class="sport__item_left">
+                    <img src="{{ element.get_poster }}" alt="" class="sport__item_img">
+                    {% if element.live_ch %}
+                        <div class="sport__item_live">
+                            LIVE
+                        </div>
+                    {% endif %}
+                    <div class="sport__item_name">
+                        {{ element.name }}
+                    </div>
+                </div>
+                <div class="sport__item_right">
+                    <div class="sport__item_watching">
+                        {{ element.get_date }}
+                    </div>
+                    <button class="sport__item_share">
+                        <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+                        SHARE
+                    </button>
+                    <div class="sport__item_tag">
+                        {{ element.kind.name }}
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+{% endblock scripts %}

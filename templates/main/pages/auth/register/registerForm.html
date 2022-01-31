@@ -1,0 +1,366 @@
+{% extends "../../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% load settings_tag %}
+{% block head_links %}
+    <link rel="stylesheet" href="{% static 'main/css/intlTelInput.min.css' %}">
+{% endblock head_links %}
+{% block content %}
+    {% get_settings as settings %}
+    <form method="post" class="register-form-wrap">
+        {% csrf_token %}
+        <main class="register-form register-form_active" data-step="1">
+            <div class="trending__header">
+                <button type="button" onclick="history.go(-1)">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                    {% endif %}
+                </button>
+            </div>
+            <div class="register-form__tabs">
+                <div class="register-form__tab register-form__tab_active" data-tabid="2">
+                    <p>{% trans 'Email' %}</p>
+                </div>
+                <div class="register-form__tab" data-tabid="1">
+                    <p>{% trans 'Phone' %}</p>
+                </div>
+
+            </div>
+            <div class="register-form__forms">
+                <div class="register-form__form pregist_height form-reg" data-formid="1">
+
+                    <div class="form_c_wrapper">
+                        <h2 class="form-reg__title">{% trans 'Register using phone' %}</h2>
+                        <div class="form-reg__input-block">
+                            <p>{% trans 'Enter phone' %}</p>
+                            <input class="form-reg__input form-reg__input_phone" type="tel" name="phone" id="phone">
+                            <hr>
+                            <ul class="error-block error-block__phone">
+                                {% if errors %}
+                                    {% for error in errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                            <a href="{% url 'recover-phone' %}"
+                               class="pass-recov__link">{% trans 'Recover a password' %}</a>
+                            <div class="form-reg__terms">
+                                <p>{% trans 'By continuing, you agree to Zola TV' %}</p>
+                                <p>
+                                    <a href="{% url 'privacy-policy-page' %}">{% trans 'Privacy Policy' %}</a> {% trans 'and' %}
+                                    <a
+                                            href="{% url 'terms-of-use-page' %}">{% trans 'Terms of Use' %}</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <button type="button" class="form-reg__btn" data-btnid="1">
+                        {% trans 'CONTINUE' %}
+                    </button>
+
+
+                    {#                <button class="form-reg__submit-btn">SEND</button>#}
+                </div>
+                <div class="register-form__form pregist_height form-reg form-reg_active" data-formid="2">
+                    <div class="form_c_wrapper">
+                        <h2 class="form-reg__title">{% trans 'Register using email' %}</h2>
+                        <div class="form-reg__input-block">
+                            <p>{% trans 'Enter email' %}</p>
+                            <input class="form-reg__input form-reg__input_email" type="email" name="email" id="email"
+                                   placeholder="example@mail.com">
+                            <hr>
+                            <ul class="error-block error-block__email">
+                                {% if errors %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endif %}</ul>
+                            <a href="{% url 'recover-email' %}"
+                               class="pass-recov__link">{% trans 'Recover a password' %}</a>
+                            <div class="form-reg__terms">
+                                <p>{% trans 'By continuing, you agree to Zola TV' %}</p>
+                                <p>
+                                    <a href="{% url 'privacy-policy-page' %}">{% trans 'Privacy Policy' %}</a> {% trans 'and' %}
+                                    <a
+                                            href="{% url 'terms-of-use-page' %}">{% trans 'Terms of Use' %}</a></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <button type="button" class="form-reg__btn" data-btnid="2">
+                        {% trans 'CONTINUE' %}
+                    </button>
+
+
+                    {#                <button class="form-reg__submit-btn">SEND</button>#}
+                </div>
+            </div>
+
+        </main>
+        <main class="register-form" data-step="2">
+            <div class="trending__header">
+                <button type="button" onclick="history.go(-1)">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                    {% endif %}
+                </button>
+            </div>
+            <div class="register-form__password-form pregist_c_height form-reg form-pass">
+                <div class="form_c_wrapper calced_c_wrapper">
+                    <h2 class="form-reg__title pass-title">{% trans 'Сome up with password' %}</h2>
+                    <div class="form-reg__input-block form-pass__input-block">
+                        <p>{% trans 'Enter password' %}</p>
+                        <div class="pass-input">
+                            <input class="form-pass__input" type="password" name="password" id="password"
+                                   placeholder="********">
+                            <div class="pass-input__right">
+                                <div>
+                                    <img src="{% static 'main/img/icons/register/showpass.svg' %}" alt="">
+                                    <span>{% trans 'Show' %}</span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <hr>
+                        <ul class="error-block error-block__password"></ul>
+                        <div class="form-reg__terms">
+                            <p>{% trans 'By continuing, you agree to Zola TV' %}</p>
+                            <p>
+                                <a href="{% url 'privacy-policy-page' %}">{% trans 'Privacy Policy' %}</a> {% trans 'and' %}
+                                <a
+                                        href="{% url 'terms-of-use-page' %}">{% trans 'Terms of Use' %}</a></p>
+                        </div>
+
+                    </div>
+                </div>
+                <button type="button" class="form-reg__btn" data-btnid="3">
+                    {% trans 'SEND CODE' %}
+                </button>
+
+            </div>
+
+
+        </main>
+    </form>
+{% endblock content %}
+{% block scripts %}
+    <script src="{% static 'main/js/intlTelInput.js' %}"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script>
+
+        $(document).ready(function () {
+            $('.register-form-wrap').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+
+        var input = document.querySelector("#phone");
+        var iti = window.intlTelInput(input, {
+            utilsScript: "{% static 'main/js/inlutils.js' %}",
+            preferredCountries: ['in', 'de', 'ru'],
+        });
+        {#var btn = document.querySelector(".form-reg__submit-btn")#}
+        {#btn.addEventListener("click", (event) => {#}
+        {#    alert((iti.getSelectedCountryData().dialCode + input.value).replace(/\s/g, ''));#}
+        var maskOptions = {
+            mask: '000 000 0000'
+        };
+        var mask = IMask(input, maskOptions);
+        let tabs = document.querySelectorAll(".register-form__tab");
+        let forms = document.querySelectorAll(".form-reg")
+        for (let i = 0; i < tabs.length; i++) {
+            tabs[i].addEventListener('click', (event) => {
+
+                for (let j = 0; j < tabs.length; j++) {
+                    tabs[j].classList.remove('register-form__tab_active')
+                }
+                for (let o = 0; o < forms.length; o++) {
+                    forms[o].classList.remove('form-reg_active')
+                }
+                let form = document.querySelector(`div.form-reg[data-formid="${tabs[i].getAttribute('data-tabid')}"]`)
+                tabs[i].classList.add('register-form__tab_active')
+                form.classList.add('form-reg_active')
+            })
+        }
+        let showPassBtn = document.querySelector('.pass-input__right')
+        showPassBtn.addEventListener('click', (event) => {
+            let input = document.querySelector('.form-pass__input')
+            if (input.type === "password") {
+                input.type = "text";
+                showPassBtn.querySelector('span').innerHTML = 'HIDE'
+
+            } else {
+                input.type = "password";
+                showPassBtn.querySelector('span').innerHTML = 'SHOW'
+            }
+        })
+
+
+        //steps
+
+        let steps = document.querySelectorAll('.register-form')
+        let btns = document.querySelectorAll('.form-reg__btn')
+        let inputs = {
+            phone: '',
+            email: '',
+            password: ''
+        }
+        inputs.email = document.querySelector('.form-reg__input_email')
+        inputs.phone = document.querySelector('.form-reg__input_phone')
+        inputs.password = document.querySelector('.form-pass__input')
+
+        function phoneValidator(phone) {
+            let errorBlock = document.querySelector('.error-block__phone')
+            let errorMessages = []
+            try {
+                if (phone.length < 9) {
+                    errorMessages.push("Phone number too short.")
+                }
+            } catch (e) {
+
+            }
+            try {
+                if (phone.match(/[A-Z|a-z]|[+@#%$^&*()_\-`'"\\,.]/g)) {
+                    errorMessages.push("Phone number cannot place symbols.")
+                }
+            } catch (e) {
+
+            }
+
+            if (errorMessages.length > 0) {
+                errorBlock.innerHTML = ""
+                errorMessages.forEach(value => {
+                    errorBlock.innerHTML += `<li>${value}</li>`
+                })
+                return false
+            } else {
+                inputs.phone.value = (iti.getSelectedCountryData().dialCode + input.value).replace(/\s/g, '')
+                return true
+            }
+        }
+
+        function emailValidator(email) {
+            let errorBlock = document.querySelector('.error-block__email')
+            let errorMessages = []
+            try {
+                if (email.length < 9) {
+                    errorMessages.push("Email too short.")
+                }
+            } catch (e) {
+
+            }
+            try {
+                if (email.match(/[+#%$^&*()`'"\\]/g)) {
+                    errorMessages.push("Email cannot place symbols differs of A-z 0-9 @ _ - , .")
+                }
+            } catch (e) {
+                console.error(e)
+            }
+            try {
+                let splited = email.split("@")
+                if (splited && splited[1].split('.').length < 2) {
+                    errorMessages.push("Please enter a valid email.")
+                }
+            } catch (e) {
+                console.error(e)
+            }
+
+
+            if (errorMessages.length > 0) {
+                errorBlock.innerHTML = ""
+                errorMessages.forEach(value => {
+                    errorBlock.innerHTML += `<li>${value}</li>`
+                })
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function passwordValidator(password) {
+            let errorBlock = document.querySelector('.error-block__password')
+            let errorMessages = []
+            if (password.length < 6) {
+                errorMessages.push("Password cannot be smaller of 6 symbols.")
+            }
+            if (password.match(/[`'"\\]/g)) {
+                errorMessages.push("Password cannot be place this symbols: ` ' \" \\")
+            }
+
+            if (errorMessages.length > 0) {
+                errorBlock.innerHTML = ""
+                errorMessages.forEach(value => {
+                    errorBlock.innerHTML += `<li>${value}</li>`
+                })
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function closeAllSteps() {
+            for (let i = 0; i < steps.length; i++) {
+                steps[i].classList.remove('register-form_active')
+            }
+        }
+
+        function openStep(id) {
+
+            if (id == '1') {
+                let nextStep = document.querySelector(`main.register-form[data-step="2"]`)
+                inputs.email.value = ''
+                if (phoneValidator(inputs.phone.value)) {
+                    closeAllSteps()
+                    nextStep.classList.add('register-form_active')
+                }
+
+            } else if (id == '2') {
+                let nextStep = document.querySelector(`main.register-form[data-step="2"]`)
+                inputs.phone.value = ''
+                if (emailValidator(inputs.email.value)) {
+                    closeAllSteps()
+                    nextStep.classList.add('register-form_active')
+                }
+            } else if (id == '3') {
+                if (passwordValidator(inputs.password.value)) {
+                    sendForm()
+                }
+
+            }
+
+        }
+
+        function sendForm() {
+            let form = document.querySelector('.register-form-wrap')
+            form.submit()
+        }
+
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener('click', (event) => {
+                let btnId = btns[i].getAttribute('data-btnid')
+                openStep(btnId)
+            })
+        }
+    </script>
+{% endblock scripts %}

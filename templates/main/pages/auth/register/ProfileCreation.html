@@ -1,0 +1,286 @@
+{% extends "../../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block head_links %}
+    <link rel="stylesheet" href="{% static 'main/css/intlTelInput.min.css' %}">
+{% endblock head_links %}
+{% block content %}
+    <form class="profile-creation-form" method="post">
+        {% csrf_token %}
+        <main class="profile-creation profile-creation_active" data-stepid="1">
+            <div class="pc_wrapper">
+                <div class="trending__header">
+                    <button onclick="history.back()">
+                        {% if request.session.dark %}
+                            <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                        {% else %}
+                            <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                        {% endif %}
+                    </button>
+                </div>
+                <div class="profile-creation__body">
+                    <h2 class="profile-creation__title">
+                        {% trans 'Pick up any name you want. It can hold any symbols' %}
+                    </h2>
+                    <p class="profile-creation__input-label">{% trans 'Name' %}</p>
+                    <input type="text" name="name" class="profile-creation__input">
+                    <hr>
+                    <ul class="profile-creation__error-block profile-creation__error-name"></ul>
+                </div>
+            </div>
+            <div class="pb_wrapper">
+                <button type="button" class="profile-creation__btn profile-creation__btn_next-step" data-btnstepid="1">
+                    {% trans 'CONTINUE' %}
+                </button>
+            </div>
+
+
+        </main>
+        <main class="profile-creation" data-stepid="2">
+            <div class="pc_wrapper">
+                <div class="profile-creation__header">
+                    <a class="profile-creation__close-btn" href="/">
+                        <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+                    </a>
+                    <div class="profile-creation__header-wrapper">
+                        <p>{% trans 'Creating Profile' %}</p>
+                        <p class="profile-creation__step">{% trans '1 of 2' %}</p>
+                    </div>
+                </div>
+
+                <div class="profile-creation__checkboxes checkboxes">
+                    <h2 class="checkboxes__title">{% trans 'Select what genres do you prefer to watch' %}</h2>
+                    <p class="checkboxes__label">{% trans 'Movies' %}</p>
+                    <div class="checkboxes__genres checkboxes__genres_movies">
+                        {% for genre in genres %}
+                            <div class="checkboxes__genre {% if forloop.first %}checkboxes__genre_active{% endif %}"
+                                 data-genreid="{{ genre.id }}">
+                                <img src="{{ genre.get_icon }}" alt="">
+                                <span>{{ genre.name }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <p class="checkboxes__label">{% trans 'Sport' %}</p>
+                    <div class="checkboxes__genres checkboxes__genres_sport">
+                        {% for sport in sport_kinds %}
+                            <div class="checkboxes__genre {% if forloop.first %}checkboxes__genre_active{% endif %}"
+                                 data-sportid="{{ sport.id }}">
+                                <img src="{{ sport.get_icon }}" alt="">
+                                <span>{{ sport.name }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <input class="genres-input" type="hidden" name="genres">
+                <input class="sportkind-input" type="hidden" name="sport">
+            </div>
+            <div class="pb_wrapper">
+                <button type="button" class="profile-creation__btn profile-creation__btn_next-step" data-btnstepid="2">
+                    {% trans 'CONTINUE' %}
+                </button>
+            </div>
+        </main>
+        <main class="profile-creation" data-stepid="3">
+            <div class="pc_wrapper">
+                <div class="profile-creation__header">
+                    <a class="profile-creation__close-btn" href="/">
+                        <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+                    </a>
+                    <div class="profile-creation__header-wrapper">
+                        <p>{% trans 'Creating Profile' %}</p>
+                        <p class="profile-creation__step">{% trans '2 of 2' %}</p>
+                    </div>
+                </div>
+                <div class="private-info">
+                    <h2 class="private-info__title">{% trans 'To give you most accurate recommendation provide your gender and age' %}</h2>
+                    <p class="private-info__subtitle">{% trans 'This info wont show anywhere' %}</p>
+                    <p class="private-info__genders-title">{% trans 'Gender' %}</p>
+                    <div class="private-info__genders">
+                        <div class="private-info__gender private-info__gender_active" data-genderid="1">
+                            <img src="{% static 'main/img/icons/register/male.png' %}" alt="">
+                            <span>{% trans 'Male' %}</span>
+                        </div>
+                        <div class="private-info__gender" data-genderid="1">
+                            <img src="{% static 'main/img/icons/register/female.png' %}" alt="">
+                            <span>{% trans 'Female' %}</span>
+                        </div>
+                    </div>
+                    <p class="private-info__ages-title">{% trans 'Age' %}</p>
+                    <div class="private-info__ages">
+                        <div class="private-info__ages_left">
+                            <div class="private-info__age">
+                                <input type="radio" id="1" name="age" value="1" checked>
+                                <label for="1">{% trans 'Under 18' %}</label>
+                            </div>
+
+                            <div class="private-info__age">
+                                <input type="radio" id="2" name="age" value="2">
+                                <label for="2">18-30</label>
+                            </div>
+
+                            <div class="private-info__age">
+                                <input type="radio" id="3" name="age" value="3">
+                                <label for="3">30-45</label>
+                            </div>
+                        </div>
+                        <div class="private-info__ages_right">
+                            <div class="private-info__age">
+                                <input type="radio" id="4" name="age" value="4">
+                                <label for="4">45-60</label>
+                            </div>
+
+                            <div class="private-info__age">
+                                <input type="radio" id="5" name="age" value="5">
+                                <label for="5">60+</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" class="gender-input" name="gender">
+            </div>
+            <div class="pb_wrapper">
+                <button type="button" class="profile-creation__btn profile-creation__btn_next-step" data-btnstepid="3">
+                    {%  trans 'CREATE PROFILE' %}
+                </button>
+            </div>
+        </main>
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 1000)
+
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.profile-creation-form').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+        let steps = document.querySelectorAll('.profile-creation')
+        let stepsButtons = document.querySelectorAll('.profile-creation__btn_next-step')
+        let inputName = document.querySelector('.profile-creation__input')
+
+        function closeAllSteps() {
+            steps.forEach(((step) => {
+                step.classList.remove('profile-creation_active')
+            }))
+        }
+
+        function openStepById(id) {
+            let step = document.querySelector(`.profile-creation[data-stepid="${id}"]`)
+            step.classList.add('profile-creation_active')
+        }
+
+        function validateName(name) {
+            let errorBlock = document.querySelector('.profile-creation__error-name')
+            let errorMessages = []
+            if (name.length < 3) {
+                errorMessages.push("Name is too short.")
+            }
+            if (errorMessages.length > 0) {
+                errorBlock.innerHTML = ''
+                errorMessages.forEach((value => {
+                    errorBlock.innerHTML += `<li>${value}</li>`
+                }))
+                return false
+            }
+            return true
+        }
+
+        function saveGenresAndSportKinds() {
+            let genresBlock = document.querySelector('.checkboxes__genres_movies')
+            let sportKindsBlock = document.querySelector('.checkboxes__genres_sport')
+            let genresInput = document.querySelector('.genres-input')
+            let sportKindsInput = document.querySelector('.sportkind-input')
+
+            let selectedGenres = genresBlock.querySelectorAll('.checkboxes__genre_active')
+            let selectedSportKinds = sportKindsBlock.querySelectorAll('.checkboxes__genre_active')
+            let genresArray = []
+            let sportKindsArray = []
+            selectedGenres.forEach((value => {
+                genresArray.push(value.getAttribute('data-genreid'))
+            }))
+            selectedSportKinds.forEach((value => {
+                sportKindsArray.push(value.getAttribute('data-sportid'))
+            }))
+            genresInput.value = genresArray.join(',')
+            sportKindsInput.value = sportKindsArray.join(',')
+        }
+
+        function saveGenders() {
+            let genderInput = document.querySelector('.gender-input')
+            let gender = document.querySelector('.private-info__gender_active')
+            genderInput.value = gender.getAttribute('data-genderid')
+        }
+
+        function sendForm() {
+            let form = document.querySelector('.profile-creation-form')
+            form.submit()
+        }
+
+        stepsButtons.forEach(((button, key) => {
+            button.addEventListener('click', (event) => {
+                let btnid = button.getAttribute('data-btnstepid')
+                switch (btnid) {
+                    case "1":
+                        if (validateName(inputName.value)) {
+                            closeAllSteps();
+                            openStepById(2)
+                        }
+                        break;
+                    case "2":
+                        saveGenresAndSportKinds()
+                        closeAllSteps();
+                        openStepById(3);
+                        break;
+                    case "3":
+                        saveGenders();
+                        sendForm();
+                }
+            })
+        }))
+
+        let checkboxes = document.querySelectorAll('.checkboxes__genre')
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener('click', (event) => {
+                checkbox.classList.toggle('checkboxes__genre_active')
+            })
+        })
+
+        let allGenders = document.querySelectorAll('.private-info__gender')
+        allGenders.forEach((gender => {
+            gender.addEventListener('click', (event) => {
+                allGenders.forEach((gender2 => {
+                    gender2.classList.remove('private-info__gender_active')
+                }))
+                gender.classList.add('private-info__gender_active')
+            })
+        }))
+    </script>
+{% endblock scripts %}

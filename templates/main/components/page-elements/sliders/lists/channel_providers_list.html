@@ -1,0 +1,20 @@
+{% load sliders_tag %}
+{% load i18n %}
+{% channel_provider_list sort=component.sort_method as elements %}
+<div class="channels">
+    <div class="block-header mt-s-page-block">
+        <div class="title"> {{ component.name_on_page }}</div>
+        <a href="{% url 'compilations-list-page' pk=component.id %}" class="view-all"> {% trans 'VIEW ALL' %} </a>
+    </div>
+    {% for element in elements %}
+        <a href="{% url 'provider-page' pk=element.id %}" class="channels__item">
+            <img src="{{ element.get_poster }}" alt="">
+            <div class="channels__item_text">
+                <h4>{{ element.name }}</h4>
+                <h5>{{ element.get_count_channels }} {% trans 'channels' %}</h5>
+                <span>{{ element.based.name }} {% trans 'Based' %}</span>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+

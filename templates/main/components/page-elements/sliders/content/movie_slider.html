@@ -1,0 +1,64 @@
+{% load sliders_tag %}
+{% load rating_tag %}
+{% load i18n %}
+{% load language_tag %}
+{% movie_slider sort=component.sort_method as elements%}
+<div class="pageblock-header line-slider__header mt-m-page-block">
+    <p class="pageblock-header__title line-slider__title">{{ component.name_on_page }}</p>
+    <a href="{% url 'compilations-list-page' pk=component.id %}"
+       class="pageblock-header__vall line-slider__vall">{% trans 'VIEW ALL' %}</a>
+</div>
+{#<div class="line-slider swiper-container">#}
+{#    <div class="line-slider__wrapper swiper-wrapper">#}
+{#        {% for element in elements %}#}
+{#            <div class="line-slider__slide lslide swiper-slide">#}
+{#                <a href="{% url 'movie-page' pk=element.id %}" class="lslide__wrapper">#}
+{#                    <div class="lslide__image">#}
+{#                        <img src="{{ element.get_poster }}" alt="slide-image">#}
+{#                        {% get_rating object=element as rating %}#}
+{#                        <div class="lslide__rating">{{ rating.grade }}</div>#}
+{#                    </div>#}
+{#                    <div class="lslide__name">{{ element.get_name }}</div>#}
+{#                    <div class="lslide__genre">{{ element.get_two_genres }}</div>#}
+{#                </a>#}
+{#            </div>#}
+{#        {% endfor %}#}
+{#        <div class="line-slider__slide lslide swiper-slide showall">#}
+{#            <a href="{% url 'compilations-list-page' pk=component.id %}" class="showall__wrapper">#}
+{#                <div class="showall__icon"></div>#}
+{#                <span class="showall__text">{% trans 'Show all' %}</span>#}
+{#            </a>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+<div class="line-slider swiper-container">
+    <div class="line-slider__wrapper swiper-wrapper">
+        {% for element in elements %}
+            <div class="line-slider__slide lslide swiper-slide">
+                <a href="{% url 'movie-page' pk=element.id %}" class="lslide__wrapper">
+                    <div class="lslide__image">
+                        <img src="{{ element.get_poster }}" alt="slide-image">
+                        {% get_rating object=element as rating %}
+                        <div class="lslide_bshad"></div>
+                        <div class="lslide__rating">{{ rating.grade }}</div>
+                        <div class="lslide_n_name">{{ element.get_name }}</div>
+                        <div class="lslide_n_year">{{ element.year }}</div>
+                    </div>
+                    <div class="lslide_langs">
+                        <span class="lslide_lang">{{ element.language }}</span>
+                        {% get_movie_alt_langs object=element as langs %}
+                        {% for lang in langs %}
+                            <span class="lslide_lang">{{ lang.language }}</span>
+                        {% endfor %}
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+        <div class="line-slider__slide lslide swiper-slide showall">
+            <a href="{% url 'compilations-list-page' pk=component.id %}" class="showall__wrapper">
+                <div class="showall__icon"></div>
+                <span class="showall__text">{% trans 'Show all' %}</span>
+            </a>
+        </div>
+    </div>
+</div>

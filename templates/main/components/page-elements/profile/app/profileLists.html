@@ -1,0 +1,136 @@
+{% load static %}
+{% load profile_tag %}
+{% load i18n %}
+
+<div class="seasons profile-sl">
+    <div class="profile-slider swiper-container">
+        <div class="profile-slider__wrapper swiper-wrapper">
+            <div class="profile-slider__slide profslide profslide_active swiper-slide"
+                 data-seasid="1" data-hash="watchlist">
+                <div class="profslide__season">
+                    {% trans 'WATCH LIST' %}
+                </div>
+            </div>
+            <div class="profile-slider__slide profslide swiper-slide"
+                 data-seasid="2" data-hash="channels">
+                <div class="profslide__season">
+                    {% trans 'CHANNELS' %}
+                </div>
+            </div>
+            <div class="profile-slider__slide profslide swiper-slide"
+                 data-seasid="3" data-hash="history">
+                <div class="profslide__season">
+                    {% trans 'HISTORY' %}
+                </div>
+            </div>
+            <div class="profile-slider__slide profslide swiper-slide"
+                 data-seasid="4" data-hash="downloads">
+                <div class="profslide__season">
+                    {% trans 'DOWNLOADS' %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="decor"></div>
+    <div class="profile-contents">
+        <div class="seasons-episodes season-episodes_active profile_s_a"
+             data-tabseasid="1">
+            {% if request.user.is_anonymous %}
+                <div class="list-register">
+                    <p class="list-register__text">
+                        {% trans 'Register to create your own watch list, share/recommend videos to your friends' %}
+                    </p>
+                    <a href="{% url 'register-page' %}" class="list-register__btn">{% trans 'REGISTER' %}</a>
+                </div>
+
+            {% else %}
+                {% get_all_watch_list user=request.user as models %}
+                {% if models %}
+                    {% for model in models %}
+                        {% if model.rev_url_name == 'movie-page' %}
+                            {% include 'main/components/page-elements/profile/app/templates/movie.html' with element=model %}
+                        {% elif model.rev_url_name == 'serie-page' %}
+                            {% include 'main/components/page-elements/profile/app/templates/serie.html' with element=model %}
+                        {% elif model.rev_url_name == 'show-page' %}
+                            {% include 'main/components/page-elements/profile/app/templates/show.html' with element=model %}
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+                    <p class="list-register__text">
+                        {% trans 'Add videos to watch them later or share with friends' %}
+                    </p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="seasons-episodes profile_s_a"
+             data-tabseasid="2">
+            {% if request.user.is_anonymous %}
+                <div class="list-register">
+                    <p class="list-register__text">
+                        {% trans 'Register to create your own watch list, share/recommend videos to your friends' %}
+                    </p>
+                    <a href="{% url 'register-page' %}" class="list-register__btn">{% trans 'REGISTER' %}</a>
+                </div>
+            {% else %}
+                {% get_all_channels_list user=request.user as models %}
+                {% if models %}
+                    {% for model in models %}
+{#                        {% if model.id != None and model.id != '' %}#}
+                            {% include 'main/components/page-elements/profile/app/templates/channel.html' with element=model %}
+{#                        {% endif %}#}
+                    {% endfor %}
+                {% else %}
+                    <p class="list-register__text">{% trans 'Add channels to watch them later or share with friends' %}</p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="seasons-episodes profile_s_a"
+             data-tabseasid="3">
+            {% if request.user.is_anonymous %}
+                <div class="list-register">
+                    <p class="list-register__text">
+                        {% trans 'Register to see your browsing history here' %}
+                    </p>
+                    <a href="{% url 'register-page' %}" class="list-register__btn">{% trans 'REGISTER' %}</a>
+                </div>
+
+            {% else %}
+                {% get_all_watch_history user=request.user as models %}
+                {% if models %}
+                    {% for model in models %}
+                        {% if model.rev_url_name == 'movie-page' %}
+                            {% include 'main/components/page-elements/profile/app/templates/movie.html' with element=model trash=1 %}
+                        {% elif model.rev_url_name == 'serie-page' %}
+                            {% include 'main/components/page-elements/profile/app/templates/serie.html' with element=model trash=1 %}
+                        {% elif model.rev_url_name == 'show-page' %}
+                            {% include 'main/components/page-elements/profile/app/templates/show.html' with element=model trash=1 %}
+                        {% endif %}
+                    {% endfor %}
+
+                {% else %}
+                    <p class="list-register__text">
+                        {% trans 'Videos you will watch will show up here' %}
+                    </p>
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="seasons-episodes profile_s_a"
+             data-tabseasid="4">
+            {% if request.user.is_anonymous %}
+                <div class="list-register">
+                    <p class="list-register__text">
+                        {% trans 'Register to download any movie you want and watch it offline' %}
+                    </p>
+                    <a href="{% url 'register-page' %}" class="list-register__btn">{% trans 'REGISTER' %}</a>
+                </div>
+
+            {% else %}
+                <p class="list-register__text">{% trans 'Your saved videos will appear here, you can watch them offline' %}</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+</div>

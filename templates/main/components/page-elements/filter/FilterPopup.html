@@ -1,0 +1,35 @@
+{% load static %}
+{% load i18n %}
+<div class="filter-popup" data-filterpopup="{{ popup.id }}">
+    <div class="trending__header">
+        <button class="filter-popup_close">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+            {% endif %}
+        </button>
+        <span>{{ popup.name }}</span>
+        <button class="reset">{% trans 'RESET' %} {{ popup.name_plural }}</button>
+    </div>
+    <div class="filter-popup__content">
+        <div class="filter-popup__input">
+            <img src="{% static 'main/img/icons/gray-search.svg' %}" alt="">
+            {% csrf_token %}
+            <input type="text" class="filter-popup__input-query" placeholder="Enter {{ popup.name }}">
+        </div>
+        {% if popup.id != 1 %}
+            <div class="filter-popup__item filter-popup__item-active" onclick="checkbyclick(this);"
+                 data-popupitemid="0">
+                <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                <span>{% trans 'ALL' %}</span>
+            </div>
+        {% endif %}
+        <div class="filter-popup__group">
+
+        </div>
+        <button class="filter-popup__btn">
+            {% trans 'RESET' %}
+        </button>
+    </div>
+</div>

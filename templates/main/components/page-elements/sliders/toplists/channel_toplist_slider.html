@@ -1,0 +1,21 @@
+{% load sliders_tag %}
+{% load i18n %}
+{% channel_toplist_slider sort=component.sort_method as elements %}
+<div class="pageblock-header line-slider__header mt-s-page-block">
+    <p class="pageblock-header__title line-slider__title">{{ component.name_on_page }}</p>
+    <a href="{% url 'compilations-list-page' pk=component.id %}" class="pageblock-header__vall line-slider__vall">{% trans 'VIEW ALL' %}</a>
+</div>
+<div class="line-slider swiper-container">
+    <div class="line-slider__wrapper swiper-wrapper">
+        {% for element in elements %}
+            <div class="line-slider__slide lslide swiper-slide line-slider_lists">
+                <a href="{% url 'channel-list-page' pk=element.id %}" class="lslide__wrapper">
+                    <div class="lslide__image">
+                        <img src="{{ element.get_poster }}" alt="slide-image">
+                    </div>
+                    <div class="lslide__name">{{ element.name }}</div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

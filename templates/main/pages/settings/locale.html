@@ -1,0 +1,32 @@
+{% extends "../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="language__wrapper">
+        <div class="trending__header">
+            <button onclick="history.back()">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'LANGUAGE' %}</span>
+        </div>
+        <div class="language">
+            <div class="language__drpdwn drpdwn">
+                <button class="drpdwn__btn">{% trans 'Change language' %}</button>
+                <div class="drpdwn__content">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <div class="drpdwn__link {% if language.code == LANGUAGE_CODE %}drpdwn__link_active{% endif %}"
+                             onclick="changeLang('{{ language.code }}', '{% url 'set_language' %}')">{{ language.name_local }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

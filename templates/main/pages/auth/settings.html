@@ -1,0 +1,44 @@
+{% extends "../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load i18n %}
+{% load static %}
+{% block content %}
+    <main class="settings_wrapper">
+        <div class="trending__header">
+            <button onclick="history.back()">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'SETTINGS' %}</span>
+        </div>
+        <div class="settings">
+            <a href="
+                    {% if not request.user.is_anonymous %}{% url 'subscription-page' %}{% else %}{% url 'login-page' %}{% endif %}"
+               class="settings__link">{% trans 'Subscription' %}</a>
+            <a href="{% url 'privacy-policy-page' %}" class="settings__link">{% trans 'Privacy Policy' %}</a>
+            <a href="{% url 'terms-of-use-page' %}" class="settings__link">{% trans 'Terms Of Use' %}</a>
+            <a href="{% url 'locale-page' %}" class="settings__link">{% trans 'Language' %}</a>
+            {% if not request.user.is_anonymous %}
+                <a href="{% url 'user-logout' %}" class="settings__link settings__link_orange">{% trans 'Log out' %}</a>
+            {% endif %}
+        </div>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+{% endblock scripts %}

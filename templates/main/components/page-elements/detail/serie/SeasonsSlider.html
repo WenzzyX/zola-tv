@@ -1,0 +1,63 @@
+{% load static %}
+{% load content_type_tag %}
+{% load series_tag %}
+{% load i18n %}
+
+<div class="seasons">
+    <div class="seas-slider swiper-container">
+        <div class="seas-slider__wrapper swiper-wrapper">
+            {% for season in serie.serii.all %}
+                <div class="seas-slider__slide seasslide {% if forloop.first %}seasslide_active{% endif %} swiper-slide"
+                     data-seasid="{{ season.season_num }}">
+                    <div class="seasslide__season">
+                        {% trans 'Season' %} {{ season.season_num }}
+                    </div>
+                    <div class="seasslide__episodes">
+                        {{ season.seas.count }} {% trans 'EPISODES' %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="decor"></div>
+    {% for season in serie.serii.all %}
+        <div class="seasons-episodes {% if forloop.first %}season-episodes_active{% endif %}"
+             data-tabseasid="{{ season.season_num }}">
+            {% getEpisodes season=season as episodes %}
+            {% for episode in episodes %}
+                <div class="seasons-episodes__item">
+                    <a href="{% url 'serie-page' pk=serie.id %}?season={{ season.season_num }}&episode={{ episode.episode }}"
+                       class="leftside-episode">
+                        <div class="seasons-episodes__item_video">
+                            <div class="seasons-episodes__item_preview">
+                                <img src="{{ episode.get_preview }}" alt="">
+                                <div class="seasons-episodes__item_playbtn">
+                                    <img src="{% static 'main/img/icons/playBtn.svg' %}" alt="">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="seasons-episodes__item_text">
+                            <span>{% trans 'EPISODE' %} {{ episode.episode }}</span>
+                            <h5>{{ episode.episode_name }}</h5>
+                        </div>
+                    </a>
+
+                    <div class="seasons-episodes__item_links">
+                        {% check_added_to_watchlist user=request.user model=episode as added %}
+                        <button class="ms-add-to-wl-btn {% if added %}add-to-wl-btn_added{% endif %}"
+                                data-epid="{{ episode.id }}" onclick="AddToWLBtn(this);">
+                        </button>
+                        <button data-elurl="{% url 'serie-page' pk=episode.season.serie.id %}?season={{ episode.season.season_num }}&episode={{ episode.episode }}"
+                                data-elname="{{ episode.season.serie.name }}" onclick="shareEl(this);">
+                            <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+                        </button>
+                        <button>
+                            <img src="{% static 'main/img/icons/download.svg' %}" alt="">
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>

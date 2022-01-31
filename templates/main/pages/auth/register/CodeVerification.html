@@ -1,0 +1,143 @@
+{% extends "../../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block head_links %}
+    <link rel="stylesheet" href="{% static 'main/css/intlTelInput.min.css' %}">
+{% endblock head_links %}
+{% block content %}
+
+    <main class="register-form register-form_active">
+        <div class="trending__header">
+            <form action="{% url 'remove-from-verificarion' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+        <div class="register-form__forms code-activation__form">
+            <div class="register-form__form form-reg form-reg_active code-verification__form" data-formid="1">
+                <div class="form_c_wrapper">
+                    <div class="form__title_frame">
+                        <h2 class="form-reg__title">{% trans 'Enter 6-number code sent to your' %} {% if usremail %}{% trans 'email' %}{% else %}{% trans 'phone' %}{% endif %}</h2>
+                        <p class="user-phone-email">{{ useract }}</p>
+                    </div>
+                    <div class="form-code__input-block">
+                        <div class="signin-sms__wrap">
+
+                            {% csrf_token %}
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="1" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="2" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="3" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="4" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="5" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="6" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+
+                        </div>
+                        <ul class="error-block error-block__code">
+                            {% if errors %}
+                                {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="form_b_wrapper">
+                    <button type="button" class="form-reg__btn" data-btnid="1">
+                        {% trans 'VERIFY' %}
+                    </button>
+                </div>
+
+
+                {#                <button class="form-reg__submit-btn">SEND</button>#}
+            </div>
+        </div>
+
+    </main>
+    <form class="send_form" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="code" class="user_input_code">
+    </form>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        /*let allInputs = document.querySelectorAll('.sms-input')
+        var arrayMasks = {}
+        var maskOptions = {
+            mask: '0'
+        };
+        for (let i = 0; i < allInputs.length; i++) {
+            arrayMasks[i.toString()] = IMask(allInputs[i], maskOptions);
+        }
+        */
+        $(document).ready(function (){
+            $('.sms-input')[0].focus()
+        })
+
+        $('.sms-input').on('keydown', function (e) {
+
+            let value = $(this).val();
+            let len = value.length;
+            let curTabIndex = parseInt($(this).attr('tabindex'));
+            let nextTabIndex = curTabIndex + 1;
+            let prevTabIndex = curTabIndex - 1;
+            if (e.keyCode != 8) {
+                setTimeout(() => {
+                    $('[tabindex=' + nextTabIndex + ']').focus();
+                }, 10)
+            } else if (e.keyCode == 8) {
+                setTimeout(() => {
+                    $('[tabindex=' + prevTabIndex + ']').focus();
+                }, 10)
+            } else {
+                let prevVal = $(this).val()
+                setTimeout(() => {
+                    $(this).val(prevVal);
+                }, 10)
+            }
+        });
+
+        let btnVerify = document.querySelector('.form-reg__btn')
+        let formSend = document.querySelector('.send_form')
+        let formSendInput = document.querySelector('.user_input_code')
+        let inputs_sms = document.querySelectorAll('.sms-input')
+        btnVerify.addEventListener('click', (event) => {
+            let arrayNumbers = []
+            for (let i = 0; i < inputs_sms.length; i++) {
+                arrayNumbers.push(inputs_sms[i].value)
+            }
+            arrayNumbers = arrayNumbers.join('')
+            formSendInput.value = arrayNumbers
+            formSend.submit()
+        })
+
+
+    </script>
+{% endblock scripts %}

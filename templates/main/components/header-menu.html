@@ -1,0 +1,136 @@
+{% load static %}
+{% load settings_tag %}
+{% load i18n %}
+{% get_settings as settings %}
+<div class="header__menu" id="menu">
+
+    <div class="header__menu_content {% if request.session.dark %}dc-menu-c-dark{% endif %}" id="menu-content">
+        <div class="header__menu_login">
+            <div class="header__menu_login-left">
+                <a href="
+
+                        {% if request.user.is_anonymous %}{% url 'login-page' %}{% else %}{% url 'profile-page' %}{% endif %}"
+                   class="header__menu_flex">
+                    <img src="{% static 'main/img/icons/profile.svg' %}" alt="">
+                    {% if request.user.user_profile.first %}
+                        {{ request.user.user_profile.first.name }}
+                    {% else %}
+                        {% trans 'SIGN IN' %}
+                    {% endif %}
+                </a>
+                <span class="h-m-version">{% trans 'Ver' %} 1.0.33</span>
+            </div>
+            <div class="header__menu_login-right">
+                <button type="button" onclick="changeModeBtn()" class="dark-mode-btn">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/sun.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/dark-mode-moon.svg' %}" alt="">
+                    {% endif %}
+                </button>
+
+            </div>
+        </div>
+        <ul>
+            <li class="h-m-homebtn {% if page == 'main' %}header-m-act{% endif %}">
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/home.svg' %}" alt="">
+                </div>
+                <a href="{% url 'main_page' %}">{% trans 'Home' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/watch-list.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/watch-list.svg' %}" alt="">
+                    {% endif %}
+                </div>
+                <a href="{% if not user.is_anonymous %}{% url 'profile-page' %}?tab=1{% else %}{% url 'login-page' %}{% endif %}">{% trans 'My Watch List' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/history.svg' %}" alt="">
+                </div>
+                <a href="{% if not user.is_anonymous %}{% url 'profile-page' %}?tab=3{% else %}{% url 'login-page' %}{% endif %}">{% trans 'History' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/movies.svg' %}" alt="">
+                </div>
+                <a href="{% url 'movies-series_page' %}?tab=1">{% trans 'Movies' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/series.svg' %}" alt="">
+                </div>
+                <a href="{% url 'movies-series_page' %}?tab=2">{% trans 'Series' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/sport.svg' %}" alt="">
+                </div>
+                <a href="{% url 'sports_page' %}?tab=1">{% trans 'Live Sport' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/sport-matches.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/sport-matches.svg' %}" alt="">
+                    {% endif %}
+                </div>
+                <a href="{% url 'sports_page' %}?tab=2">{% trans 'Sport Matches' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/tv-channels.svg' %}" alt="">
+                </div>
+                <a href="{% url 'shows-channels_page' %}?tab=1">{% trans 'TV Channels' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/tv-shows.svg' %}" alt="">
+                </div>
+                <a href="{% url 'shows-channels_page' %}?tab=2">{% trans 'TV Shows' %}</a>
+            </li>
+        </ul>
+        <div class="header__menu_decor"></div>
+        <ul>
+{#            <li>#}
+{#                <div class="header__menu_img">#}
+{#                    <img src="{% static 'main/img/icons/help.svg' %}" alt="">#}
+{#                </div>#}
+{#                <a href="">{% trans 'Help' %}</a>#}
+{#            </li>#}
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/settings.svg' %}" alt="">
+                </div>
+                <a href="{% url 'settings-page' %}">{% trans 'Settings' %}</a>
+            </li>
+            <li>
+                <div class="header__menu_img">
+                    <img src="{% static 'main/img/icons/send-feedback.svg' %}" alt="">
+                </div>
+                <a href="{% url 'feedback-page' %}">{% trans 'Send Feedback' %}</a>
+            </li>
+            {% if not request.user.is_anonymous %}
+                <li>
+                    <div class="header__menu_img">
+                        <img src="{% static 'main/img/icons/logout.svg' %}" alt="">
+                    </div>
+                    <a href="{% url 'user-logout' %}">{% trans 'Log Out' %}</a>
+                </li>
+            {% endif %}
+        </ul>
+        {% if not settings.ITS_APP %}
+            <div style="padding: 0px 17px; margin-bottom: 15px;margin-top: 10px;">
+                <a href="{% url 'app-download-page' %}" class="install-btn" onclick="gtag('event', 'click_banner_download_app');" style="height: 48px;">
+                    <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                    {% trans 'INSTALL APP' %}
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,19 @@
+{% load rating_tag %}
+<div class="trending__items sample">
+    {% for element in elements %}
+        {% if forloop.last %}
+            <a href="{% url card_url pk=element.id %}" class="sample__slide last-loaded"
+               data-lastloadid="{{ element.id }}" data-loadmodelid="{{ model }}">
+        {% else %}
+            <a href="{% url card_url pk=element.id %}" class="sample__slide">
+        {% endif %}
+    <div class="slide-image__wrapper" style="background-image: url('{{ element.get_poster }}')">
+    </div>
+    {% get_rating object=element as rating %}
+    <div class="sample__slide_rating">{{ rating.grade }}</div>
+    <div class="sample__slide_name">{{ element.get_name }}</div>
+    <div class="sample__slide_genre">{{ element.get_two_genres }}</div>
+    </a>
+    {% endfor %}
+</div>
+{#<button class="filters__btn dynamic-load">LOAD MORE</button>#}

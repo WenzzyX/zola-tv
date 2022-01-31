@@ -1,0 +1,1239 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-31 14:30+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\main\admin.py:39 .\main\admin.py:110 .\main\admin.py:205
+#: .\main\admin.py:298 .\main\admin.py:341 .\main\admin.py:366
+msgid "Пользовательский рейтинг"
+msgstr "उपयोगकर्ता रेटिंग"
+
+#: .\main\admin.py:49 .\main\admin.py:120 .\main\admin.py:215
+#, fuzzy
+#| msgid "IMDB-ID"
+msgid "IMDB-ID for copy"
+msgstr "आईएमडीबी-आईडी"
+
+#: .\main\admin.py:56 .\main\admin.py:127 .\main\admin.py:222
+#: .\main\admin.py:315 .\main\admin.py:373 .\main\admin.py:411
+#: .\main\admin.py:492 .\main\admin.py:526 .\main\admin.py:560
+#: .\main\admin.py:594 .\main\admin.py:628
+msgid "Poster"
+msgstr "पोस्टर"
+
+#: .\main\admin.py:177 .\main\admin.py:272
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: .\main\admin.py:308 .\main\admin.py:383 .\main\admin.py:421
+#: .\main\admin.py:502 .\main\admin.py:536 .\main\admin.py:570
+#: .\main\admin.py:604 .\main\admin.py:638 .\main\admin.py:685
+msgid "ID"
+msgstr "आईडी"
+
+#: .\main\admin.py:348 .\main\admin.py:444
+msgid "icon"
+msgstr "आइकन"
+
+#: .\main\views.py:389
+msgid "movie"
+msgstr "फिल्म"
+
+#: .\main\views.py:457
+msgid "serie"
+msgstr "श्रृंखला"
+
+#: .\main\views.py:525
+msgid "show"
+msgstr "दिखाएँ"
+
+#: .\main\views.py:605
+msgid "channel"
+msgstr "चैनल"
+
+#: .\main\views.py:1588
+msgid ""
+"You are now on preview. To continue watching for free , please install Zola "
+"TV official app."
+msgstr ""
+"अब आप पूर्वावलोकन पर हैं। मुफ्त में देखना जारी रखने के लिए, कृपया ज़ोला स्थापित करेंटीवी "
+"आधिकारिक ऐप।"
+
+#: .\sett\app1\settings.py:120 .\sett\app2\settings.py:120
+#: .\sett\webapp\settings.py:120 .\zolatv\settings.py:157
+msgid "English"
+msgstr "अंग्रेज़ी"
+
+#: .\sett\app1\settings.py:121 .\sett\app2\settings.py:121
+#: .\sett\webapp\settings.py:121 .\zolatv\settings.py:158
+msgid "Hindi"
+msgstr "हिंदी"
+
+#: .\templates\admin\analytics\index.html:8 .\templates\admin\base.html:61
+msgid "Analytics"
+msgstr "एनालिटिक्स"
+
+#: .\templates\admin\analytics\index.html:15 .\templates\admin\base.html:48
+msgid "Welcome,"
+msgstr "स्वागत है,"
+
+#: .\templates\admin\analytics\index.html:22 .\templates\admin\base.html:55
+msgid "Documentation"
+msgstr "दस्तावेज़ीकरण"
+
+#: .\templates\admin\analytics\index.html:26 .\templates\admin\base.html:59
+msgid "Change password"
+msgstr "पासवर्ड बदलें"
+
+#: .\templates\admin\analytics\index.html:28
+msgid "Admin panel"
+msgstr "प्रशासनिक समिति"
+
+#: .\templates\admin\analytics\index.html:29 .\templates\admin\base.html:62
+#: .\templates\main\pages\auth\settings.html:25
+msgid "Log out"
+msgstr "लॉग आउट करें"
+
+#: .\templates\admin\analytics\index.html:42
+msgid "top 10 movies"
+msgstr "शीर्ष 10 फिल्में"
+
+#: .\templates\admin\analytics\index.html:46
+#: .\templates\admin\analytics\index.html:71
+#: .\templates\admin\analytics\index.html:96
+#: .\templates\admin\analytics\index.html:121
+#: .\templates\admin\analytics\index.html:146
+#: .\templates\admin\analytics\index.html:172
+#: .\templates\admin\analytics\index.html:214
+#: .\templates\admin\analytics\index.html:248
+msgid "id"
+msgstr "पहचान"
+
+#: .\templates\admin\analytics\index.html:47
+#: .\templates\admin\analytics\index.html:72
+#: .\templates\admin\analytics\index.html:97
+#: .\templates\admin\analytics\index.html:122
+#: .\templates\admin\analytics\index.html:147
+#: .\templates\admin\analytics\index.html:173
+#, fuzzy
+#| msgid "Documentation"
+msgid "infomation"
+msgstr "दस्तावेज़ीकरण"
+
+#: .\templates\admin\analytics\index.html:48
+#: .\templates\admin\analytics\index.html:73
+#: .\templates\admin\analytics\index.html:98
+#: .\templates\admin\analytics\index.html:123
+#: .\templates\admin\analytics\index.html:148
+#: .\templates\admin\analytics\index.html:174
+#, fuzzy
+#| msgid "Views"
+msgid "views"
+msgstr "दृश्य"
+
+#: .\templates\admin\analytics\index.html:67
+msgid "top 10 series"
+msgstr "शीर्ष 10 श्रृंखला"
+
+#: .\templates\admin\analytics\index.html:92
+#, fuzzy
+#| msgid "channels"
+msgid "top 10 channels"
+msgstr "चैनल"
+
+#: .\templates\admin\analytics\index.html:117
+msgid "top 10 tv-shows"
+msgstr "शीर्ष 10 टीवी-शो"
+
+#: .\templates\admin\analytics\index.html:142
+msgid "top 10 sports"
+msgstr "शीर्ष 10 खेल"
+
+#: .\templates\admin\analytics\index.html:168
+msgid "top 10 by views"
+msgstr "विचारों के आधार पर शीर्ष 10"
+
+#: .\templates\admin\analytics\index.html:215
+#: .\templates\admin\analytics\index.html:249
+msgid "country"
+msgstr "देश"
+
+#: .\templates\admin\analytics\index.html:216
+#: .\templates\admin\analytics\index.html:250
+msgid "clicks"
+msgstr "क्लिक्स"
+
+#: .\templates\admin\analytics\index.html:218
+#, fuzzy
+#| msgid "show"
+msgid "shows"
+msgstr "दिखाएँ"
+
+#: .\templates\admin\analytics\index.html:268
+msgid "Main statistic"
+msgstr "मुख्य आँकड़ा"
+
+#: .\templates\admin\analytics\index.html:272
+msgid "parameter"
+msgstr "पैरामीटर"
+
+#: .\templates\admin\analytics\index.html:273
+msgid "value"
+msgstr "मूल्य"
+
+#: .\templates\admin\base.html:72
+msgid "Home"
+msgstr "होम"
+
+#: .\templates\admin\base_site.html:3
+msgid "Django site admin"
+msgstr "Django साइट व्यवस्थापक"
+
+#: .\templates\admin\base_site.html:6
+msgid "Django administration"
+msgstr "Django प्रशासन"
+
+#: .\templates\main\banner-templates\imagebanner.html:7
+msgid "REMOVE ADS"
+msgstr "विज्ञापन हटाएँ"
+
+#: .\templates\main\base.html:76
+msgid "COPY"
+msgstr "प्रतिलिपि"
+
+#: .\templates\main\components\comments-popup.html:7
+msgid "comments"
+msgstr "टिप्पणियाँ"
+
+#: .\templates\main\components\footer.html:9
+msgid "HOME"
+msgstr "होम"
+
+#: .\templates\main\components\footer.html:16
+#: .\templates\main\components\live-search.html:30
+msgid "SPORT"
+msgstr "खेल"
+
+#: .\templates\main\components\footer.html:23
+msgid "MOVIES/SERIES"
+msgstr "फ़िल्में/श्रृंखला"
+
+#: .\templates\main\components\footer.html:35
+msgid "SHOWS/CHANNELS"
+msgstr "दिखाएँ/चैनल"
+
+#: .\templates\main\components\header-menu.html:17
+#: .\templates\main\pages\auth\login\loginForm.html:80
+#: .\templates\main\pages\auth\login\loginForm.html:124
+msgid "SIGN IN"
+msgstr "साइन इन करें"
+
+#: .\templates\main\components\header-menu.html:20
+msgid "Ver"
+msgstr "देखें"
+
+#: .\templates\main\components\header-menu.html:42
+msgid "My Watch List"
+msgstr "मेरी निगरानी सूची"
+
+#: .\templates\main\components\header-menu.html:48
+msgid "History"
+msgstr "इतिहास"
+
+#: .\templates\main\components\header-menu.html:54
+#: .\templates\main\components\page-elements\filter\FilterContent.html:8
+#: .\templates\main\pages\auth\register\ProfileCreation.html:54
+msgid "Movies"
+msgstr "फिल्में"
+
+#: .\templates\main\components\header-menu.html:60
+msgid "Series"
+msgstr "श्रृंखला"
+
+#: .\templates\main\components\header-menu.html:66
+msgid "Live Sport"
+msgstr "लाइव स्पोर्ट"
+
+#: .\templates\main\components\header-menu.html:76
+msgid "Sport Matches"
+msgstr "खेल मैच"
+
+#: .\templates\main\components\header-menu.html:82
+msgid "TV Channels"
+msgstr "टीवी चैनल"
+
+#: .\templates\main\components\header-menu.html:88
+msgid "TV Shows"
+msgstr "टीवी शो"
+
+#: .\templates\main\components\header-menu.html:103
+msgid "Settings"
+msgstr "सेटिंग्स"
+
+#: .\templates\main\components\header-menu.html:109
+msgid "Send Feedback"
+msgstr "प्रतिक्रिया भेजें"
+
+#: .\templates\main\components\header-menu.html:116
+#: .\templates\main\pages\profile.html:40
+msgid "Log Out"
+msgstr "लॉग आउट करें"
+
+#: .\templates\main\components\header-menu.html:124
+msgid "INSTALL APP"
+msgstr "एप्लिकेशन स्थापित करें"
+
+#: .\templates\main\components\header.html:15
+msgid "Install APP"
+msgstr "एपीपी स्थापित करें"
+
+#: .\templates\main\components\live-search.html:28
+#: .\templates\main\pages\movies-series.html:21
+msgid "MOVIES"
+msgstr "फिल्में"
+
+#: .\templates\main\components\live-search.html:29
+#: .\templates\main\pages\movies-series.html:24
+msgid "SERIES"
+msgstr "श्रृंखला"
+
+#: .\templates\main\components\live-search.html:31
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:17
+#: .\templates\main\pages\shows-channels.html:20
+msgid "CHANNELS"
+msgstr "चैनल"
+
+#: .\templates\main\components\live-search.html:32
+#: .\templates\main\pages\shows-channels.html:23
+msgid "TV SHOWS"
+msgstr "टीवी शो"
+
+#: .\templates\main\components\page-elements\channels\AllProvidersList.html:12
+#: .\templates\main\components\page-elements\channels\ProvidersList.html:12
+#: .\templates\main\components\page-elements\main\PopularChanelsList.html:14
+msgid "channels"
+msgstr "चैनल"
+
+#: .\templates\main\components\page-elements\channels\ChannelsListSlider.html:6
+#: .\templates\main\components\page-elements\detail\channel\TopChannelsSlider.html:6
+#: .\templates\main\components\page-elements\detail\movie\SimilarMoviesSlider.html:8
+#: .\templates\main\components\page-elements\detail\sport\TopChannelsSlider.html:6
+#: .\templates\main\components\page-elements\main\NewestMoviesSlider.html:9
+#: .\templates\main\components\page-elements\main\PopularChanelsList.html:7
+#: .\templates\main\components\page-elements\main\PopularTVShowsSlider.html:8
+#: .\templates\main\components\page-elements\main\SportLiveSlider.html:6
+#: .\templates\main\components\page-elements\movies\GenreSlider.html:8
+#: .\templates\main\components\page-elements\movies\NewestMoviesSlider.html:9
+#: .\templates\main\components\page-elements\movies\RecomendedToYouSlider.html:8
+#: .\templates\main\components\page-elements\movies\TopListsSlider.html:6
+#: .\templates\main\components\page-elements\series\GenreSlider.html:8
+#: .\templates\main\components\page-elements\series\WeRecomendedSlider.html:8
+#: .\templates\main\components\page-elements\tv-shows\TopListsSlider.html:6
+#: .\templates\main\components\page-elements\tv-shows\WeRecomendedSlider.html:8
+msgid "VIEW ALL"
+msgstr "सभी देखें"
+
+#: .\templates\main\components\page-elements\channels\WeRecomendedList.html:23
+#: .\templates\main\components\page-elements\sports\channels-list.html:24
+msgid "Viewers"
+msgstr "दर्शक"
+
+#: .\templates\main\components\page-elements\channels\WeRecomendedList.html:46
+#: .\templates\main\components\page-elements\sports\channels-list.html:47
+msgid "Watch"
+msgstr "देखो"
+
+#: .\templates\main\components\page-elements\detail\movie\SimilarMoviesSlider.html:59
+#: .\templates\main\components\page-elements\main\NewestMoviesSlider.html:60
+#: .\templates\main\components\page-elements\main\PopularTVShowsSlider.html:64
+#: .\templates\main\components\page-elements\movies\GenreSlider.html:60
+#: .\templates\main\components\page-elements\movies\NewestMoviesSlider.html:61
+#: .\templates\main\components\page-elements\movies\RecomendedToYouSlider.html:60
+#: .\templates\main\components\page-elements\series\GenreSlider.html:64
+#: .\templates\main\components\page-elements\series\WeRecomendedSlider.html:64
+#: .\templates\main\components\page-elements\tv-shows\WeRecomendedSlider.html:64
+msgid "Show all"
+msgstr "सभी आगे बढ़ें"
+
+#: .\templates\main\components\page-elements\detail\movie\SocialBlock.html:6
+msgid "Add to Watch list"
+msgstr "देखने की सूची में जोड़ें"
+
+#: .\templates\main\components\page-elements\detail\movie\SocialBlock.html:10
+msgid "Share"
+msgstr "साझा करें"
+
+#: .\templates\main\components\page-elements\detail\movie\SocialBlock.html:20
+msgid "Сomments"
+msgstr "टिप्पणियाँ"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:6
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:6
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:6
+#: .\templates\main\components\rating-popup.html:38
+msgid "Rating"
+msgstr "रेटिंग"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:8
+#: .\templates\main\components\rating-popup.html:39
+msgid "based on"
+msgstr "आधार पर"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:8
+#: .\templates\main\components\rating-popup.html:40
+msgid "people"
+msgstr "लोग"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:11
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:11
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:11
+msgid "Rate"
+msgstr "दर"
+
+#: .\templates\main\components\page-elements\detail\serie\SeasonsSlider.html:13
+#: .\templates\main\components\page-elements\detail\show\SeasonsSlider.html:13
+msgid "Season"
+msgstr "सीजन"
+
+#: .\templates\main\components\page-elements\detail\serie\SeasonsSlider.html:16
+#: .\templates\main\components\page-elements\detail\show\SeasonsSlider.html:16
+msgid "EPISODES"
+msgstr "एपिसोड"
+
+#: .\templates\main\components\page-elements\detail\serie\SeasonsSlider.html:41
+#: .\templates\main\components\page-elements\detail\show\SeasonsSlider.html:41
+msgid "EPISODE"
+msgstr "एपिसोड"
+
+#: .\templates\main\components\page-elements\filter-results\FilterResultsHeader.html:11
+msgid "FILTER RESULTS"
+msgstr "फ़िल्टर परिणाम"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:5
+msgid "TYPES"
+msgstr "शैलियाँ"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:13
+msgid "GENRES"
+msgstr "सब"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:16
+#: .\templates\main\components\page-elements\filter\FilterContent.html:36
+#: .\templates\main\components\page-elements\filter\FilterContent.html:44
+#: .\templates\main\components\page-elements\filter\FilterPopup.html:25
+#: .\templates\main\pages\shows-channels.html:66
+#: .\templates\main\pages\shows-channels.html:99
+#: .\templates\main\pages\sport.html:58 .\templates\main\pages\sport.html:91
+msgid "ALL"
+msgstr "वर्ष"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:21
+msgid "YEARS"
+msgstr "देश"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:33
+msgid "COUNTRY"
+msgstr "भाषा"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:41
+#: .\templates\main\pages\settings\locale.html:15
+#: .\templates\main\pages\shows-channels.html:32
+#: .\templates\main\pages\shows-channels.html:43
+#: .\templates\main\pages\shows-channels.html:92
+#: .\templates\main\pages\sport.html:32 .\templates\main\pages\sport.html:84
+msgid "LANGUAGE"
+msgstr "रेटिंग"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:49
+msgid "RATING"
+msgstr "दिखाएँ"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:61
+msgid "SHOW"
+msgstr "रीसेट"
+
+#: .\templates\main\components\page-elements\filter\FilterPopup.html:13
+#: .\templates\main\components\page-elements\filter\FilterPopup.html:32
+msgid "RESET"
+msgstr "आधारित"
+
+#: .\templates\main\components\page-elements\main\BigSlider.html:24
+#: .\templates\main\components\page-elements\movies\BigSlider.html:37
+#: .\templates\main\components\page-elements\series\BigSlider.html:15
+msgid "To my list"
+msgstr "मेरी सूची में"
+
+#: .\templates\main\components\page-elements\main\PopularChanelsList.html:15
+msgid "Based"
+msgstr "आधारित"
+
+#: .\templates\main\components\page-elements\main\SportLiveSlider.html:15
+#: .\templates\main\components\page-elements\sports\LiveList.html:12
+#: .\templates\main\components\page-elements\sports\MatchesList.html:13
+#: .\templates\main\pages\ComponentList.html:64
+msgid "LIVE"
+msgstr "लाइव"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:11
+msgid "WATCH LIST"
+msgstr "देखने की सूची"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:23
+msgid "HISTORY"
+msgstr "इतिहास"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:29
+msgid "DOWNLOADS"
+msgstr "डाउनलोड करें"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:42
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:72
+msgid ""
+"Register to create your own watch list, share/recommend videos to your "
+"friends"
+msgstr ""
+"अपनी खुद की देखने की सूची बनाने के लिए पंजीकरण करें, अपने वीडियो को साझा/अनुशंसित करें दोस्त"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:44
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:74
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:94
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:124
+msgid "REGISTER"
+msgstr "पंजीकरण"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:62
+msgid "Add videos to watch them later or share with friends"
+msgstr "वीडियो बाद में देखने के लिए जोड़ें या मित्रों के साथ साझा करें"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:83
+msgid "Add channels to watch them later or share with friends"
+msgstr "चैनलों को बाद में देखने के लिए जोड़ें या मित्रों के साथ साझा करें"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:92
+msgid "Register to see your browsing history here"
+msgstr "अपना ब्राउज़िंग इतिहास देखने के लिए यहाँ पंजीकरण करें"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:112
+msgid "Videos you will watch will show up here"
+msgstr "आपके द्वारा देखे जाने वाले वीडियो यहाँ दिखाई देंगे"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:122
+msgid "Register to download any movie you want and watch it offline"
+msgstr "अपनी पसंद की कोई भी मूवी डाउनलोड करने के लिए रजिस्टर करें और उसे ऑफलाइन देखें"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:128
+msgid "Your saved videos will appear here, you can watch them offline"
+msgstr "आपके सहेजे गए वीडियो यहां दिखाई देंगे, ताकि आप उन्हें ऑफ़लाइन देख सकें"
+
+#: .\templates\main\components\page-elements\sports\LiveList.html:22
+msgid "watching"
+msgstr "देख रहा है"
+
+#: .\templates\main\components\page-elements\sports\LiveList.html:27
+#: .\templates\main\components\page-elements\sports\MatchesList.html:28
+#: .\templates\main\pages\ComponentList.html:77
+msgid "SHARE"
+msgstr "साझा करें"
+
+#: .\templates\main\components\rating-popup.html:16
+msgid "Rate this"
+msgstr "इसे रेट करें"
+
+#: .\templates\main\components\rating-popup.html:46
+msgid "UPDATE RATING"
+msgstr "रेटिंग अद्यतन करें"
+
+#: .\templates\main\components\rating-popup.html:60
+msgid "SHARE THIS MOVIE"
+msgstr "इस फिल्म को साझा करें"
+
+#: .\templates\main\components\rating-popup.html:64
+msgid "RATE"
+msgstr "दर"
+
+#: .\templates\main\components\work-in-progressPopup.html:14
+#: .\templates\main\pages\buysub1.html:17
+#: .\templates\main\pages\buysub2.html:17
+#: .\templates\main\pages\newfeatures.html:17
+msgid "We’re working hard to get this feature done soon."
+msgstr "हम इस सुविधा को शीघ्र पूरा करने के लिए कड़ी मेहनत कर रहे हैं."
+
+#: .\templates\main\components\work-in-progressPopup.html:17
+#: .\templates\main\pages\buysub1.html:20
+#: .\templates\main\pages\buysub2.html:20
+#: .\templates\main\pages\newfeatures.html:20
+msgid "OKAY"
+msgstr "ठीक है"
+
+#: .\templates\main\pages\FirstTimeScreen.html:12
+#: .\templates\main\pages\FirstTimeScreen.html:76
+#: .\templates\main\pages\FirstTimeScreen.html:102
+#: .\templates\main\pages\FirstTimeScreen.html:142
+msgid "SKIP"
+msgstr "छोड़ें"
+
+#: .\templates\main\pages\FirstTimeScreen.html:62
+msgid "All you need in one app"
+msgstr "आप सभी को एक ऐप में चाहिए"
+
+#: .\templates\main\pages\FirstTimeScreen.html:63
+msgid "The Largest Amount of Movies, Series,"
+msgstr "फ़िल्मों की सबसे बड़ी मात्रा, श्रृंखला,"
+
+#: .\templates\main\pages\FirstTimeScreen.html:63
+msgid "Sport, TV-channels. Variety of languages"
+msgstr "खेल, टीवी-चैनल। विभिन्न प्रकार की भाषाएँ"
+
+#: .\templates\main\pages\FirstTimeScreen.html:72
+#: .\templates\main\pages\FirstTimeScreen.html:98
+#: .\templates\main\pages\FirstTimeScreen.html:138
+#: .\templates\main\pages\FirstTimeScreen.html:168
+msgid "REGISTER NOW"
+msgstr "अभी पंजीकरण करें"
+
+#: .\templates\main\pages\FirstTimeScreen.html:90
+msgid "Watch for free. Share with"
+msgstr "मुफ्त में देखें। इसके साथ साझा करें"
+
+#: .\templates\main\pages\FirstTimeScreen.html:90
+msgid "friends and watch without adds"
+msgstr "मित्रों और विज्ञापनों के बिना देखें"
+
+#: .\templates\main\pages\FirstTimeScreen.html:114
+msgid "Live"
+msgstr "लाइव"
+
+#: .\templates\main\pages\FirstTimeScreen.html:130
+msgid "Best and stable quality for"
+msgstr "सर्वोत्तम और स्थिर गुणवत्ता के लिए"
+
+#: .\templates\main\pages\FirstTimeScreen.html:130
+msgid "Sport and TV streaming"
+msgstr "खेल और टीवी स्ट्रीमिंग"
+
+#: .\templates\main\pages\FirstTimeScreen.html:158
+msgid "Download any movies you"
+msgstr "अपनी कोई भी मूवी डाउनलोड करें"
+
+#: .\templates\main\pages\FirstTimeScreen.html:158
+msgid "want and watch them offline"
+msgstr "चाहते हैं और उन्हें ऑफ़लाइन देखते हैं"
+
+#: .\templates\main\pages\appInstall.html:27
+msgid ""
+"Zola TV - best free app to watch live sport translations, best movies and "
+"fresh tv-series"
+msgstr ""
+"ज़ोला टीवी - लाइव स्पोर्ट अनुवाद, सर्वश्रेष्ठ फिल्में देखने के लिए सबसे अच्छा मुफ्त ऐप और ताजा "
+"टीवी-श्रृंखला"
+
+#: .\templates\main\pages\appInstall.html:32
+msgid ""
+"We have to get you informed: it's not an official application from Google, "
+"so you have to allow extra permissions to get it up"
+msgstr ""
+"हमें आपको सूचित करना होगा: यह Google का आधिकारिक आवेदन नहीं है, इसलिए आपको इसे "
+"प्राप्त करने के लिए अतिरिक्त अनुमति देनी होगी"
+
+#: .\templates\main\pages\appInstall.html:37
+msgid "DOWNLOAD ZOLA TV"
+msgstr "ज़ोला टीवी डाउनलोड करें"
+
+#: .\templates\main\pages\auth\login\login.html:19
+#: .\templates\main\pages\auth\login\loginBackup.html:12
+msgid "Sign in to existing account"
+msgstr "मौजूदा खाते में साइन इन करें"
+
+#: .\templates\main\pages\auth\login\login.html:20
+#: .\templates\main\pages\auth\login\loginBackup.html:13
+msgid "Haven’t Register yet?"
+msgstr "पंजीकरण नहीं किया?"
+
+#: .\templates\main\pages\auth\login\login.html:20
+#: .\templates\main\pages\auth\login\loginBackup.html:13
+msgid "Register"
+msgstr "रजिस्टर करें"
+
+#: .\templates\main\pages\auth\login\login.html:28
+#: .\templates\main\pages\auth\login\loginBackup.html:21
+#: .\templates\main\pages\auth\register\register.html:28
+#: .\templates\main\pages\auth\register\registerBackup.html:21
+msgid "via Phone or Email"
+msgstr "फोन या ईमेल के माध्यम से"
+
+#: .\templates\main\pages\auth\login\login.html:33
+#: .\templates\main\pages\auth\login\loginBackup.html:50
+#: .\templates\main\pages\auth\register\register.html:33
+#: .\templates\main\pages\auth\register\registerBackup.html:50
+#: .\templates\main\pages\auth\register\registerForm.html:51
+#: .\templates\main\pages\auth\register\registerForm.html:84
+#: .\templates\main\pages\auth\register\registerForm.html:133
+msgid "By continuing, you agree to Zola TV"
+msgstr "जारी रखकर, आप ज़ोला टीवी के लिए सहमत हैं"
+
+#: .\templates\main\pages\auth\login\login.html:34
+#: .\templates\main\pages\auth\login\loginBackup.html:51
+#: .\templates\main\pages\auth\register\register.html:34
+#: .\templates\main\pages\auth\register\registerBackup.html:51
+#: .\templates\main\pages\auth\register\registerForm.html:53
+#: .\templates\main\pages\auth\register\registerForm.html:86
+#: .\templates\main\pages\auth\register\registerForm.html:135
+#: .\templates\main\pages\auth\settings.html:21
+msgid "Privacy Policy"
+msgstr "गोपनीयता नीति"
+
+#: .\templates\main\pages\auth\login\login.html:34
+#: .\templates\main\pages\auth\login\loginBackup.html:51
+#: .\templates\main\pages\auth\register\register.html:34
+#: .\templates\main\pages\auth\register\registerBackup.html:51
+#: .\templates\main\pages\auth\register\registerForm.html:53
+#: .\templates\main\pages\auth\register\registerForm.html:86
+#: .\templates\main\pages\auth\register\registerForm.html:135
+#: .\venv\Lib\site-packages\django\db\models\base.py:1197
+#: .\venv\Lib\site-packages\django\forms\models.py:768
+msgid "and"
+msgstr "और"
+
+#: .\templates\main\pages\auth\login\login.html:34
+#: .\templates\main\pages\auth\login\loginBackup.html:51
+#: .\templates\main\pages\auth\register\register.html:35
+#: .\templates\main\pages\auth\register\registerBackup.html:52
+#: .\templates\main\pages\auth\register\registerForm.html:55
+#: .\templates\main\pages\auth\register\registerForm.html:88
+#: .\templates\main\pages\auth\register\registerForm.html:137
+msgid "Terms of Use"
+msgstr "उपयोग की शर्तें"
+
+#: .\templates\main\pages\auth\login\loginBackup.html:29
+#: .\templates\main\pages\auth\register\registerBackup.html:29
+msgid "Continue with Google"
+msgstr "Google के साथ जारी रखें"
+
+#: .\templates\main\pages\auth\login\loginBackup.html:37
+#: .\templates\main\pages\auth\register\registerBackup.html:37
+msgid "Continue with Facebook"
+msgstr "फेसबुक के साथ जारी रखें"
+
+#: .\templates\main\pages\auth\login\loginBackup.html:45
+#: .\templates\main\pages\auth\register\registerBackup.html:45
+msgid "Continue with Twitter"
+msgstr "ट्विटर के साथ जारी रखें"
+
+#: .\templates\main\pages\auth\login\loginForm.html:25
+#: .\templates\main\pages\auth\register\registerForm.html:25
+msgid "Email"
+msgstr "ईमेल"
+
+#: .\templates\main\pages\auth\login\loginForm.html:29
+#: .\templates\main\pages\auth\register\registerForm.html:28
+msgid "Phone"
+msgstr "फोन"
+
+#: .\templates\main\pages\auth\login\loginForm.html:40
+msgid "Sign in using email"
+msgstr "ईमेल का उपयोग करके साइन इन करें"
+
+#: .\templates\main\pages\auth\login\loginForm.html:43
+#: .\templates\main\pages\auth\register\registerForm.html:71
+msgid "Enter email"
+msgstr "ईमेल दर्ज करें"
+
+#: .\templates\main\pages\auth\login\loginForm.html:57
+#: .\templates\main\pages\auth\login\loginForm.html:102
+#: .\templates\main\pages\auth\register\registerForm.html:117
+msgid "Enter password"
+msgstr "पासवर्ड दर्ज करें"
+
+#: .\templates\main\pages\auth\login\loginForm.html:71
+#: .\templates\main\pages\auth\login\loginForm.html:115
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:26
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:26
+#: .\templates\main\pages\auth\register\registerForm.html:49
+#: .\templates\main\pages\auth\register\registerForm.html:82
+msgid "Recover a password"
+msgstr "पासवर्ड पुनर्प्राप्त करें"
+
+#: .\templates\main\pages\auth\login\loginForm.html:91
+msgid "Sign in using phone"
+msgstr "फ़ोन का उपयोग करके साइन इन करें"
+
+#: .\templates\main\pages\auth\login\loginForm.html:94
+#: .\templates\main\pages\auth\register\registerForm.html:38
+msgid "Enter phone"
+msgstr "फ़ोन दर्ज करें"
+
+#: .\templates\main\pages\auth\privacyPolicy.html:15
+msgid "PRIVACY POLICY"
+msgstr "गोपनीयता नीति"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:28
+msgid "Enter your email to continue"
+msgstr "जारी रखने के लिए अपना ईमेल दर्ज करें"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:36
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:129
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:35
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:127
+#: .\templates\main\pages\auth\register\ProfileCreation.html:34
+#: .\templates\main\pages\auth\register\ProfileCreation.html:80
+#: .\templates\main\pages\auth\register\registerForm.html:61
+#: .\templates\main\pages\auth\register\registerForm.html:94
+#: .\templates\main\pages\changeMode.html:33
+#: .\templates\main\pages\getBonus.html:69
+msgid "CONTINUE"
+msgstr "जारी रखें"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:59
+msgid "Enter 6-number code sent to your email"
+msgstr "आपके ईमेल पर भेजा गया 6-नंबर कोड दर्ज करें"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:89
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:87
+#: .\templates\main\pages\auth\register\CodeVerification.html:60
+msgid "VERIFY"
+msgstr "सत्यापित करें"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:111
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:109
+msgid "Enter new password"
+msgstr "नया पासवर्ड दर्ज करें"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:113
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:111
+msgid "New password"
+msgstr "नया पासवर्ड"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:120
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:118
+#: .\templates\main\pages\auth\register\registerForm.html:124
+msgid "Show"
+msgstr "दिखाएँ"
+
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:28
+msgid "Enter your phone to continue"
+msgstr "जारी रखने के लिए अपना फ़ोन दर्ज करें"
+
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:58
+msgid "Enter 6-number code sent to your phone"
+msgstr "आपके फ़ोन पर भेजा गया 6-नंबर कोड दर्ज करें"
+
+#: .\templates\main\pages\auth\register\CodeVerification.html:27
+msgid "Enter 6-number code sent to your"
+msgstr "आपको भेजा गया 6-नंबर कोड दर्ज करें"
+
+#: .\templates\main\pages\auth\register\CodeVerification.html:27
+msgid "email"
+msgstr "ईमेल"
+
+#: .\templates\main\pages\auth\register\CodeVerification.html:27
+msgid "phone"
+msgstr "फोन"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:24
+msgid "Pick up any name you want. It can hold any symbols"
+msgstr "कोई भी नाम चुनें जो आप चाहते हैं। इसमें कोई भी चिन्ह हो सकता है"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:26
+msgid "Name"
+msgstr "नाम"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:47
+#: .\templates\main\pages\auth\register\ProfileCreation.html:91
+msgid "Creating Profile"
+msgstr "प्रोफ़ाइल निर्माण"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:48
+msgid "1 of 2"
+msgstr "2 में से 1"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:53
+msgid "Select what genres do you prefer to watch"
+msgstr "चुनें कि आप किन विधाओं को देखना चाहते हैं"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:64
+msgid "Sport"
+msgstr "खेल"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:92
+msgid "2 of 2"
+msgstr "२ में से २"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:96
+msgid "To give you most accurate recommendation provide your gender and age"
+msgstr "आपको सबसे सटीक सिफारिश देने के लिए कृपया अपना लिंग और आयु प्रदान करें"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:97
+msgid "This info wont show anywhere"
+msgstr "यह जानकारी कहीं भी दिखाई नहीं देगी"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:98
+msgid "Gender"
+msgstr "लिंग"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:102
+msgid "Male"
+msgstr "पुरुष"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:106
+msgid "Female"
+msgstr "महिला"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:109
+msgid "Age"
+msgstr "उम्र"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:114
+#: .\users\models.py:193
+msgid "Under 18"
+msgstr "18 वर्ष से कम आयु"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:144
+msgid "CREATE PROFILE"
+msgstr "प्रोफ़ाइल बनाएँ"
+
+#: .\templates\main\pages\auth\register\register.html:19
+#: .\templates\main\pages\auth\register\registerBackup.html:12
+msgid "Register In ZolaTV"
+msgstr "ज़ोला टीवी पर पंजीकरण करें"
+
+#: .\templates\main\pages\auth\register\register.html:20
+#: .\templates\main\pages\auth\register\registerBackup.html:13
+msgid "Have an account?"
+msgstr "क्या आपका खाता है?"
+
+#: .\templates\main\pages\auth\register\register.html:20
+#: .\templates\main\pages\auth\register\registerBackup.html:13
+#: .\templates\main\pages\profile.html:26
+msgid "Sign in"
+msgstr "साइन इन करें"
+
+#: .\templates\main\pages\auth\register\registerForm.html:36
+msgid "Register using phone"
+msgstr "फ़ोन का उपयोग करके पंजीकरण करें"
+
+#: .\templates\main\pages\auth\register\registerForm.html:69
+msgid "Register using email"
+msgstr "ईमेल का उपयोग करके पंजीकरण करें"
+
+#: .\templates\main\pages\auth\register\registerForm.html:115
+msgid "Сome up with password"
+msgstr "पासवर्ड दर्ज करें"
+
+#: .\templates\main\pages\auth\register\registerForm.html:143
+msgid "SEND CODE"
+msgstr "कोड भेजें"
+
+#: .\templates\main\pages\auth\sendFeedback.html:15
+msgid "SEND FEEDBACK"
+msgstr "प्रतिक्रिया भेजें"
+
+#: .\templates\main\pages\auth\sendFeedback.html:22
+msgid "Enter your feedback here, we always happy to hear from you"
+msgstr "अपनी प्रतिक्रिया यहाँ दर्ज करें, हम आपसे सुनकर हमेशा प्रसन्न होते हैं"
+
+#: .\templates\main\pages\auth\sendFeedback.html:26
+msgid "Message"
+msgstr "संदेश"
+
+#: .\templates\main\pages\auth\sendFeedback.html:38
+msgid "SEND"
+msgstr "भेजें"
+
+#: .\templates\main\pages\auth\sendFeedback.html:66
+msgid "Text cannot be smaller of 6 symbols."
+msgstr "पाठ्य 6 प्रतीकों से छोटा नहीं हो सकता।"
+
+#: .\templates\main\pages\auth\settings.html:15
+msgid "SETTINGS"
+msgstr "सेटिंग्स"
+
+#: .\templates\main\pages\auth\settings.html:20
+msgid "Subscription"
+msgstr "सदस्यता"
+
+#: .\templates\main\pages\auth\settings.html:22
+msgid "Terms Of Use"
+msgstr "उपयोग की शर्तें"
+
+#: .\templates\main\pages\auth\settings.html:23
+msgid "Language"
+msgstr "भाषा"
+
+#: .\templates\main\pages\auth\subscription.html:15
+msgid "SUBSCRIPTION"
+msgstr "सदस्यता"
+
+#: .\templates\main\pages\auth\subscription.html:23
+msgid "Active Subscription"
+msgstr "सक्रिय सदस्यता"
+
+#: .\templates\main\pages\auth\subscription.html:23
+#: .\templates\main\pages\auth\subscription.html:40
+msgid "Month"
+msgstr "माह"
+
+#: .\templates\main\pages\auth\subscription.html:25
+msgid "Next payment"
+msgstr "अगला भुगतान"
+
+#: .\templates\main\pages\auth\subscription.html:32
+msgid "No active Subscriptions"
+msgstr "कोई सक्रिय सदस्यता नहीं"
+
+#: .\templates\main\pages\auth\subscription.html:44
+msgid "Economy"
+msgstr "अर्थव्यवस्था"
+
+#: .\templates\main\pages\auth\subscription.html:45
+msgid "Eco."
+msgstr "इको।"
+
+#: .\templates\main\pages\auth\subscription.html:51
+msgid "CANCEL Subscription"
+msgstr "सदस्यता छोड़ें"
+
+#: .\templates\main\pages\auth\termsOfUse.html:15
+msgid "TERMS OF USE"
+msgstr "उपयोग की शर्तें"
+
+#: .\templates\main\pages\changeMode.html:13
+msgid "Choose your mode"
+msgstr "अपना मोड चुनें"
+
+#: .\templates\main\pages\changeMode.html:26
+msgid "Light"
+msgstr "प्रकाश"
+
+#: .\templates\main\pages\changeMode.html:27
+msgid "Dark"
+msgstr "अंधेरा"
+
+#: .\templates\main\pages\changeMode.html:31
+msgid "You can always change it in"
+msgstr "आप इसे हमेशा इसमें बदल सकते हैं"
+
+#: .\templates\main\pages\changeMode.html:31
+msgid "menu settings"
+msgstr "मेनू सेटिंग"
+
+#: .\templates\main\pages\detail\ChannelDetail.html:48
+#: .\templates\main\pages\detail\SportDetail.html:46
+msgid "Watching"
+msgstr "देख रहा हूँ"
+
+#: .\templates\main\pages\detail\MovieDetail.html:82
+#: .\templates\main\pages\detail\SerieDetail.html:70
+#: .\templates\main\pages\detail\ShowDetail.html:71
+msgid "Read More"
+msgstr "और पढ़ें"
+
+#: .\templates\main\pages\detail\MovieDetail.html:85
+msgid "Download"
+msgstr "डाउनलोड करें"
+
+#: .\templates\main\pages\detail\SerieDetail.html:43
+#: .\templates\main\pages\detail\ShowDetail.html:44
+msgid "Seasons"
+msgstr "मौसम"
+
+#: .\templates\main\pages\detail\SerieDetail.html:49
+#: .\templates\main\pages\detail\ShowDetail.html:50
+msgid "Episodes"
+msgstr "एपिसोड"
+
+#: .\templates\main\pages\detail\SportDetail.html:48
+msgid "Views"
+msgstr "दृश्य"
+
+#: .\templates\main\pages\getBonus.html:20
+#, fuzzy
+#| msgid "Get 1 hour ad free time."
+msgid "Get 30 minutes ad free time."
+msgstr "1 घंटे का विज्ञापन खाली समय पाएं।"
+
+#: .\templates\main\pages\getBonus.html:22
+msgid "Complete any task below to get Bonus"
+msgstr "बोनस पाने के लिए नीचे दिए गए किसी भी कार्य को पूरा करें"
+
+#: .\templates\main\pages\getBonus.html:27
+msgid "Invite friends to Register"
+msgstr "मित्रों को पंजीकरण के लिए आमंत्रित करें"
+
+#: .\templates\main\pages\getBonus.html:36
+msgid "Hide ads completely"
+msgstr "विज्ञापनों को पूरी तरह छिपाएँ"
+
+#: .\templates\main\pages\profile.html:45
+msgid "Ad free time"
+msgstr "विज्ञापन खाली समय"
+
+#: .\templates\main\pages\profile.html:50
+msgid "GET MORE TIME"
+msgstr "अधिक समय प्राप्त करें"
+
+#: .\templates\main\pages\settings\locale.html:19
+msgid "Change language"
+msgstr "भाषा बदलें"
+
+#: .\templates\main\pages\shows-channels.html:29
+#: .\templates\main\pages\shows-channels.html:40
+#: .\templates\main\pages\shows-channels.html:59
+#: .\templates\main\pages\sport.html:51
+msgid "GENRE"
+msgstr "शैली"
+
+#: .\templates\main\pages\shows-channels.html:60
+#: .\templates\main\pages\sport.html:52
+msgid "RESET GENRES"
+msgstr "रीसेट शैली"
+
+#: .\templates\main\pages\shows-channels.html:79
+#: .\templates\main\pages\shows-channels.html:112
+#: .\templates\main\pages\sport.html:71 .\templates\main\pages\sport.html:104
+msgid "CHOOSE"
+msgstr "चुनें"
+
+#: .\templates\main\pages\shows-channels.html:93
+#: .\templates\main\pages\sport.html:85
+msgid "RESET LANGUAGES"
+msgstr "भाषाएँ रीसेट करें"
+
+#: .\templates\main\pages\sport.html:29
+msgid "ALL SPORTS"
+msgstr "सभी खेल"
+
+#: .\templates\main\pages\wrongUrl.html:12
+msgid "Oops! something went wrong...."
+msgstr "उफ़! कुछ गलत हो गया..."
+
+#: .\templates\main\pages\wrongUrl.html:15
+msgid "GO HOME"
+msgstr "घर जाओ"
+
+#: .\users\admin.py:37
+#, fuzzy
+#| msgid "Register"
+msgid "Register date"
+msgstr "रजिस्टर करें"
+
+#: .\users\models.py:128
+msgid "date joined"
+msgstr "शामिल होने की तिथि"
+
+#: .\users\models.py:189
+msgid "male"
+msgstr "पुरुष"
+
+#: .\users\models.py:190
+msgid "female"
+msgstr "महिला"
+
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
+#, fuzzy
+#| msgid "Message"
+msgid "Messages"
+msgstr "संदेश"
+
+#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
+msgid "Site Maps"
+msgstr "साइट मानचित्र"
+
+#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
+msgid "Static Files"
+msgstr "स्टेटिक फ़ाइलें"
+
+#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
+msgid "Syndication"
+msgstr "सिंडिकेशन"
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: .\venv\Lib\site-packages\django\core\paginator.py:30
+msgid "…"
+msgstr "…"
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:51
+msgid "That page number is not an integer"
+msgstr "वह पृष्ठ संख्या एक पूर्णांक नहीं है"
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:53
+msgid "That page number is less than 1"
+msgstr "वह पृष्ठ संख्या 1 . से कम है"
+
+#: .\venv\Lib\site-packages\django\core\paginator.py:58
+msgid "That page contains no results"
+msgstr "उस पृष्ठ में कोई परिणाम नहीं है"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:22
+msgid "Enter a valid value."
+msgstr "एक वैध मान दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:93
+#: .\venv\Lib\site-packages\django\forms\fields.py:675
+msgid "Enter a valid URL."
+msgstr "एक मान्य URL दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:150
+msgid "Enter a valid integer."
+msgstr "एक मान्य पूर्णांक दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:161
+msgid "Enter a valid email address."
+msgstr "मान्य ईमेल पता दर्ज करें।"
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: .\venv\Lib\site-packages\django\core\validators.py:262
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr "अक्षरों, संख्याओं, अंडरस्कोर या हाइफ़न से युक्त एक मान्य “स्लग” दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:269
+#, fuzzy
+#| msgid ""
+#| "Enter a valid “slug” consisting of letters, numbers, underscores or "
+#| "hyphens."
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr "अक्षरों, संख्याओं, अंडरस्कोर या हाइफ़न से युक्त एक मान्य “स्लग” दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:278
+#: .\venv\Lib\site-packages\django\core\validators.py:288
+#: .\venv\Lib\site-packages\django\core\validators.py:311
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid IPv4 address."
+msgstr "मान्य ईमेल पता दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:296
+#: .\venv\Lib\site-packages\django\core\validators.py:312
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid IPv6 address."
+msgstr "मान्य ईमेल पता दर्ज करें।"
+
+#: .\venv\Lib\site-packages\django\core\validators.py:306
+#: .\venv\Lib\site-packages\django\core\validators.py:310
+#, fuzzy
+#| msgid "Enter a valid email address."
+msgid "Enter a valid IPv4 or IPv6 address."
+msgstr "मान्य ईमेल पता दर्ज करें।"

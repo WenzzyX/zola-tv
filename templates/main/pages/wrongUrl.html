@@ -1,0 +1,33 @@
+{% extends "../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="work_wrapper">
+        <div class="work">
+            <div class="work__img">
+                    <img src="{% static 'main/img/wrong-url.png' %}" alt="">
+            </div>
+            <div class="work__title">
+                {% trans 'Oops! something went wrong....' %}
+            </div>
+        </div>
+        <a href="{% url 'main_page' %}" class="work__btn">{% trans 'GO HOME' %}</a>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+
+{% endblock scripts %}

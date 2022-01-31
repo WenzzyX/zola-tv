@@ -1,0 +1,183 @@
+{% load static %}
+{% load i18n %}
+{% load settings_tag %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZolaTV | {% block title %}{% endblock title %}</title>
+    {% get_settings as settings %}
+    {% if settings.ITS_APP and not settings.CLON_APP %}
+        <!-- Google Analytics App -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFFK67JEPK"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-NFFK67JEPK');
+        </script>
+
+    {% elif not settings.ITS_APP and not settings.CLON_APP %}
+        <!-- Google Analytics Webapp  -->
+        {% if request.META.HTTP_HOST == "wv.zola.cx" %}
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKBRR07RMN"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+
+                gtag('config', 'G-TKBRR07RMN');
+            </script>
+        {% else %}
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MTXRPDT88"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+
+                gtag('js', new Date());
+
+                gtag('config', 'G-6MTXRPDT88');
+            </script>
+        {% endif %}
+
+    {% elif settings.ITS_APP and settings.CLON_APP %}
+        <!-- Google Analytics CloneApp -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XVLP5Z7RQ"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-6XVLP5Z7RQ');
+        </script>
+    {% endif %}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="icon" sizes="128x128" href="{% static 'main/img/icons/128.png' %}">
+    <meta name="theme-color" content="#F53B00">
+    {% block head_links %}
+    {% endblock head_links %}
+</head>
+
+<body>
+{% csrf_token %}
+{% include "main/components/pre-loader.html" %}
+<div class="page">
+    {% block content %}
+    {% endblock content %}
+</div>
+<div class="share-popup">
+    <div class="share-popup__wrapper">
+        <div class="share-popup__url">
+            <input class="share-copy__input" type="text" readonly>
+            <button class="share-copy__btn">{% trans 'COPY' %}</button>
+        </div>
+        <div class="share-popup__msgs">
+        </div>
+    </div>
+    <div class="share-popup__background"></div>
+</div>
+{% include 'main/components/live-search.html' %}
+{% include 'main/components/popup-manager.html' %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+{#<script src="{% static 'main/js/js/jquery-3.6.0.min.js' %}"></script>#}
+{#<script src="{% static 'main/js/js/npm/slick-carousel181/slick/slick.min.js' %}"></script>#}
+{% block scripts_afterjq %}
+{% endblock scripts_afterjq %}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="{% static 'main/js/script.js' %}"></script>
+<script>
+    setTimeCookie()
+
+    {% if settings.ITS_APP %}
+        var itsapp = true
+    {% else %}
+        var itsapp = false
+    {% endif %}
+    {% get_current_language as currlang %}
+    var currLocale = '{{ currlang }}'
+    if (getCookie('django_language') == undefined) {
+        setCookie('django_language', currLocale)
+    }
+
+    {% if request.session.dark %}
+        var isDark = true
+    {% else %}
+        var isDark = false
+    {% endif %}
+    {% if not settings.ITS_APP %}
+        if (getCookie('darker') == undefined && isDark == false) {
+            setCookie('darker', true)
+            changeModeBtn()
+        }
+    {% endif %}
+    PopupManager()
+    {#    {% if not settings.ITS_APP %}#}
+    {#        if (getCookie('first_time') == undefined) {#}
+    {#            setCookie('first_time', true)#}
+    {#            window.location = `/${currLocale}/channel/20`#}
+    {#        }#}
+    {#    {% endif %}#}
+    {% if not request.user.is_anonymous and request.user.user_profile.first %}
+        var u_profile = true
+        var u_id = {{ request.user.id }}
+        var name = "{{ request.user.user_profile.first.name }}"
+        {% if request.user.user_profile.first.get_avatar %}
+            var imgUrl = "{{ request.user.user_profile.first.get_avatar }}"
+        {% else %}
+            var imgUrl = "{% static 'main/img/icons/profile.svg' %}"
+        {% endif %}
+    {% else %}
+        var name = ""
+        var imgUrl = "{% static 'main/img/icons/profile.svg' %}"
+    {% endif %}
+
+    try {
+        AndroidFunction.setName(name)
+    } catch (error) {
+    }
+    try {
+        AndroidFunction.setImageUrl(imgUrl)
+    } catch (error) {
+    }
+    try {
+        AndroidFunction.changeStyle(isDark)
+    } catch (error) {
+    }
+
+</script>
+{% block scripts %}
+{% endblock scripts %}
+{% if request.session.dark %}
+    <link rel="stylesheet" href="{% static 'main/css/style_dark.css' %}">
+{% else %}
+    <link rel="stylesheet" href="{% static 'main/css/style_light.css' %}">
+{% endif %}
+{% if not settings.ITS_APP %}
+    <link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
+{% endif %}
+
+</body>
+
+</html>

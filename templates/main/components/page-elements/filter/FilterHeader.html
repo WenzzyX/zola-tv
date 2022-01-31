@@ -1,0 +1,12 @@
+{% load static %}
+<div class="trending__header">
+    <button onclick="history.back()">
+        {% if request.session.dark %}
+            <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+        {% else %}
+            <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+        {% endif %}
+    </button>
+    <span>FILTERS</span>
+    <button class="reset">RESET FILTER</button>
+</div>

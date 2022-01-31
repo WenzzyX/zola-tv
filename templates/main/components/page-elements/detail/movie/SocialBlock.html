@@ -1,0 +1,22 @@
+{% load static %}
+{% load i18n %}
+<div class="video__social">
+    <div class="video__social_flex">
+        <button class="video__social_btn add-to-wl-btn {% if added %}add-to-wl-btn_added{% endif %}">
+            {% trans 'Add to Watch list' %}
+        </button>
+        <button class="video__social_btn share-button" data-elurl="{% url 'movie-page' pk=id %}" data-elname="{{ name }}" onclick="shareEl(this);">
+                <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+            {% trans 'Share' %}
+        </button>
+    </div>
+    <button class="video__social_btn" onclick="openComments()">
+        {% if request.session.dark %}
+            <img src="{% static 'main/img/icons_dark/comments.svg' %}" alt="">
+        {% else %}
+            <img src="{% static 'main/img/icons/comments.svg' %}" alt="">
+        {% endif %}
+
+        {% trans 'Сomments' %}
+    </button>
+</div>

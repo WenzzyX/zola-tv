@@ -1,0 +1,58 @@
+{% load rating_tag %}
+<div class="watchelem__wrapper">
+    <div class="profile-watchlist__item watchelem">
+        <div class="watchelem__image">
+            <div class="watchelem__image-wrap watchelem__image-wrap_serie"
+                 style="background: url('{{ element.get_preview }}')"></div>
+            {% get_rating object=element.season.serie as rating %}
+            <div class="watchelem__rating">{{ rating.grade }}</div>
+        </div>
+        <div class="watchelem__info">
+            <div class="watchelem__info_wrap">
+                <div class="watchelem__info_top">
+                    <p class="watchelem__season">S{{ element.season.season_num }}: EPISODE {{ element.episode }}</p>
+                    <p class="watchelem__season-sub">{{ element.season.serie.get_name }}</p>
+                    <h2 class="watchelem__title">{{ element.episode_name }}</h2>
+                    <p class="watchelem__genres">{{ element.get_two_genres }}</p>
+                    <p class="watchelem__year">{{ element.year }}</p>
+                </div>
+                <div class="watchelem__info_bottom">
+                    <a href="{% url 'serie-page' pk=element.season.serie.id %}?season={{ element.season.season_num }}&episode={{ element.episode }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="none"
+                             style="margin-top: 1px;">
+                            <g filter="url(#filter0_d)">
+                                <path d="M11.317 6.485a1.554 1.554 0 010 2.57L5.73 12.852c-1.032.7-2.428-.038-2.428-1.286v-7.59c0-1.247 1.396-1.986 2.428-1.285l5.587 3.795z"
+                                      fill="#fff"></path>
+                            </g>
+                            <defs>
+                                <filter id="filter0_d" x=".194" y=".864" width="14.912" height="16.92"
+                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                    <feColorMatrix in="SourceAlpha"
+                                                   values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+                                    <feOffset dy="1.554"></feOffset>
+                                    <feGaussianBlur stdDeviation="1.554"></feGaussianBlur>
+                                    <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix>
+                                    <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend>
+                                    <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend>
+                                </filter>
+                            </defs>
+                        </svg>
+                        <span>WATCH</span></a>
+                </div>
+            </div>
+            {% if trash == 1 %}
+                <div class="watchelem__social">
+                    <button class="ms-btn ms-share-btn" data-elurl="{% url 'serie-page' pk=element.season.serie.id %}?season={{ element.season.season_num }}&episode={{ element.episode }}" data-elname="{{ element.season.serie.name }}" onclick="shareEl(this);"></button>
+                    <button class="ms-btn ms-trash-btn" data-elid="{{ element.id }}" data-type="2" onclick="removeFromHistory(this)"></button>
+                </div>
+            {% else %}
+                <div class="watchelem__social">
+                    <button class="ms-btn ms-add-to-wl-btn add-to-wl-btn_added" data-elid="{{ element.id }}" data-type="2" onclick="removeFromWl(this);"></button>
+                    <button class="ms-btn ms-share-btn" data-elurl="{% url 'serie-page' pk=element.season.serie.id %}?season={{ element.season.season_num }}&episode={{ element.episode }}" data-elname="{{ element.season.serie.name }}" onclick="shareEl(this);"></button>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>

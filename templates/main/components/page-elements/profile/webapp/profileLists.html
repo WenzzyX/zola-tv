@@ -1,0 +1,67 @@
+{% load static %}
+<div class="seasons profile-sl">
+    <div class="profile-slider swiper-container">
+        <div class="profile-slider__wrapper swiper-wrapper">
+            <div class="profile-slider__slide profslide profslide_active swiper-slide"
+                 data-seasid="1" data-hash="watchlist">
+                <div class="profslide__season">
+                    WATCH LIST
+                </div>
+            </div>
+            <div class="profile-slider__slide profslide swiper-slide"
+                 data-seasid="2" data-hash="downloads">
+                <div class="profslide__season">
+                    DOWNLOADS
+                </div>
+            </div>
+            <div class="profile-slider__slide profslide swiper-slide"
+                 data-seasid="3" data-hash="history">
+                <div class="profslide__season">
+                    HISTORY
+                </div>
+            </div>
+            <div class="profile-slider__slide profslide swiper-slide"
+                 data-seasid="4" data-hash="channels">
+                <div class="profslide__season">
+                    CHANNELS
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="decor"></div>
+    <div class="profile-contents">
+        <div class="seasons-episodes season-episodes_active"
+             data-tabseasid="1">
+            To use watch list tab install our app
+            <a href="{% url 'app-download-page' %}" class="install-btn" style="max-width: 261px; margin: 16px auto;">
+                <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                INSTALL APP
+            </a>
+        </div>
+        <div class="seasons-episodes"
+             data-tabseasid="2">
+            To use watch list tab install our app
+            <a href="{% url 'app-download-page' %}" class="install-btn" style="max-width: 261px; margin: 16px auto;">
+                <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                INSTALL APP
+            </a>
+        </div>
+        <div class="seasons-episodes"
+             data-tabseasid="3">
+            To use watch list tab install our app
+            <a href="{% url 'app-download-page' %}" class="install-btn" style="max-width: 261px; margin: 16px auto;">
+                <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                INSTALL APP
+            </a>
+        </div>
+        <div class="seasons-episodes"
+             data-tabseasid="4">
+            To use watch list tab install our app
+            <a href="{% url 'app-download-page' %}" class="install-btn" style="max-width: 261px; margin: 16px auto;">
+                <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                INSTALL APP
+            </a>
+        </div>
+    </div>
+
+</div>

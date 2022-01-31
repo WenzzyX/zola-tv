@@ -1,0 +1,71 @@
+{% extends "../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% load settings_tag %}
+{% block content %}
+    {% csrf_token %}
+    {% get_settings as settings %}
+    {% if settings.SHOW_HEADERS %}
+        {% include 'main/components/header.html' with popup=0 %}
+        <main class="main-main">
+    {% else %}
+        <main class="main-main hide-header-footer">
+    {% endif %}
+<div class="login">
+    <div class="login__content">
+        {% if request.user.is_anonymous %}
+            <a href="{% url 'login-page' %}" style="text-align: center;">
+                <div class="login__img">
+                    <img src="{% static 'main/img/icons/profile.svg' %}" width="69px" alt="">
+                </div>
+                <div class="login__title">
+                    {% if request.user.user_profile.first %}
+                        {{ request.user.user_profile.first.name }}
+                    {% else %}
+                        {% trans 'Sign in' %}
+                    {% endif %}
+                </div>
+            </a>
+        {% else %}
+
+            <div class="login__img">
+                <img src="{% static 'main/img/icons/profile.svg' %}" width="69px" alt="">
+            </div>
+            <div class="login__title">
+                {{ request.user.user_profile.first.name }}
+            </div>
+            <a href="{% url 'user-logout' %}" class="login__logout">
+                <img src="{% static 'main/img/icons/logout.svg' %}" alt="">
+                {% trans 'Log Out' %}
+            </a>
+        {% endif %}
+        <div class="login__time">
+            <div class="login__time_count">
+                <h2>{% trans 'Ad free time' %}:</h2>
+                <span>{% if ad_free_time %}{{ ad_free_time }}{% else %}00:00:00{% endif %}</span>
+            </div>
+            <a href="{% url 'get-bonus-page' %}" class="login__time_btn">
+                <img src="{% static 'main/img/icons/stars.png' %}" alt="">
+                {% trans 'GET MORE TIME' %}
+            </a>
+        </div>
+
+    </div>
+{#    {% if settings.ITS_APP %}#}
+        {% include 'main/components/page-elements/profile/app/profileLists.html' %}
+{#    {% else %}#}
+{#        {% include 'main/components/page-elements/profile/webapp/profileLists.html' %}#}
+{#    {% endif %}#}
+
+
+</div>
+</main>
+    <div class="popups">
+    </div>
+
+    {% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="main" %} {% endif %}
+{% endblock content %}
+
+{% block scripts %}
+{% endblock scripts %}

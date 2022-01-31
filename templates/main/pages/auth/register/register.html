@@ -1,0 +1,52 @@
+{% extends "../../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="register">
+        <a href="{% url 'main_page' %}" class="popup__close register__close" id="popup-close">
+            <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+        </a>
+        <div class="register__wrapper">
+            <div class="register_logo">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons/register/logo_dark.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/register/logo.svg' %}" alt="">
+                {% endif %}
+            </div>
+            <div class="register__title">
+                <h3>{% trans 'Register In ZolaTV' %}</h3>
+                <p>{% trans 'Have an account?' %} <a href="{% url 'login-page' %}">{% trans 'Sign in' %}</a></p>
+            </div>
+            <div class="regtypes">
+                <a href="{% url 'register-form-page' %}" class="regtypes__item">
+                    <div class="regtypes__icon">
+                        <img src="{% static 'main/img/icons/register/local.svg' %}" alt="">
+                    </div>
+                    <span class="regtypes__description">
+                        {% trans 'via Phone or Email' %}
+                    </span>
+                </a>
+            </div>
+            <div class="register__terms">
+                <p>{% trans 'By continuing, you agree to Zola TV' %}</p>
+                <p><a href="{% url 'privacy-policy-page' %}">{% trans 'Privacy Policy' %}</a> {% trans 'and' %} <a
+                        href="{% url 'terms-of-use-page' %}">{% trans 'Terms of Use' %}</a></p>
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>{% endblock scripts %}

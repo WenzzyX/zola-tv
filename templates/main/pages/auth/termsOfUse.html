@@ -1,0 +1,55 @@
+{% extends "../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="feedback__wrapper">
+        <div class="trending__header">
+            <button onclick="history.back()">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'TERMS OF USE' %}</span>
+        </div>
+        <div class="rules">
+            <p class="rules__date">Effective May 25, 2018</p>
+            <div class="rules__texts">
+                <p class="rules__text">
+                    We are committed to respecting your data privacy and providing transparency about our data
+                    practices. This Privacy Policy (this “Privacy Policy”) explains how Verv Inc. (“Company” or “we” or
+                    “us”) collects, stores, uses, transfers and discloses Personal Data from our users (“you”) in
+                    connection with the Company mobile application and related services (collectively, the “App”).
+                </p>
+                <p class="rules__text">
+                    We reserve the right to and may change this Privacy Policy from time to time. If we make any
+                    material changes, we will notify you by email (sent to the email address specified when you
+                    register), through the App, or by presenting you with a new version of this Privacy Policy for you
+                    to accept, if we, for example, add new processing activities or collect some additional Personal
+                    Data from you.
+                </p>
+                <p class="rules__text">
+                    Your continued use of the App after the effective date of an updated version of the Privacy Policy
+                    will indicate your acceptance of the Privacy Policy as modified. In some case
+                </p>
+
+            </div>
+        </div>
+    </main>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+{% endblock scripts %}

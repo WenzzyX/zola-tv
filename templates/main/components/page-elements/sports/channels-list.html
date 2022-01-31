@@ -1,0 +1,67 @@
+{% load channels_tag %}
+{% load content_type_tag %}
+{% load i18n %}
+{% werecomendedlist sort=component.sort_method as elements %}
+<div class="channelsRecomend" style="padding: 0 15px 0 18px">
+    <div class="block-header block-header_channels" style="margin-top: 20px;">
+        <div class="title">
+            {{ component.name_on_page }}
+        </div>
+
+    </div>
+    {% for element in elements %}
+        <div class="pchannel channels-page">
+            <div class="pchannel__img_wrap">
+                <div class="pchannel__img" style="background: url('{{ element.get_poster }}');">
+                </div>
+                {% check_added_to_watchlist user=request.user model=element as added %}
+                <button type="button" class="pchannel__add {% if added %}pchannel__added{% endif %}"
+                        data-chid="{{ element.id }}" onclick="AddChToWLBtn(this);"></button>
+            </div>
+            <div class="pchannel__text_wrap">
+                <div class="pchannel__text">
+                    <h5>{{ element.name }}</h5>
+                    <span>{% trans 'Viewers' %}: <span class="randintviews"></span></span>
+                </div>
+                <a href="{% url 'channel-page' pk=element.id %}" class="pchannel__btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" fill="none">
+                        <g filter="url(#filter0_d)">
+                            <path d="M11.317 6.485a1.554 1.554 0 010 2.57L5.73 12.852c-1.032.7-2.428-.038-2.428-1.286v-7.59c0-1.247 1.396-1.986 2.428-1.285l5.587 3.795z"
+                                  fill="#fff"></path>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d" x=".194" y=".864" width="14.912" height="16.92"
+                                    filterUnits="userSpaceOnUse"
+                                    color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                                <feColorMatrix in="SourceAlpha"
+                                               values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"></feColorMatrix>
+                                <feOffset dy="1.554"></feOffset>
+                                <feGaussianBlur stdDeviation="1.554"></feGaussianBlur>
+                                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"></feColorMatrix>
+                                <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"></feBlend>
+                                <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"></feBlend>
+                            </filter>
+                        </defs>
+                    </svg>
+                    {% trans 'Watch' %}
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<script>
+
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+        let randel = document.querySelectorAll('.randintviews')
+        randel.forEach((el) => {
+            el.innerHTML = getRandomInt(5012, 13384)
+        })
+    })
+</script>

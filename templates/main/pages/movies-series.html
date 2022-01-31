@@ -1,0 +1,125 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load i18n %}
+{% load settings_tag %}
+{% block title %}{{ page_movies.title }}{% endblock title %}
+{% block content %}
+    {% csrf_token %}
+    {% get_settings as settings %}
+    {% if settings.SHOW_HEADERS %}
+        {% if settings.ITS_APP %}
+            {% include 'main/components/header.html' with popup=0 %}
+        {% else %}
+            {% include 'main/components/header.html' %}
+        {% endif %}
+        <main class="main-main">
+    {% else %}
+        <main class="main-main hide-header-footer">
+    {% endif %}
+<div class="tabChange">
+    <div class="tabTitle" id="firstLink">
+        {% trans 'MOVIES' %}
+    </div>
+    <div class="tabTitle" id="secondLink">
+        {% trans 'SERIES' %}
+    </div>
+</div>
+<div class="tab tabMovies " id="firstTab">
+    {% include 'main/pages/movies-series/movies.html' with page=page_movies %}
+</div>
+<div class="tab tabSeries " id="secondTab">
+    {% include 'main/pages/movies-series/series.html' with page=page_series %}
+</div>
+</main>
+    {% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="movies-series" %} {% endif %}
+{% endblock content %}
+{% block scripts %}
+    <script>
+
+        let firstLink = document.getElementById('firstLink')
+        let secondLink = document.getElementById('secondLink')
+        let firstTab = document.getElementById("firstTab")
+        let secondTab = document.getElementById("secondTab")
+        let request = getUrlVars()
+        if (request.tab) {
+
+            switch (request.tab) {
+                case "1":
+                    actFirstTab();
+                    break;
+                case "2":
+                    actSecondTab();
+                    break;
+                default:
+                    actFirstTab();
+                    break;
+            }
+        } else {
+            actFirstTab()
+        }
+
+        function actSecondTab() {
+            firstLink.classList.remove("tabTitle-actve")
+            secondLink.classList.add("tabTitle-actve")
+            firstTab.style.visibility = "hidden";
+            secondTab.style.visibility = "visible";
+            firstTab.hidden = true
+            secondTab.hidden = false
+        }
+
+
+        function actFirstTab() {
+            secondLink.classList.remove("tabTitle-actve")
+            firstLink.classList.add("tabTitle-actve")
+            secondTab.style.visibility = "hidden";
+            firstTab.style.visibility = "visible";
+            secondTab.hidden = true
+            firstTab.hidden = false
+        }
+
+        secondLink.addEventListener("click", (event) => {
+            actSecondTab()
+        })
+
+        firstLink.addEventListener("click", (event) => {
+            actFirstTab()
+        })
+
+        function AddMovieToWLBtn(btn) {
+            let csrf = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request = $.ajax({
+                url: `${btn.getAttribute('data-mvid')}/add-to-watchlist`,
+                type: "post",
+                data: {
+                    "csrfmiddlewaretoken": csrf,
+                }
+            })
+            request.done(function (response, textStatus, jqXHR) {
+                response = JSON.parse(response)
+                if (response.resp == "OK") {
+                    btn.classList.toggle('bsld-add-to-wl-btn_added')
+                } else if (response.resp == "redirect") {
+                    window.location.replace(document.location.protocol + "//" + document.location.hostname + response.rev)
+                }
+            })
+        }
+        function AddSerieToWLBtn(btn) {
+            let csrf = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request = $.ajax({
+                url: `${btn.getAttribute('data-mvid')}/add-to-watchlist`,
+                type: "post",
+                data: {
+                    "csrfmiddlewaretoken": csrf,
+                }
+            })
+            request.done(function (response, textStatus, jqXHR) {
+                response = JSON.parse(response)
+                if (response.resp == "OK") {
+                    btn.classList.toggle('bsld-add-to-wl-btn_added')
+                } else if (response.resp == "redirect") {
+                    window.location.replace(document.location.protocol + "//" + document.location.hostname + response.rev)
+                }
+            })
+        }
+    </script>
+{% endblock scripts %}

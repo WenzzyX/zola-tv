@@ -1,0 +1,12 @@
+{% load static %}
+{% load i18n %}
+<div class="trending__header">
+    <button onclick="history.back()">
+        {% if request.session.dark %}
+            <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+        {% else %}
+            <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+        {% endif %}
+    </button>
+    <span>{% trans 'FILTER RESULTS' %}</span>
+</div>

@@ -1,0 +1,102 @@
+{% load static %}
+{% load i18n %}
+<header>
+    <div class="header">
+        <div class="header__burger" id="burger"><span class="first"></span> <span class="middle"></span> <span
+                class="last"></span></div>
+        {% include 'main/components/header-menu.html' %}
+        <div class="flex-dc">
+            <div class="dc-logo">
+                <a href="{% url "main_page" %}">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/download-app/logo_horizontal_dark.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/download-app/logo_horizontal.svg' %}" alt="">
+                    {% endif %}
+                </a>
+            </div>
+            <div class="dc-buttons">
+                <div class="dc-search">
+                    <button onclick="openSearch()" class="header__search">
+                        {% if request.session.dark %}
+                            <img src="{% static 'main/img/icons_dark/search.svg' %}" alt="">
+                        {% else %}
+                            <img src="{% static 'main/img/icons/search.svg' %}" alt="">
+                        {% endif %}
+                    </button>
+                </div>
+                <div class="dc-dark-mode">
+                    <button type="button" onclick="changeModeBtn()" class="dark-mode-btn">
+                        {% if request.session.dark %}
+                            <img src="{% static 'main/img/icons_dark/sun2.svg' %}" alt="">
+                        {% else %}
+                            <img src="{% static 'main/img/icons/dark-mode-moon2.svg' %}" alt="">
+                        {% endif %}
+                        Dark Mode
+                    </button>
+                </div>
+                <div class="dc-dark-mode dc-bookmark">
+                    <button type="button" onclick="" class="dark-mode-btn">
+                        {% if request.session.dark %}
+                            <img src="{% static 'main/img/icons/bookmark.svg' %}" alt="">
+                        {% else %}
+                            <img src="{% static 'main/img/icons/bookmark.svg' %}" alt="">
+                        {% endif %}
+                        Bookmark
+                    </button>
+                </div>
+                {% if request.user.is_anonymous %}
+                    <a href="{% url 'register-page' %}" class="dc-register">
+                        {% trans 'REGISTER' %}
+                    </a>
+                {% endif %}
+                <a href="
+
+
+                        {% if request.user.is_anonymous %}{% url 'login-page' %}{% else %}{% url 'profile-page' %}{% endif %}"
+                   class="header__menu_flex {% if request.session.dark %}dc-signin-dark{% endif %}">
+                    <img src="{% static 'main/img/icons/profile.svg' %}" alt="">
+                    {% if request.user.user_profile.first %}
+                        {{ request.user.user_profile.first.name }}
+                    {% else %}
+                        {% trans 'SIGN IN' %}
+                    {% endif %}
+                </a>
+                </a>
+            </div>
+        </div>
+        <div class="flex">
+            {% if popup is 0 %}
+            {% else %}
+                <a href="{% url 'app-download-page' %}" onclick="gtag('event', 'click_banner_download_app');"
+                   class="header__app popup__opens">
+                    <div class="header__app_img">
+                        <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                    </div>
+                    <div class="header__app_text"> {% trans 'Install APP' %} </div>
+                </a>
+            {% endif %}
+            <button onclick="openSearch()" class="header__search">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/search.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/search.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <a href="{% url 'profile-page' %}" class="header__profile">
+                {% if not request.user.is_anonymous and request.user.user_profile.first %}
+                    {% if request.user.user_profile.first.get_avatar %}
+                        <img src="{{ request.user.user_profile.first.get_avatar }}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/profile.svg' %}" alt="">
+                    {% endif %}
+                {% else %}
+                    <img src="{% static 'main/img/icons/profile.svg' %}" alt="">
+                {% endif %}
+
+            </a>
+            {#            {% include 'main/components/live-search.html' %}#}
+        </div>
+    </div>
+    {% include 'main/components/popup-app.html' %}
+</header>

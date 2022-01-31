@@ -1,0 +1,52 @@
+{% extends "../base.html" %}
+{% block title %}{{ list.name }}{% endblock title %}
+{% load static %}
+{% load lists_tag %}
+{% load rating_tag %}
+{% block content %}
+    <div class="trending__header">
+        <button onclick="history.back()">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+            {% endif %}
+        </button>
+        <span>{{ list.name }}</span>
+    </div>
+{% get_channels_f_list sort=list.sort_method as channels %}
+     <div class="trending__items sample">
+        {% for element in channels %}
+            {% if forloop.last %}
+                <a href="{% url 'channel-page' pk=element.id %}" class="sample__slide lists_list last-loaded"
+                   data-lastloadid="{{ element.id }}"
+                   data-loadmodelid="{{ model }}">
+            {% else %}
+                <a href="{% url 'channel-page' pk=element.id %}" class="sample__slide lists_list">
+            {% endif %}
+        <div class="slide-image__wrapper slide-image__wrapper_a"
+             style="background-image: url('{{ element.get_poster }}')">
+        </div>
+        <div class="sample__slide_rating">{{ element.get_search_rating }}</div>
+        <div class="prov-channel__right">
+            <div class="sample__slide_name no_margin">{{ element.name }}</div>
+            <div class="sample__slide_genre">{{ element.get_two_genres }}</div>
+        </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+{% endblock scripts %}

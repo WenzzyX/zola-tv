@@ -1,0 +1,93 @@
+{% extends "../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n%}
+{% block content %}
+    <main class="subscription__wrapper">
+        <div class="trending__header">
+            <button onclick="history.back()">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'SUBSCRIPTION' %}</span>
+        </div>
+        <div class="subscription">
+            {% if sub %}
+                <div class="subscription__icon">
+                    <img src="{% static 'main/img/icons/register/sub_check.svg' %}" alt="">
+                </div>
+                <div class="subscription__info">
+                    <h2 class="subscription__title">{% trans 'Active Subscription' %} <span>{{ sub.subscription.get_term_in_months }} {% trans 'Month' %}</span>
+                    </h2>
+                    <p class="subscription__next">{% trans 'Next payment' %}: {{ sub.get_date_end|date:"d.m.Y" }}</p>
+                </div>
+            {% else %}
+                <div class="subscription__icon">
+                    <img src="{% static 'main/img/icons/popup-close.svg' %}" alt="">
+                </div>
+                <div class="subscription__info">
+                    <h2 class="subscription__title">{% trans 'No active Subscriptions' %}</h2>
+                </div>
+            {% endif %}
+            <div class="subscription__plans">
+                {% for subscription in allsubs %}
+                    <div class="subscription__plan plan {% if subscription == sub.subscription %}plan_active{% endif %}"
+                         data-planid="{{ subscription.id }}">
+                        <div class="plan__checkbox"></div>
+                        <span class="plan__term">{{ subscription.get_term_in_months }} {% trans 'Month' %}</span>
+                        <span class="plan__discount-price">${{ subscription.discount_price }}</span>
+                        <span class="plan__price">${{ subscription.price }}</span>
+                        {% if subscription.get_economy %}
+                            <span class="plan__economy"><span class="plan__economy_large">{% trans 'Economy' %}</span><span
+                                    class="plan__economy_small">{% trans 'Eco.' %}</span> {{ subscription.get_economy }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            {% if sub %}
+                <a href="/" class="subscription__cancel">{% trans 'CANCEL Subscription' %}</a>
+            {% endif %}
+        </div>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script>
+        let plans = document.querySelectorAll('.plan')
+
+        function closeAllPlans() {
+            plans.forEach((plan => {
+                plan.classList.remove('plan_active')
+            }))
+        }
+
+        function sendQChangePlan(plan) {
+            console.log(true)
+            return true
+        }
+
+        plans.forEach((plan => {
+            plan.addEventListener('click', (event) => {
+                closeAllPlans()
+                plan.classList.add('plan_active')
+                let selectedPlan = plan.getAttribute('data-planid')
+                sendQChangePlan(selectedPlan)
+            })
+        }))
+    </script>
+{% endblock scripts %}

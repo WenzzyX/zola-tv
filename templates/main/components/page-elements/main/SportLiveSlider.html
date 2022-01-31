@@ -1,0 +1,24 @@
+{% load main_page_tag %}
+{% load i18n %}
+{% load sliders_tag %}
+{% sport_slider sort=component.sort_method as elements %}
+{#{% sportvileslider sort=component.sort_method as elements %}#}
+<div class="pageblock-header sport-slider__header mt-m-page-block">
+    <p class="pageblock-header__title sport-slider__title">{{ component.name_on_page }}</p>
+    <a href="{% url 'compilations-list-page' pk=component.id %}" class="pageblock-header__vall line-slider__vall">{% trans 'VIEW ALL' %}</a>
+</div>
+<div class="sport-slider swiper-container">
+    <div class="sport-slider__wrapper swiper-wrapper">
+        {% for element in elements %}
+            <div class="sport-slider__slide sslide swiper-slide">
+                <a href="{% url 'sport-page' pk=element.id %}" class="sslide__wrapper">
+                    <div class="sslide__image">
+                        <img src="{{ element.get_poster }}" alt="slide-image">
+                        <div class="sslide_rating">{% trans 'LIVE' %}</div>
+                    </div>
+                    <div class="sslide__name">{{ element.get_name }}</div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,38 @@
+{% extends "../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% block head_links %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+          integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+{% endblock head_links %}
+{% block content %}
+    {% include 'main/components/page-elements/filter/FilterHeader.html' %}
+    {% include 'main/components/page-elements/filter/FilterContent.html' %}
+    {% include 'main/components/page-elements/filter/FilterSendForm.html' %}
+    {% include 'main/components/page-elements/filter/FilterPopup.html' with popup=popup_models %}
+    {% include 'main/components/page-elements/filter/FilterPopup.html' with popup=popup_genres %}
+    {% include 'main/components/page-elements/filter/FilterPopup.html' with popup=popup_countries %}
+    {% include 'main/components/page-elements/filter/FilterPopup.html' with popup=popup_languages %}
+
+{% endblock content %}
+
+{% block scripts_afterjq %}
+    <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
+            integrity="sha512-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+    </script>
+{% endblock scripts_afterjq %}

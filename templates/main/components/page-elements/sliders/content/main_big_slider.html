@@ -1,0 +1,39 @@
+{% load sliders_tag %}
+{% main_big_slider sort=component.sort_method as elements %}
+{% load content_type_tag %}
+{% load i18n %}
+<div class="main-slider swiper-container swiper-scale-effect mt-mm-page-block">
+    <div class="main-slider__wrapper swiper-wrapper">
+        {% for element in elements %}
+            {% if element.type != 'ch' %}
+                <div class="main-slider__slide swiper-slide">
+
+                    <a href="{% url element.element.rev_url_name pk=element.element.id %}" class="slide__image">
+                        <img src="{{ element.element.get_big_poster }}" alt="">
+                    </a>
+                    {% if element.type == "se" %}
+                        {% check_added_to_watchlist user=request.user model=element.element.serii.first.seas.first as added %}
+                    {% else %}
+                        {% check_added_to_watchlist user=request.user model=element.element as added %}
+                    {% endif %}
+                    <button class="main-slider__add bsld-add-to-wl-btn {% if added %}bsld-add-to-wl-btn_added{% endif %}"
+                            data-mvid="
+
+
+                                    {% if element.element.rev_url_name == "serie-page" %}{% url element.element.rev_url_name pk=element.element.serii.first.seas.first.id %}{% else %}{% url element.element.rev_url_name pk=element.element.id %}{% endif %}"
+                            onclick="AddToWLBtn(this);">{% trans "To my list" %}
+                    </button>
+                </div>
+            {% else %}
+                <div class="main-slider__slide swiper-slide">
+
+                    <a href="{% url element.element.rev_url_name pk=element.element.id %}" class="slide__image">
+                        <img src="{{ element.element.get_big_poster }}" alt="">
+                    </a>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="swiper-button-next main-slider__nxt"></div>
+    <div class="swiper-button-prev main-slider__prv"></div>
+</div>

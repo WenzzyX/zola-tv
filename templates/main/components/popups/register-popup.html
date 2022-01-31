@@ -1,0 +1,18 @@
+{% load static %}
+{% load i18n %}
+<div class="pp_bg"></div>
+<div class="pp_body pp-register">
+    <button class="pp_close_btn"><img src="{% static 'main/img/icons/popup-close.svg' %}" alt=pp_close"></button>
+    <div class="pp_dc_content">
+        <div class="pp_zola_logo">
+            <img src="{% static "main/img/icons/logo.svg" %}" alt="">
+        </div>
+        <h2 class="pp_subtitle">{% trans 'Hey there!' %}</h2>
+        <h2 class="pp_title pp_register_title">{% trans 'Please register to continue watching and using all features of Zola TV' %}</h2>
+        <a href="{% url 'register-page' %}" class="pp_register">
+            {% trans 'Register' %}
+        </a>
+        <div class="pp_login">{% trans 'Have an account?' %} <a href="{% url 'login-page' %}"
+                                                                class="pp_login_btn">{% trans 'Login' %}</a></div>
+    </div>
+</div>

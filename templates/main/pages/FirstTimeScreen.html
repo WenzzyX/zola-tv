@@ -1,0 +1,268 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ page.title }}{% endblock title %}
+{% block head_links %}
+    <link rel="stylesheet" href="{% static 'main/js/js/npm/slick-carousel181/slick/slick.css' %}">
+{% endblock head_links %}
+{% block content %}
+    <div class="first-slider">
+        <div class="ftscreen boxapp" data-screenid="1">
+            <div class="ftscreen__wrapper">
+                <a href="{% url 'main_page' %}" class="ftscreen__skip ftscreen__skip_white"><span>{% trans 'SKIP' %}</span></a>
+                <div class="ftscreen__background">
+                    {% if not request.session.dark %}
+                        <img src="{% static 'main/img/first-time-screen/wave.svg' %}" alt="">
+                    {% endif %}
+                </div>
+                <div class="boxapp__sliders">
+                    <div class="boxapp__slider_big big-slider">
+                        <div class="big-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/1.png' %}" alt="">
+                        </div>
+                        <div class="big-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/2.png' %}" alt="">
+                        </div>
+
+                    </div>
+
+                    <div class="boxapp__slider_middle middle-slider">
+                        <div class="middle-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/11.png' %}" alt="">
+                        </div>
+                        <div class="middle-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/22.png' %}" alt="">
+                        </div>
+                        <div class="middle-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/33.png' %}" alt="">
+                        </div>
+                        <div class="middle-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/44.png' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="boxapp__slider_small small-slider">
+                        <div class="small-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/111.png' %}" alt="">
+                        </div>
+                        <div class="small-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/222.png' %}" alt="">
+                        </div>
+                        <div class="small-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/333.png' %}" alt="">
+                        </div>
+                        <div class="small-slider__slide">
+                            <img src="{% static 'main/img/first-time-screen/1/444.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="boxapp__info">
+                    <div class="boxapp__icon">
+                        <img src="{% static 'main/img/first-time-screen/1/box.svg' %}" alt="">
+                    </div>
+                    <h2 class="boxapp__title">{% trans 'All you need in one app' %}</h2>
+                    <p class="boxapp__subtitle">{% trans 'The Largest Amount of Movies, Series,' %}<br> {% trans 'Sport, TV-channels. Variety of languages' %} </p>
+                </div>
+
+                <div class="ftscreen__steps">
+                    <span class="step-active" onclick="firstNextStep(0)"></span><span
+                        onclick="firstNextStep(1)"></span><span onclick="firstNextStep(2)"></span><span
+                        onclick="firstNextStep(3)"></span>
+                </div>
+            </div>
+            <button class="ftscreen__btn" onclick="firstNextStep(1)">{% trans 'REGISTER NOW' %}</button>
+        </div>
+        <div class="ftscreen shareapp" data-screenid="2">
+            <div class="ftscreen__wrapper">
+                <a href="{% url 'main_page' %}" class="ftscreen__skip"><span>{% trans 'SKIP' %}</span></a>
+                <div class="shareapp__images">
+                    <div class="shareapp__logo">
+                        <img src="{% static 'main/img/first-time-screen/4/share.svg' %}" alt="">
+                        <img src="{% static 'main/img/first-time-screen/4/smiles/1.png' %}" alt=""
+                             class="shareapp__image shareapp__image_first">
+                        <img src="{% static 'main/img/first-time-screen/4/smiles/2.png' %}" alt=""
+                             class="shareapp__image shareapp__image_second">
+                        <img src="{% static 'main/img/first-time-screen/4/smiles/3.png' %}" alt=""
+                             class="shareapp__image shareapp__image_thrid">
+                        <img src="{% static 'main/img/first-time-screen/4/smiles/3.png' %}" alt=""
+                             class="shareapp__image shareapp__image_last">
+                    </div>
+                </div>
+                <h2 class="ftscreen__title shareapp__title">{% trans 'Watch for free. Share with' %}<br>{% trans 'friends and watch without adds' %}
+                </h2>
+                <div class="ftscreen__steps">
+                    <span onclick="firstNextStep(0)"></span><span class="step-active" onclick="firstNextStep(1)"></span><span
+                        onclick="firstNextStep(2)"></span><span
+                        onclick="firstNextStep(3)"></span>
+                </div>
+            </div>
+            <button class="ftscreen__btn" onclick="firstNextStep(2)">{% trans 'REGISTER NOW' %}</button>
+        </div>
+        <div class="ftscreen streamapp" data-screenid="3">
+            <div class="ftscreen__wrapper">
+                <a href="{% url 'main_page' %}" class="ftscreen__skip"><span>{% trans 'SKIP' %}</span></a>
+                <div class="ftscreen__background">
+                    {% if not request.session.dark %}
+                        <img src="{% static 'main/img/first-time-screen/wave.svg' %}" alt="">
+                    {% endif %}
+                </div>
+                <div class="streamapp__slider_wrapper">
+                    <div class="streamapp__slider">
+                        <div class="streamapp__slide">
+                            <img src="{% static 'main/img/first-time-screen/3/1.png' %}" alt="">
+                        </div>
+                        <div class="streamapp__slide">
+                            <div class="streamapp__live"><span></span>{% trans 'Live' %}</div>
+                            <img src="{% static 'main/img/first-time-screen/3/2.png' %}" alt="">
+                        </div>
+                        <div class="streamapp__slide">
+                            <img src="{% static 'main/img/first-time-screen/3/3.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="streamapp__icon">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/first-time-screen/3/cast_dark.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/first-time-screen/3/cast.svg' %}" alt="">
+                    {% endif %}
+
+                </div>
+                <h2 class="ftscreen__title streamapp__title">{% trans 'Best and stable quality for' %}<br>{% trans 'Sport and TV streaming' %}
+                </h2>
+                <div class="ftscreen__steps">
+                    <span onclick="firstNextStep(0)"></span><span onclick="firstNextStep(1)"></span><span
+                        class="step-active" onclick="firstNextStep(2)"></span><span
+                        onclick="firstNextStep(3)"></span>
+                </div>
+            </div>
+            <button class="ftscreen__btn" onclick="firstNextStep(3)">{% trans 'REGISTER NOW' %}</button>
+        </div>
+        <div class="ftscreen downloadapp" data-screenid="4">
+            <div class="ftscreen__wrapper">
+                <a href="{% url 'main_page' %}" class="ftscreen__skip"><span>{% trans 'SKIP' %}</span></a>
+
+                <div class="downloadapp__images">
+                    <div class="downloadapp__logo">
+                        <img src="{% static 'main/img/first-time-screen/2/download.svg' %}" alt="">
+                        <img src="{% static 'main/img/first-time-screen/2/1.png' %}" alt=""
+                             class="downloadapp__image downloadapp__image_first">
+                        <img src="{% static 'main/img/first-time-screen/2/2.png' %}" alt=""
+                             class="downloadapp__image downloadapp__image_second">
+                        <img src="{% static 'main/img/first-time-screen/2/3.png' %}" alt=""
+                             class="downloadapp__image downloadapp__image_last">
+                        <span class="downloadapp__dot_yellow"></span>
+                        <span class="downloadapp__dot_blue"></span>
+                        <span class="downloadapp__dot_red"></span>
+                    </div>
+                </div>
+                <h2 class="ftscreen__title downloadapp__title">{% trans 'Download any movies you' %}<br>{% trans 'want and watch them offline' %}
+                </h2>
+                <div class="ftscreen__steps">
+                    <span onclick="firstNextStep(0)"></span>
+                    <span onclick="firstNextStep(1)"></span>
+                    <span onclick="firstNextStep(2)"></span>
+                    <span class="step-active" onclick="firstNextStep(3)"></span>
+                </div>
+            </div>
+
+            <a href="{% url 'register-page' %}" class="ftscreen__btn">{% trans 'REGISTER NOW' %}</a>
+        </div>
+
+
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script src="{% static 'main/js/js/npm/slick-carousel181/slick/slick.min.js' %}"></script>
+    <script>
+
+        $('.boxapp__slider_big').slick({
+            slidesToShow: 1,
+            infinite: true,
+            initialSlide: 0,
+            touchThreshold: 10,
+            variableWidth: true,
+            swipeToSlide: true,
+            waitForAnimate: false,
+        });
+        $('.boxapp__slider_middle').slick({
+            slidesToShow: 2,
+            infinite: true,
+            initialSlide: 1,
+            touchThreshold: 10,
+            variableWidth: true,
+            waitForAnimate: false,
+            swipeToSlide: true,
+        });
+        $('.boxapp__slider_small').slick({
+            slidesToShow: 2,
+            infinite: true,
+            initialSlide: 1,
+            touchThreshold: 10,
+            variableWidth: true,
+            waitForAnimate: false,
+            swipeToSlide: true,
+        });
+
+
+        var firstSlider = $('.first-slider').slick({
+            slidesToShow: 1,
+            infinite: false,
+            initialSlide: 0,
+            touchThreshold: 10,
+            variableWidth: true,
+        });
+
+        function moveFirstChange() {
+            firstSlider.slick({
+                swipe: false
+            });
+        }
+
+
+        firstSlider.on('touchstart', function (event, slick, currentSlide, nextSlide) {
+            if (event.originalEvent.path.find(element => element.className == "boxapp__sliders")) {
+                firstSlider.slick('slickSetOption', {
+                    swipe: false,
+                })
+            } else {
+                console.log(1)
+                firstSlider.slick('slickSetOption', {
+                    swipe: true,
+                })
+            }
+        });
+
+        /*
+                function closeAllSteps() {
+                    let openedSteps = document.querySelectorAll('.ftscreen_active')
+                    openedSteps.forEach((step => {
+                        step.classList.remove('ftscreen_active_s')
+                        setTimeout(() => {
+                            step.classList.remove('ftscreen_active')
+                        }, 300)
+                    }))
+                }
+                */
+
+        function firstNextStep(id) {
+            firstSlider.slick('slickGoTo', id);
+
+        }
+
+
+    </script>
+{% endblock scripts %}

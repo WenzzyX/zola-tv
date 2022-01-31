@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>Zola TV | Sorry, the requested content cannot be delivered</title>
+</head>
+<body>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        font-family: 'Roboto';
+
+    }
+
+    .page-nf {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+
+    }
+
+    .page-nf h2 {
+        margin-bottom: 40px;
+    }
+
+    .page-nf__btn-home {
+        margin: 0 auto;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 21px;
+        background: linear-gradient(270deg, #f58500 0%, #f53b00 47.4%, #f7281b 100%);
+        background: -webkit-gradient(linear, right top, left top, from(#f58500), color-stop(47.4%, #f53b00), to(#f7281b));
+    }
+
+    .page-nf__btn-home:hover {
+        text-decoration: none;
+
+    }
+</style>
+<main>
+    <div class="page-nf">
+        <h2>Sorry, the requested content cannot be delivered.</h2>
+        <a href="{% url 'main_page' %}" class="page-nf__btn-home">Back to Home</a>
+    </div>
+</main>
+</body>
+</html>

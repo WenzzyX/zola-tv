@@ -1,0 +1,20 @@
+{% extends "../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+    {% include 'main/components/page-elements/filter-results/FilterResultsHeader.html' %}
+    {% include 'main/components/page-elements/filter-results/FilterResultsSlider.html' with elements=elements model=model card_url=url %}
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+{% endblock scripts %}

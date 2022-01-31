@@ -1,0 +1,39 @@
+{% load static %}
+{% load i18n %}
+<footer class="footer">
+    <div class="footer__content">
+        <a href="{% url 'main_page' %}" id="home"
+           class="footer__item {% if page == 'main' %}footer__item-active{% endif %}">
+            <div class="footer__item-inner">
+                <img src="{% static 'main/img/icons/home.svg' %}" alt="">
+                <div class="footer__item_text">{% trans 'HOME' %}</div>
+            </div>
+        </a>
+        <a href="{% url 'sports_page' %}" id="sport"
+           class="footer__item {% if page == 'sports' %}footer__item-active{% endif %}">
+            <div class="footer__item-inner"><img src="{% static 'main/img/icons/sport.svg' %}" alt="">
+                <div class="footer__item_text">{% trans 'SPORT' %}</div>
+            </div>
+        </a>
+        <a href="{% url 'movies-series_page' %}" id="movies-series"
+           class="footer__item {% if page == 'movies-series' %}footer__item-active{% endif %}">
+            <div class="footer__item-inner">
+                <img src="{% static 'main/img/icons/movies.svg' %}" alt="">
+                <div class="footer__item_text">{% trans 'MOVIES/SERIES' %}</div>
+            </div>
+
+        </a>
+        <a href="{% url 'shows-channels_page' %}" id="tv-channels"
+           class="footer__item {% if page == 'shows-channels' %}footer__item-active{% endif %}">
+            <div class="footer__item-inner">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/shows.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/shows.svg' %}" alt="">
+                {% endif %}
+                <div class="footer__item_text">{% trans 'SHOWS/CHANNELS' %}</div>
+            </div>
+
+        </a>
+    </div>
+</footer>

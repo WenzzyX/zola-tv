@@ -1,0 +1,102 @@
+{% extends "../base.html" %}
+{% block title %}{{ component.name_on_page }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% load rating_tag %}
+{% load component_list_tag %}
+{% block content %}
+    {% componentlist component=component as clists %}
+    <div class="trending__header">
+        <button onclick="history.back()">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+            {% endif %}
+        </button>
+        <span>{{ component.name_on_page }}</span>
+    </div>
+
+    <div class="trending__items sample">
+        {% if clists.template == 1 %}
+            {% for element in clists.elements %}
+                {% if forloop.last %}
+                    <a href="{% url clists.page pk=element.id %}" class="sample__slide last-loaded"
+                       data-lastloadid="{{ element.id }}"
+                       data-loadmodelid="{{ model }}">
+                {% else %}
+                    <a href="{% url clists.page pk=element.id %}" class="sample__slide ">
+                {% endif %}
+            <div class="slide-image__wrapper" style="background-image: url('{{ element.get_poster }}')">
+            </div>
+                {% get_rating object=element as rating %}
+            <div class="sample__slide_rating">{{ rating.grade }}</div>
+            <div class="sample__slide_name">{{ element.name }}</div>
+            <div class="sample__slide_genre">{{ element.get_two_genres }}</div>
+            </a>
+            {% endfor %}
+        {% elif clists.template == 2 %}
+            {% for element in clists.elements %}
+                {% if forloop.last %}
+                    <a href="{% url clists.page pk=element.id %}" class="sample__slide pack_slide last-loaded"
+                       data-lastloadid="{{ element.id }}"
+                       data-loadmodelid="{{ model }}">
+                {% else %}
+                    <a href="{% url clists.page pk=element.id %}" class="sample__slide pack_slide">
+                {% endif %}
+            <div class="slide__cart_back"></div>
+            <div class="slide__cart_overback"></div>
+            <div class="slide-image__wrapper" style="background-image: url('{{ element.get_poster }}')">
+            </div>
+                {% get_rating object=element as rating %}
+            <div class="sample__slide_rating">{{ rating.grade }}</div>
+            <div class="sample__slide_name">{{ element.name }}</div>
+            <div class="sample__slide_genre">{{ element.get_two_genres }}</div>
+            </a>
+            {% endfor %}
+        {% elif clists.template == 3 %}
+            {% for element in clists.elements %}
+                <a href="{% url clists.page pk=element.id %}" class="sport__item">
+                    <div class="sport__item_left">
+                        <img src="{{ element.get_poster }}" alt="" class="sport__item_img">
+                        {% if element.live_ch %}
+                            <div class="sport__item_live">
+                                {% trans 'LIVE' %}
+                            </div>
+                        {% endif %}
+                        <div class="sport__item_name">
+                            {{ element.name }}
+                        </div>
+                    </div>
+                    <div class="sport__item_right">
+                        <div class="sport__item_watching">
+                            {{ element.get_date }}
+                        </div>
+                        <button class="sport__item_share">
+                            <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+                            {% trans 'SHARE' %}
+                        </button>
+                        <div class="sport__item_tag">
+                            {{ element.kind.name }}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% elif clists.template == 4 %}
+            {% for element in clists.elements %}
+                {% if forloop.last %}
+                    <a href="{% url clists.page pk=element.id %}" class="sample__slide lists_list last-loaded"
+                       data-lastloadid="{{ element.id }}"
+                       data-loadmodelid="{{ model }}">
+                {% else %}
+                    <a href="{% url clists.page pk=element.id %}" class="sample__slide lists_list">
+                {% endif %}
+            <div class="slide-image__wrapper" style="background-image: url('{{ element.get_poster }}')">
+            </div>
+            <div class="sample__slide_name">{{ element.name }}</div>
+            <div class="sample__slide_genre">{{ element.get_two_genres }}</div>
+            </a>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock content %}

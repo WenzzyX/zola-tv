@@ -1,0 +1,53 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ page.title }}{% endblock title %}
+{% block content %}
+    <main class="change">
+        <form method="post">
+            {% csrf_token %}
+            <input type="checkbox" {% if request.session.dark %}checked{% endif %} name="dark" id="change__switch">
+            <div class="change__app">
+                <div class="change__body">
+                    <div class="change__wrapper">
+                        <h2 class="change__title">{% trans 'Choose your mode' %}</h2>
+                        <div class="change__images">
+                            <div class="change__image change__image_light">
+                                <img src="{% static 'main/img/mode-change-screen/light.png' %}" alt="">
+                            </div>
+                            <div class="change__image change__image_dark">
+                                <img src="{% static 'main/img/mode-change-screen/dark.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="change__content">
+                            <label for="change__switch">
+                                <div class="change__toggle"></div>
+                                <div class="change__names">
+                                    <p class="change__light">{% trans 'Light' %}</p>
+                                    <p class="change__dark">{% trans 'Dark' %}</p>
+                                </div>
+                            </label>
+                        </div>
+                        <p class="change__subtitle">{% trans 'You can always change it in' %}<br>{% trans 'menu settings' %}</p>
+                    </div>
+                    <button type="submit" class="ftscreen__btn change__continue">{% trans 'CONTINUE' %}</button>
+                </div>
+
+            </div>
+        </form>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+    </script>
+{% endblock scripts %}

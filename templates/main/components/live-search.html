@@ -1,0 +1,51 @@
+{% load static %}
+{% load i18n %}
+<div class="search" id="search">
+    <div class="search__header">
+        <button type="button" id="search-close" onclick="openSearch()">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+            {% endif %}
+        </button>
+        <div class="search__input">
+            <img src="{% static 'main/img/icons/gray-search.svg' %}" alt="">
+            {% csrf_token %}
+            <input type="text" name="search" id="search-input" placeholder="Search">
+            <a href="/filter">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/search-options.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/search-options.svg' %}" alt="">
+                {% endif %}
+
+            </a>
+        </div>
+    </div>
+    <div class="search__results">
+        <div class="search__menu">
+            <a href="#" class="search__menu_item" id="search-first" data-tab="1">{% trans 'MOVIES' %}</a>
+            <a href="#" class="search__menu_item" data-tab="2">{% trans 'SERIES' %}</a>
+            <a href="#" class="search__menu_item" data-tab="3">{% trans 'SPORT' %}</a>
+            <a href="#" class="search__menu_item" data-tab="4">{% trans 'CHANNELS' %}</a>
+            <a href="#" class="search__menu_item" data-tab="5">{% trans 'TV SHOWS' %}</a>
+        </div>
+        <div class="decor"></div>
+        <div class="search__tab" id="search1" data-tabid="1">
+
+        </div>
+        <div class="search__tab" id="search2" data-tabid="2">
+
+        </div>
+        <div class="search__tab" id="search3" data-tabid="3">
+
+        </div>
+        <div class="search__tab" id="search4" data-tabid="4">
+
+        </div>
+        <div class="search__tab" id="search5" data-tabid="5">
+
+        </div>
+    </div>
+</div>

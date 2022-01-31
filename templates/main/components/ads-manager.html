@@ -1,0 +1,9 @@
+{% load ads_tag %}
+{% load settings_tag %}
+{% get_ad banner_sort=component.sort_method as banner %}
+{% get_settings as settings %}
+{#{% if not settings.ITS_APP %}#}
+{#    {% include 'main/banner-templates/proxectxprating.html' %}#}
+{#{% else %}#}
+    {% include banner.template with params=banner %}
+{#{% endif %}#}

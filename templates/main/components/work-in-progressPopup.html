@@ -1,0 +1,18 @@
+{% load static %}
+{% load i18n %}
+<div class="work_wrapper work_popup">
+    <div class="work">
+        <div class="work__img">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/work-in-progress.svg' %}" alt="">
+
+            {% else %}
+                <img src="{% static 'main/img/work-in-progress-dark.svg' %}" alt="">
+            {% endif %}
+        </div>
+        <div class="work__title">
+            {% trans 'We’re working hard to get this feature done soon.' %}
+        </div>
+    </div>
+    <button type="button" onclick="showWorkPopup()" class="work__btn">{% trans 'OKAY' %}</button>
+</div>

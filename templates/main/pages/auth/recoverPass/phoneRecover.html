@@ -1,0 +1,408 @@
+{% extends "../../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load settings_tag %}
+{% load i18n %}
+{% block head_links %}
+    <link rel="stylesheet" href="{% static 'main/css/intlTelInput.min.css' %}">
+{% endblock head_links %}
+{% block content %}
+    {% get_settings as settings %}
+    {% csrf_token %}
+    <main class="register-form register-form_active" data-ctid="1">
+        <div class="trending__header">
+            <button type="button" onclick="history.back()">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+        </div>
+        <div class="recover-form__forms">
+            <div class="register-form__form pregist_height form-reg form-reg_active" data-formid="1">
+
+                <div class="form_c_wrapper">
+                    <h2 class="form-reg__title">{% trans 'Recover a password' %}</h2>
+                    <div class="form-reg__input-block">
+                        <p>{% trans 'Enter your phone to continue' %}</p>
+                        <input class="form-reg__input form-reg__input_phone" type="tel" name="phone" id="phone">
+                        <hr>
+                        <ul class="error-block error-block__phone"></ul>
+                    </div>
+                </div>
+                <button type="button" class="form-reg__btn" onclick="SendValue(1)">
+                    {% trans 'CONTINUE' %}
+                </button>
+            </div>
+        </div>
+
+    </main>
+    <main class="register-form" data-ctid="2">
+        <div class="trending__header">
+            <form action="{% url 'remove-from-verificarion' %}" method="POST">
+                {% csrf_token %}
+                <button type="button" onclick="toStep(1)">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+        <div class="register-form__forms code-activation__form">
+            <div class="register-form__form form-reg form-reg_active code-verification__form" data-formid="1">
+                <div class="form_c_wrapper">
+                    <div class="form__title_frame">
+                        <h2 class="form-reg__title">{% trans 'Enter 6-number code sent to your phone' %}</h2>
+                        <p class="user-phone-email"></p>
+                    </div>
+                    <div class="form-code__input-block">
+                        <div class="signin-sms__wrap">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="1" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="2" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="3" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="4" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="5" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                            <input class="sms-input" type="tel" maxlength="1" tabindex="6" placeholder="*"
+                                   onfocus="this.placeholder = ''" onblur="this.placeholder = '*'">
+                        </div>
+                        <ul class="error-block error-block__code"></ul>
+                        <div class="send_new_code">
+                            <button type="button" class="send_new_code__btn" onclick="sendNewCode(this)">Send new code
+                            </button>
+                            <p class="send_new_code__text send_new_code__text_hidden">You can send new code after: <span
+                                    class="send_new_code__after">60</span> seconds</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form_b_wrapper">
+                    <button type="button" class="form-reg__btn" onclick="SendValue(2)">
+                        {% trans 'VERIFY' %}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <form class="send_form" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="code" class="user_input_code">
+        </form>
+    </main>
+    <main class="register-form" data-ctid="3">
+        <div class="trending__header">
+            <button type="button" onclick="toStep(2)">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+        </div>
+        <div class="register-form__password-form pregist_c_height form-reg form-pass">
+            <div class="form_c_wrapper calced_c_wrapper">
+                <h2 class="form-reg__title pass-title">{% trans 'Enter new password' %}</h2>
+            <div class="form-reg__input-block form-pass__input-block">
+                <p>{% trans 'New password' %}</p>
+                <div class="pass-input">
+                    <input class="form-pass__input" type="password" name="password" id="password"
+                           placeholder="********">
+                    <div class="pass-input__right">
+                        <div>
+                            <img src="{% static 'main/img/icons/register/showpass.svg' %}" alt="">
+                            <span>{% trans 'Show' %}</span>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <ul class="error-block error-block__password"></ul>
+            </div>
+        </div>
+        <button type="button" class="form-reg__btn" onclick="SendValue(3)">
+            {% trans 'CONTINUE' %}
+        </button>
+
+        </div>
+
+    </main>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script src="{% static 'main/js/intlTelInput.js' %}"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script>
+        $(document).ready(function () {
+            $('.register-form-wrap').keydown(function (event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
+        });
+
+        var input = document.querySelector("#phone");
+        var iti = window.intlTelInput(input, {
+            utilsScript: "{% static 'main/js/inlutils.js' %}",
+            preferredCountries: ['in', 'de', 'ru'],
+        });
+        var maskOptions = {
+            mask: '000 000 0000'
+        };
+        var mask = IMask(input, maskOptions);
+        let inputs = {
+            phone: '',
+        }
+
+        let showPassBtn = document.querySelector('.pass-input__right')
+        showPassBtn.addEventListener('click', (event) => {
+            let input = document.querySelector('.form-pass__input')
+            if (input.type === "password") {
+                input.type = "text";
+                showPassBtn.querySelector('span').innerHTML = 'HIDE'
+
+            } else {
+                input.type = "password";
+                showPassBtn.querySelector('span').innerHTML = 'SHOW'
+            }
+        })
+        $(document).ready(function () {
+            $('.sms-input')[0].focus()
+        })
+
+        $('.sms-input').on('keydown', function (e) {
+
+            let value = $(this).val();
+            let len = value.length;
+            let curTabIndex = parseInt($(this).attr('tabindex'));
+            let nextTabIndex = curTabIndex + 1;
+            let prevTabIndex = curTabIndex - 1;
+            if (e.keyCode != 8) {
+                setTimeout(() => {
+                    $('[tabindex=' + nextTabIndex + ']').focus();
+                }, 10)
+            } else if (e.keyCode == 8) {
+                setTimeout(() => {
+                    $('[tabindex=' + prevTabIndex + ']').focus();
+                }, 10)
+            } else {
+                let prevVal = $(this).val()
+                setTimeout(() => {
+                    $(this).val(prevVal);
+                }, 10)
+            }
+        });
+
+
+        inputs.phone = document.querySelector('.form-reg__input_phone')
+
+        function valueValidator(phone) {
+            let errorBlock = document.querySelector('.error-block__phone')
+            let errorMessages = []
+            try {
+                if (phone.length < 9) {
+                    errorMessages.push("Phone number too short.")
+                }
+            } catch (e) {
+
+            }
+            try {
+                if (phone.match(/[A-Z|a-z]|[+@#%$^&*()_\-`'"\\,.]/g)) {
+                    errorMessages.push("Phone number cannot place symbols.")
+                }
+            } catch (e) {
+
+            }
+
+            if (errorMessages.length > 0) {
+                errorBlock.innerHTML = ""
+                errorMessages.forEach(value => {
+                    errorBlock.innerHTML += `<li>${value}</li>`
+                })
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function passwordValidator(password) {
+            let errorBlock = document.querySelector('.error-block__password')
+            let errorMessages = []
+            try {
+                if (password.length < 6) {
+                    errorMessages.push("Password cannot be smaller of 6 symbols.")
+                }
+            } catch (e) {
+
+            }
+            try {
+                if (password.match(/[`'"\\]/g)) {
+                    errorMessages.push("Password cannot be place this symbols: ` ' \" \\")
+                }
+            } catch (e) {
+
+            }
+
+            if (errorMessages.length > 0) {
+                errorBlock.innerHTML = ""
+                errorMessages.forEach(value => {
+                    errorBlock.innerHTML += `<li>${value}</li>`
+                })
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function sendNewCode(btn) {
+            if (!btn.classList.contains('send_new_code__btn_disable')) {
+                SendValue(2, true)
+            }
+        }
+
+        function SendValue(prevstep, newcode = false) {
+            if (valueValidator(inputs.phone.value)) {
+                let inputs_sms = document.querySelectorAll('.sms-input')
+
+                let phone = (iti.getSelectedCountryData().dialCode + input.value).replace(/\s/g, '')
+                let code = ""
+                inputs_sms.forEach((element) => {
+                    code += element.value
+                })
+                let password = document.querySelector('.form-pass__input').value
+                if (!(prevstep == 3 && passwordValidator(password))) {
+                    password = ''
+                }
+                sendR('phone', phone, code, password, prevstep, newcode)
+            }
+        }
+
+        function sendR(type = '', value = '', code = '', password = '', prevstep = 1, newcode) {
+            let csrf = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request = $.ajax({
+                url: `/${currLocale}/pass-recovery-post`,
+                type: "post",
+                data: {
+                    "type": type,
+                    "value": value,
+                    "code": code,
+                    "password": password,
+                    "prevstep": prevstep,
+                    "newcode": newcode,
+                    "csrfmiddlewaretoken": csrf
+                }
+            })
+            request.done(function (response, textStatus, jqXHR) {
+                response = JSON.parse(response)
+                console.log(response)
+                if (response.resp == "OK") {
+                } else if (response.resp == "redirect") {
+                    window.location.replace(document.location.protocol + "//" + document.location.hostname + response.rev)
+                } else if (response.resp == "ERR") {
+                    if (parseInt(response.step) == 2) {
+                        {#interval.clearAll()#}
+                        disableBtnSix()
+                    }
+                    document.querySelectorAll('.register-form').forEach((element) => {
+                        element.classList.remove('register-form_active')
+                    })
+                    let step = document.querySelector(`.register-form[data-ctid="${response.step}"]`)
+                    step.classList.add('register-form_active')
+                    let classname = 'error_red'
+                    if (response.type == 1) {
+                        classname = 'error_green'
+                    }
+                    step.querySelector('.error-block').innerHTML = `<li class="${classname}">${response.msg}</li>`
+                    document.querySelector('.user-phone-email').innerHTML = '+' + response.uval
+                } else if (response.resp == "NS") {
+                    if (parseInt(response.step) == 2) {
+                        {#interval.clearAll()#}
+                        disableBtnSix()
+                    }
+                    document.querySelector('.user-phone-email').innerHTML = '+' + response.uval
+                    toStep(response.step)
+                }
+            })
+        }
+
+        function disableBtnSix() {
+            let seconds = document.querySelector('.send_new_code__after')
+            let text = document.querySelector('.send_new_code__text')
+            let btn = document.querySelector('.send_new_code__btn')
+            text.classList.remove('send_new_code__text_hidden')
+            btn.classList.add('send_new_code__btn_disable')
+            let second = 60
+            if (interval.get().size > 0) {
+                return true
+            }
+            interval.make(() => {
+                console.log(second)
+                if (second == 0) {
+                    enableBtnSix()
+                    interval.clearAll()
+                }
+                seconds.innerHTML = second
+                second -= 1
+            }, 1000)
+        }
+
+        var interval = {
+            // to keep a reference to all the intervals
+            intervals: new Set(),
+
+            // create another interval
+
+            make(...args) {
+                var newInterval = setInterval(...args);
+                this.intervals.add(newInterval);
+                return newInterval;
+            },
+            get() {
+                return this.intervals;
+            },
+
+            // clear a single interval
+            clear(id) {
+                this.intervals.delete(id);
+                return clearInterval(id);
+            },
+
+            // clear all intervals
+            clearAll() {
+                for (var id of this.intervals) {
+                    this.clear(id);
+                }
+            }
+        };
+
+        function enableBtnSix() {
+            let text = document.querySelector('.send_new_code__text')
+            let btn = document.querySelector('.send_new_code__btn')
+            text.classList.add('send_new_code__text_hidden')
+            btn.classList.remove('send_new_code__btn_disable')
+        }
+
+        function toStep(to) {
+            document.querySelectorAll('.register-form').forEach((element) => {
+                element.classList.remove('register-form_active')
+            })
+            let step = document.querySelector(`.register-form[data-ctid="${to}"]`)
+            step.classList.add('register-form_active')
+        }
+    </script>
+{% endblock scripts %}

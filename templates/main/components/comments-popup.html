@@ -1,0 +1,53 @@
+{% load static %}
+{% load comments_tag %}
+{% load i18n %}
+<div class="comments">
+{% csrf_token %}
+    <div class="comments__header">
+        <div class="comments__title"><span class="comments__count">{% if c_model.comments.count %}{{ c_model.comments.count }}{% else %}0{% endif %}</span> {% trans 'comments' %}</div>
+        {% if exit == 0 %}
+        {% else %}
+            <button type="button" class="comments__close" onclick="openComments()"><img
+                    src="{% static 'main/img/icons/popup-close.svg' %}"
+                    alt=""></button>
+        {% endif %}
+    </div>
+    <div class="comments__content">
+        {% for comment in c_model.comments.all %}
+            <div class="comments__comment comment">
+                <div class="comment_wrapper">
+                    <div class="comment__img"><img src="
+
+                            {% if comment.user.user_profile.first.get_avatar %}{{ comment.user.user_profile.first.get_avatar }}{% else %}{% static 'main/img/icons/profile.svg' %}{% endif %}"
+                                                   alt=""></div>
+                    <div class="comment__detail">
+                        <div class="comment__info">
+                            <h2 class="comment__user-name">{{ comment.user.user_profile.first.name }}</h2>
+                            <span class="comment__date">{{ comment.date|date:"d.m.Y" }}</span>
+                        </div>
+                        <span class="comment__text">
+                            {{ comment.text }}
+                        </span>
+
+                    </div>
+                </div>
+                <div class="comments__likes likes">
+                    <div class="likes__count" data-counterid="{{ comment.id }}">{{ comment.like.count }}</div>
+                    {% check_user_like comment=comment user=request.user as user_like %}
+                    <div class="likes__heart {% if user_like %}likes__heart_active{% endif %}"
+                         onclick="setLike(this,'{{ comment.id }}')"></div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="comments__form">
+        <span class="comments__input" maxlength="1000" role="textbox"
+              contenteditable></span>
+        <button type="button" class="comments__smile">
+            <img src="{% static 'main/img/icons/smile.svg' %}" alt="">
+        </button>
+        <button class="comments__send" onclick="sendComment('{{ c_type }}', '{{ c_model.id }}', '.comments__input')">
+            <img src="{% static 'main/img/icons/send-feedback.svg' %}" alt="">
+        </button>
+    </div>
+</div>

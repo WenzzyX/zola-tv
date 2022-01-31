@@ -1,0 +1,217 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load i18n %}
+{% load settings_tag %}
+{% block title %}{{ page_channels.title }}{% endblock title %}
+{% block content %}
+    {% get_settings as settings %}
+    {% if settings.SHOW_HEADERS %}
+        {% if settings.ITS_APP %}
+            {% include 'main/components/header.html' with popup=0 %}
+        {% else %}
+            {% include 'main/components/header.html' %}
+        {% endif %}
+        <main class="main-main">
+    {% else %}
+        <main class="main-main hide-header-footer">
+    {% endif %}
+<div class="tabChange">
+    <div class="tabTitle tabTitle-actve" id="firstLink">
+        {% trans 'CHANNELS' %}
+    </div>
+    <div class="tabTitle" id="secondLink">
+        {% trans 'TV SHOWS' %}
+    </div>
+</div>
+<div class="tab channels channels_padding" id="firstTab">
+    <ul class="options" data-page="page_channels">
+        <button class="options__option" style="width: 84px;" onclick="openGenres(5)">
+            <span id="genres-open">{% trans 'GENRE' %}</span>
+        </button>
+        <button class="options__option" style="margin-left: 7px;" onclick="openLang(5)">
+            <span>{% trans 'LANGUAGE' %}</span>
+        </button>
+    </ul>
+    {% include 'main/pages/shows-channels/channels.html' with page=page_channels %}
+</div>
+<div class="tab tvShows " id="secondTab">
+    <ul class="options" data-page="page_shows" style="padding: 0px 17px;">
+        <button class="options__option" style="width: 84px;" onclick="openGenres(6)">
+            <span id="genres-open">{% trans 'GENRE' %}</span>
+        </button>
+        <button class="options__option" style="margin-left: 7px;" onclick="openLang(6)">
+            <span>{% trans 'LANGUAGE' %}</span>
+        </button>
+    </ul>
+    {% include 'main/pages/shows-channels/shows.html' with page=page_shows %}
+</div>
+
+</main>
+    <div class="filter-popup_page" data-popuptype="1">
+        <div class="trending__header">
+            <button class="filter-popup_close" onclick="closePopup('filter-popup_page_active')">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'GENRE' %}</span>
+            <button class="reset">{% trans 'RESET GENRES' %}</button>
+        </div>
+        <div class="filter-popup__content">
+            <div class="filter-popup__item filter-popup__item-active"
+                 data-itemid="0">
+                <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                <span>{% trans 'ALL' %}</span>
+            </div>
+            {% for genre in genres %}
+                <div class="filter-popup__item" data-itemid="{{ genre.id }}">
+                    <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                    <span>{{ genre.name }}</span>
+                </div>
+            {% endfor %}
+
+            <div class="filter-popup__group">
+
+            </div>
+            <button class="filter-popup__btn">
+                {% trans 'CHOOSE' %}
+            </button>
+        </div>
+    </div>
+    <div class="filter-popup_page" data-popuptype="2">
+        <div class="trending__header">
+            <button class="filter-popup_close" onclick="closePopup('filter-popup_page_active')">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'LANGUAGE' %}</span>
+            <button class="reset">{% trans 'RESET LANGUAGES' %}</button>
+        </div>
+        <div class="filter-popup__content">
+            <div class="filter-popup__item filter-popup__item-active"
+                 data-itemid="0">
+                <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                <span>{% trans 'ALL' %}</span>
+            </div>
+            {% for language in languages %}
+                <div class="filter-popup__item" data-itemid="{{ language.id }}">
+                    <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                    <span>{{ language.name }}</span>
+                </div>
+            {% endfor %}
+
+            <div class="filter-popup__group">
+
+            </div>
+            <button class="filter-popup__btn">
+                {% trans 'CHOOSE' %}
+            </button>
+        </div>
+    </div>
+
+    <form class="form__page_popup" action="{% url 'filter-results' %}" method="post">
+        {% csrf_token %}
+    </form>
+    {% include 'main/components/work-in-progressPopup.html' %}
+    {% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="shows-channels" %} {% endif %}
+{% endblock content %}
+{% block scripts %}
+    <script>
+        let firstLink = document.getElementById('firstLink')
+        let secondLink = document.getElementById('secondLink')
+        let firstTab = document.getElementById("firstTab")
+        let secondTab = document.getElementById("secondTab")
+        let request = getUrlVars()
+        if (request.tab) {
+
+            switch (request.tab) {
+                case "1":
+                    actFirstTab();
+                    break;
+                case "2":
+                    actSecondTab();
+                    break;
+                default:
+                    actFirstTab();
+                    break;
+            }
+        } else {
+            actFirstTab()
+        }
+
+        function showWorkPopup() {
+            document.body.classList.toggle('ovf_hidden')
+            document.querySelector('.work_popup').classList.toggle('work_popup_active')
+            if (document.body.classList.contains('ovf_hidden')) {
+                setTimeout(() => {
+                    try {
+                        AndroidFunction.setBottomNavVisibility(false)
+                    } catch (e) {
+                    }
+                }, 100)
+            } else  {
+                setTimeout(() => {
+                    try {
+                        AndroidFunction.setBottomNavVisibility(true)
+                    } catch (e) {
+                    }
+                }, 100)
+            }
+        }
+
+        function actSecondTab() {
+            showWorkPopup()
+            /*
+            firstLink.classList.remove("tabTitle-actve")
+            secondLink.classList.add("tabTitle-actve")
+            firstTab.style.visibility = "hidden";
+            secondTab.style.visibility = "visible";
+            firstTab.hidden = true
+            secondTab.hidden = false
+             */
+        }
+
+
+        function actFirstTab() {
+
+            secondLink.classList.remove("tabTitle-actve")
+            firstLink.classList.add("tabTitle-actve")
+            secondTab.style.visibility = "hidden";
+            firstTab.style.visibility = "visible";
+            secondTab.hidden = true
+            firstTab.hidden = false
+        }
+
+        secondLink.addEventListener("click", (event) => {
+            actSecondTab()
+        })
+
+        firstLink.addEventListener("click", (event) => {
+            actFirstTab()
+        })
+
+        function AddChToWLBtn(btn) {
+            let csrf = document.querySelector('input[name="csrfmiddlewaretoken"]').value
+            request = $.ajax({
+                url: `/channel/${btn.getAttribute('data-chid')}/add-to-watchlist`,
+                type: "post",
+                data: {
+                    "csrfmiddlewaretoken": csrf,
+                }
+            })
+            request.done(function (response, textStatus, jqXHR) {
+                response = JSON.parse(response)
+                if (response.resp == "OK") {
+                    btn.classList.toggle('pchannel__added')
+                } else if (response.resp == "redirect") {
+                    window.location.replace(document.location.protocol + "//" + document.location.hostname + response.rev)
+                }
+            })
+        }
+    </script>
+{% endblock scripts %}

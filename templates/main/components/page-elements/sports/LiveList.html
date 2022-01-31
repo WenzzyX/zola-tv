@@ -1,0 +1,37 @@
+{% load static %}
+{% load sport_tag %}
+{% load i18n %}
+{% livelist sort=component.sort_method as elements %}
+<div class="tab liveNow" id="firstTab">
+    {% for element in elements %}
+        <div class="sport__item_wrap">
+            <a href="{% url 'sport-page' pk=element.id %}" class="sport__item">
+                <div class="sport__item_left">
+                    <img src="{{ element.get_poster }}" alt="" class="sport__item_img">
+                    <div class="sport__item_live">
+                        {% trans 'LIVE' %}
+                    </div>
+                    <div class="sport__item_name">
+                        {{ element.name }}
+                    </div>
+                </div>
+            </a>
+            <div class="sport__item_right">
+                <div class="sport__item_watching">
+                    <img src="{% static 'main/img/icons/watching.svg' %}" alt="">
+                    {{ element.watching }} {% trans 'watching' %}
+                </div>
+                <button class="sport__item_share" data-elurl="{% url 'sport-page' pk=element.id %}"
+                        data-elname="{{ element.name }}" onclick="shareEl(this);">
+                    <img src="{% static 'main/img/icons/share.svg' %}" alt="">
+                    {% trans 'SHARE' %}
+                </button>
+                <div class="sport__item_tag">
+                    {{ element.kind.name }}
+                </div>
+            </div>
+        </div>
+
+
+    {% endfor %}
+</div>

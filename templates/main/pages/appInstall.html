@@ -1,0 +1,58 @@
+{% extends "../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="appins__wrapper">
+        <div class="appins__content">
+            <div class="trending__header">
+                <a href="{% url "main_page" %}">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/download-app/logo_horizontal_dark.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/download-app/logo_horizontal.svg' %}" alt="">
+                {% endif %}
+                </a>
+            </div>
+            <div class="appins">
+                <div class="appins__icon">
+                    {% if request.session.dark %}
+                        <img src="{% static 'main/img/download-app/logo_bubbles_dark.svg' %}" alt="">
+                    {% else %}
+                        <img src="{% static 'main/img/download-app/logo_bubbles.svg' %}" alt="">
+                    {% endif %}
+                </div>
+                <div class="appins__title">
+                    {% if Message %}
+                        {{ Message }}
+                    {% else %}
+                        {% trans 'Zola TV - best free app to watch live sport translations, best movies and fresh tv-series' %}
+                    {% endif %}
+                </div>
+                <div class="appins__info">
+                    <div class="appins__info-ico"><img src="{% static 'main/img/download-app/info.svg' %}" alt=""></div>
+                    <div class="appins__info-text">{% trans "We have to get you informed: it's not an official application from Google, so you have to allow extra permissions to get it up" %}</div>
+                </div>
+            </div>
+        </div>
+        <a href="https://dl.zola.bz?target=dl&click_id=777&source=777&pmid=1" onclick="appDownload();SaveEventAlanytics('d_app', undefined, pev=true); gtag('event', 'download_app');" class="appins__btn">
+            <img src="{% static 'main/img/download-app/android.svg' %}" alt="">{% trans 'DOWNLOAD ZOLA TV' %}
+        </a>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+
+{% endblock scripts %}

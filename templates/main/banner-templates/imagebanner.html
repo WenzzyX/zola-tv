@@ -1,0 +1,28 @@
+{% load static %}
+{% load i18n %}
+<div class="image-banner">
+    <a href="" data-links="{{ params.links }}" data-bid="{{ params.id }}" target="_blank" class="image-banner__link" onclick="SaveEventAlanytics('cl_b', {{ params.id }}); gtag('event', 'click_banner_image');">
+        <img src="{{ params.get_banner }}" alt="banner">
+    </a>
+    <a href="{% url 'subscription-page' %}" class="image-banner__remove">{% trans 'REMOVE ADS' %}</a>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        let ibanner = document.querySelector('.image-banner__link')
+        let links = ibanner.getAttribute('data-links').split(',')
+        let bid = ibanner.getAttribute('data-bid')
+        let uid = ''
+        uid = getCookie('u_id')
+        try {
+            uid = u_id
+        } catch (e) {
+        }
+        let adCounter = 0
+        ibanner.setAttribute('href', links[adCounter] + `?pm_id=${bid}&subId2=${uid}`)
+        ibanner.addEventListener('click', (event) => {
+            ibanner.setAttribute('href', links[adCounter] + `?pm_id=${bid}&subId2=${uid}`)
+            adCounter++
+            if (adCounter > links.length - 1 ) adCounter = 0
+        })
+    });
+</script>

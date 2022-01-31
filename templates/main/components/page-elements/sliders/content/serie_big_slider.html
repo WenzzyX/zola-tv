@@ -1,0 +1,22 @@
+{% load sliders_tag %}
+{% load i18n %}
+{% load content_type_tag %}
+{% serie_slider sort=component.sort_method as elements %}
+<div class="main-slider swiper-container swiper-scale-effect mt-mm-page-block">
+    <div class="main-slider__wrapper swiper-wrapper">
+        {% for element in elements %}
+            <div class="main-slider__slide swiper-slide">
+                <a href="{% url 'serie-page' pk=element.id %}" class="slide__image">
+                    <img src="{{ element.get_big_poster }}" alt="">
+                </a>
+                {% check_added_to_watchlist user=request.user model=element as added %}
+                <button class="main-slider__add bsld-add-to-wl-btn {% if added %}bsld-add-to-wl-btn_added{% endif %}"
+                        data-mvid="serie/{{ element.serii.first.seas.first.id }}"
+                        onclick="AddSerieToWLBtn(this);">{% trans "To my list" %}
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="swiper-button-next main-slider__nxt"></div>
+    <div class="swiper-button-prev main-slider__prv"></div>
+</div>

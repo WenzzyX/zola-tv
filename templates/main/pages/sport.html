@@ -1,0 +1,183 @@
+{% extends "../base.html" %}
+{% load static %}
+{% load i18n %}
+{% load settings_tag %}
+{% block title %}{{ title }}{% endblock title %}
+{% block content %}
+    {% get_settings as settings %}
+    {% if settings.SHOW_HEADERS %}
+        {% if settings.ITS_APP %}
+            {% include 'main/components/header.html' with popup=0 %}
+        {% else %}
+            {% include 'main/components/header.html' %}
+        {% endif %}
+        <main class="main-main" style="padding: 76px 0 60px 0">
+    {% else %}
+        <main class="main-main hide-header-footer" style="padding: 5px 0 60px 0">
+    {% endif %}
+<div class="tabChange">
+    <div class="tabTitle tabTitle-actve" id="firstLink">
+        LIVE NOW
+    </div>
+    <div class="tabTitle" id="secondLink">
+        {#        {{ page.element2.name_on_page }}#}
+        MATCHES
+    </div>
+</div>
+<ul class="options" style="padding: 0px 17px; display: none">
+    <li class="options__option" onclick="openGenres(3)">
+        <span>{% trans 'ALL SPORTS' %}</span>
+    </li>
+    <li class="options__option" style="margin-left: 7px;" onclick="openLang(3)">
+        <span>{% trans 'LANGUAGE' %}</span>
+    </li>
+</ul>
+<div class="tab tabMovies " id="firstTab">
+    {% include 'main/pages/sports-matches/sport.html' with page=page_sport %}
+</div>
+<div class="tab tabSeries " id="secondTab">
+    {% include 'main/pages/sports-matches/matches.html' with page=page_matches %}
+</div>
+</main>
+    <div class="filter-popup_page" data-popuptype="1">
+        <div class="trending__header">
+            <button class="filter-popup_close" onclick="closePopup('filter-popup_page_active')">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'GENRE' %}</span>
+            <button class="reset">{% trans 'RESET GENRES' %}</button>
+        </div>
+        <div class="filter-popup__content">
+            <div class="filter-popup__item filter-popup__item-active"
+                 data-itemid="0">
+                <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                <span>{% trans 'ALL' %}</span>
+            </div>
+            {% for genre in genres %}
+                <div class="filter-popup__item" data-itemid="{{ genre.id }}">
+                    <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                    <span>{{ genre.name }}</span>
+                </div>
+            {% endfor %}
+
+            <div class="filter-popup__group">
+
+            </div>
+            <button class="filter-popup__btn">
+                {% trans 'CHOOSE' %}
+            </button>
+        </div>
+    </div>
+    <div class="filter-popup_page" data-popuptype="2">
+        <div class="trending__header">
+            <button class="filter-popup_close" onclick="closePopup('filter-popup_page_active')">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'LANGUAGE' %}</span>
+            <button class="reset">{% trans 'RESET LANGUAGES' %}</button>
+        </div>
+        <div class="filter-popup__content">
+            <div class="filter-popup__item filter-popup__item-active"
+                 data-itemid="0">
+                <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                <span>{% trans 'ALL' %}</span>
+            </div>
+            {% for language in languages %}
+                <div class="filter-popup__item" data-itemid="{{ language.id }}">
+                    <input type="checkbox" class="filter-popup__item_checkbox " name="Action">
+                    <span>{{ language.name }}</span>
+                </div>
+            {% endfor %}
+
+            <div class="filter-popup__group">
+
+            </div>
+            <button class="filter-popup__btn">
+                {% trans 'CHOOSE' %}
+            </button>
+        </div>
+    </div>
+
+    <form class="form__page_popup" action="{% url 'filter-results' %}" method="post">
+        {% csrf_token %}
+    </form>
+    {% include 'main/components/work-in-progressPopup.html' %}
+    {% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="sports" %} {% endif %}
+{% endblock content %}
+{% block scripts %}
+    <script>
+        let firstLink = document.getElementById('firstLink')
+        let secondLink = document.getElementById('secondLink')
+        let firstTab = document.getElementById("firstTab")
+        let secondTab = document.getElementById("secondTab")
+        let request = getUrlVars()
+        if (request.tab) {
+
+            switch (request.tab) {
+                case "1":
+                    actFirstTab();
+                    break;
+                case "2":
+                    actSecondTab();
+                    break;
+                default:
+                    actFirstTab();
+                    break;
+            }
+        } else {
+            actFirstTab()
+        }
+
+        function showWorkPopup() {
+            document.body.classList.toggle('ovf_hidden')
+            document.querySelector('.work_popup').classList.toggle('work_popup_active')
+            if (document.body.classList.contains('ovf_hidden')) {
+                setTimeout(() => {
+                    try {
+                        AndroidFunction.setBottomNavVisibility(false)
+                    } catch (e) {
+                    }
+                }, 100)
+            } else {
+                setTimeout(() => {
+                    try {
+                        AndroidFunction.setBottomNavVisibility(true)
+                    } catch (e) {
+                    }
+                }, 100)
+            }
+        }
+
+        function actSecondTab() {
+            {#firstLink.classList.remove("tabTitle-actve")#}
+            {#secondLink.classList.add("tabTitle-actve")#}
+            {#secondTab.hidden = false#}
+            {#firstTab.hidden = true#}
+            showWorkPopup()
+        }
+
+
+        function actFirstTab() {
+            {#secondLink.classList.remove("tabTitle-actve")#}
+            firstLink.classList.add("tabTitle-actve")
+            firstTab.hidden = false
+            secondTab.hidden = true
+        }
+
+        secondLink.addEventListener("click", (event) => {
+            actSecondTab()
+        })
+
+        firstLink.addEventListener("click", (event) => {
+            actFirstTab()
+        })
+    </script>
+{% endblock scripts %}

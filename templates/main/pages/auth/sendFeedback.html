@@ -1,0 +1,89 @@
+{% extends "../../base.html" %}
+{% block title %}{{ title }}{% endblock title %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+    <main class="feedback__wrapper">
+        <div class="trending__header">
+            <button onclick="history.back()">
+                {% if request.session.dark %}
+                    <img src="{% static 'main/img/icons_dark/back-arrow.svg' %}" alt="">
+                {% else %}
+                    <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
+                {% endif %}
+            </button>
+            <span>{% trans 'SEND FEEDBACK' %}</span>
+        </div>
+        <div class="feedback">
+            <div class="feedback__icon">
+                <img src="{% static 'main/img/icons/feedback.svg' %}" alt="">
+            </div>
+            <div class="feedback__title">
+                {% trans 'Enter your feedback here, we always happy to hear from you' %}
+            </div>
+            <form class="feedback__form" method="POST">
+                {% csrf_token %}
+                <p class="feedback_label">{% trans 'Message' %}</p>
+                <span class="feedback__textarea" maxlength="5000" role="textbox"
+                      contenteditable></span>
+                <textarea class="sending_texarea" hidden name="feedback" id="" cols="30" rows="10"></textarea>
+                <hr class="feedback__underline">
+                <ul class="error-block">
+                    {% for message in messages %}
+                        <li class="{{ message.type }}">{{ message.msg }}</li>
+                    {% endfor %}
+
+                </ul>
+                <button type="button" class="feedback__btn" onclick="sendFeedback()">
+                    {% trans 'SEND' %}
+                </button>
+            </form>
+        </div>
+    </main>
+{% endblock content %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            setTimeout(() => {
+                try {
+                    AndroidFunction.setBottomNavVisibility(false)
+                } catch (e) {
+                }
+            }, 500)
+
+        });
+
+    </script>
+    <script>
+        let fromTexarea = document.querySelector('.feedback__textarea')
+        let toTexarea = document.querySelector('.sending_texarea')
+        let form = document.querySelector('.feedback__form')
+
+        function sendFeedback() {
+            let errorBlock = document.querySelector('.error-block')
+            if (fromTexarea.innerHTML.length < 6) {
+                errorBlock.innerHTML = `<li>{% trans 'Text cannot be smaller of 6 symbols.' %}</li>`
+                return false
+            }
+            toTexarea.value = fromTexarea.innerHTML
+            form.submit()
+        }
+
+        let goodMessage = document.querySelector('.good')
+        if (goodMessage) {
+            setTimeout(() => {
+                window.location.href = '/'
+            }, 3000)
+        }
+
+        $(function () {
+            $(".feedback__textarea").bind('input propertychange', function () {
+                var maxLength = $(this).attr('maxlength');
+                if ($(this).html().length > maxLength) {
+                    $(this).html($(this).html().substring(0, maxLength));
+                }
+            })
+        });
+    </script>
+{% endblock scripts %}

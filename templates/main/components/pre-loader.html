@@ -1,0 +1,629 @@
+{% load preloader_tag %}
+{% load ads_tag %}
+{% load static %}
+{% adsbanner as component %}
+{% get_ad banner_sort=component.sort_method as banner %}
+{% if request.session.dark %}
+    <style>
+        body {
+            background: #171E2C;
+        }
+
+        .loading {
+            /*padding-bottom: 64px;*/
+            opacity: 1;
+            /*transition: all 0.1s ease-in;*/
+            display: flex;
+            top: 0;
+            left: 0;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #171E2C;
+            z-index: 1001;
+
+        }
+
+        .loading__popup {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading__popup h2 {
+            font-family: 'Roboto';
+            font-size: 28px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #F58500;
+        }
+
+        .loading__img img {
+            display: block;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner_wrapper {
+            margin-top: 32px;
+        }
+
+        .spinner {
+            animation: rotate 1s linear infinite;
+            border-radius: 50%;
+            height: 54px;
+            width: 54px;
+            position: relative;
+            background: linear-gradient(
+                    208.3deg, #FE0411 -9.91%, #FF851F 70.83%);
+
+        }
+
+        .spinner::before,
+        .spinner::after {
+            content: '';
+            position: absolute;
+        }
+
+        .spinner::before {
+            border-radius: 50%;
+            background: linear-gradient(0deg, hsl(0, 0%, 35%) 50%, hsla(0, 0%, 35%, 1) 100%) 0% 0%;
+            background-repeat: no-repeat;
+            background-size: 100% 50%;
+            top: -0.2px;
+            bottom: -0.2px;
+            left: -0.2px;
+            right: -0.2px;
+        }
+
+        .spinner::after {
+            background: #171E2C;
+            border-radius: 50%;
+            top: 13%;
+            bottom: 13%;
+            left: 13%;
+            right: 13%;
+        }
+
+        .loading__lights {
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loading__light_pink {
+            position: absolute;
+            width: 323px;
+            height: 323px;
+            right: -150px;
+            bottom: -60px;
+            background: rgba(253, 193, 229, 0.6);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .loading__light_purple {
+            position: absolute;
+            width: 323px;
+            height: 323px;
+            left: -150px;
+            bottom: -60px;
+            background: linear-gradient(180deg, rgba(223, 193, 253, 0.27) 0%, rgba(143, 88, 199, 0.27) 100%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .loading.loaded {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .2s linear;
+        }
+
+
+        .banners {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banners__item {
+            position: absolute;
+            bottom: 0;
+            height: fit-content;
+            width: 100%;
+            display: none;
+        }
+
+        .banners__wrapper {
+            position: absolute;
+            bottom: 0;
+            height: fit-content;
+            width: 100%;
+        }
+
+        .remove-adds {
+            font-family: Roboto;
+            font-weight: 500;
+            font-size: 11px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+            padding: 2px;
+            display: block !important;
+            width: unset !important;
+            position: absolute !important;
+            top: 6px;
+            right: 6px;
+            z-index: 130;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .banners__item_small {
+            position: absolute;
+            bottom: 5%;
+        }
+
+        .banners__item_small a img {
+            max-width: 100%;
+            /*text-align: center;*/
+        }
+
+        .banners .banners__item_active {
+            display: block;
+        }
+
+        .banners__item_middle {
+            position: absolute;
+            top: 0;
+        }
+
+        .banners__item_middle a img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+
+        .banners__item_large {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .banners__item_large a img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .appInstall {
+            margin: 0px auto;
+            background: rgba(77, 85, 98, 0.9);
+            -webkit-backdrop-filter: blur(40px);
+            backdrop-filter: blur(40px);
+            border-radius: 17px;
+            padding: 12px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .appInstall__img {
+            background: #ffffff;
+            border-radius: 13px;
+            min-width: 60px;
+            height: 60px;
+            margin-right: 12px;
+        }
+
+        .appInstall__img img {
+            width: 100%;
+        }
+
+        .appInstall__text {
+            margin-right: 5px;
+        }
+
+        .appInstall__text h5 {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 18px;
+            color: #ffffff;
+            margin-bottom: 1px;
+        }
+
+        .appInstall__text span {
+            font-size: 12px;
+            line-height: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .appInstall__text_rating {
+            margin-top: 5px;
+            margin-right: 5px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .appInstall__text_rating img {
+            margin-right: 6px;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .appInstall__btn {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 101px;
+            height: 36px;
+            margin-left: auto;
+            background: -webkit-gradient(linear, right top, left top, from(#f58500), color-stop(47.4%, #f53b00), to(#f7281b));
+            background: -o-linear-gradient(right, #f58500 0%, #f53b00 47.4%, #f7281b 100%);
+            background: linear-gradient(270deg, #f58500 0%, #f53b00 47.4%, #f7281b 100%);
+            -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 14px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .appInstall__btn img {
+            margin-right: 9px;
+        }
+
+    </style>
+{% else %}
+    <style>
+        .loading {
+            /*padding-bottom: 64px;*/
+            opacity: 1;
+            /*transition: all 0.1s ease-in;*/
+            display: flex;
+            top: 0;
+            left: 0;
+            position: fixed;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: white;
+            z-index: 1001;
+
+        }
+
+        .loading__popup {
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loading__popup h2 {
+            font-family: 'Roboto';
+            font-size: 28px;
+            font-weight: 500;
+            text-transform: uppercase;
+            color: #F58500;
+        }
+
+        .loading__img img {
+            display: block;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .spinner_wrapper {
+            margin-top: 32px;
+        }
+
+        .spinner {
+            animation: rotate 1s linear infinite;
+            border-radius: 50%;
+            height: 54px;
+            width: 54px;
+            position: relative;
+            background: linear-gradient(
+                    208.3deg, #FE0411 -9.91%, #FF851F 70.83%);
+
+        }
+
+        .spinner::before,
+        .spinner::after {
+            content: '';
+            position: absolute;
+        }
+
+        .spinner::before {
+            border-radius: 50%;
+            background: linear-gradient(0deg, hsla(0, 0%, 84%, 1) 50%, hsla(0, 0%, 84%, 1) 100%) 0% 0%;
+            background-repeat: no-repeat;
+            background-size: 100% 50%;
+            top: -0.2px;
+            bottom: -0.2px;
+            left: -0.2px;
+            right: -0.2px;
+        }
+
+        .spinner::after {
+            background: white;
+            border-radius: 50%;
+            top: 13%;
+            bottom: 13%;
+            left: 13%;
+            right: 13%;
+        }
+
+        .loading__lights {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loading__light_pink {
+            position: absolute;
+            width: 323px;
+            height: 323px;
+            right: -150px;
+            bottom: -60px;
+            background: rgba(253, 193, 229, 0.6);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .loading__light_purple {
+            position: absolute;
+            width: 323px;
+            height: 323px;
+            left: -150px;
+            bottom: -60px;
+            background: linear-gradient(180deg, rgba(223, 193, 253, 0.27) 0%, rgba(143, 88, 199, 0.27) 100%);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .loading.loaded {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .2s linear;
+        }
+
+
+        .banners {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .banners__item {
+            position: absolute;
+            bottom: 0;
+            height: fit-content;
+            width: 100%;
+            display: none;
+        }
+
+        .banners__wrapper {
+            position: absolute;
+            bottom: 0;
+            height: fit-content;
+            width: 100%;
+        }
+
+        .remove-adds {
+            font-family: Roboto;
+            font-weight: 500;
+            font-size: 11px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+            padding: 2px;
+            display: block !important;
+            width: unset !important;
+            position: absolute !important;
+            top: 6px;
+            right: 6px;
+            z-index: 130;
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        .banners__item_small {
+            position: absolute;
+            bottom: 5%;
+        }
+
+        .banners__item_small a img {
+            max-width: 100%;
+            /*text-align: center;*/
+        }
+
+        .banners .banners__item_active {
+            display: block;
+        }
+
+        .banners__item_middle {
+            position: absolute;
+            top: 0;
+        }
+
+        .banners__item_middle a img {
+            max-width: 100%;
+            max-height: 400px;
+        }
+
+        .banners__item_large {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .banners__item_large a img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .appInstall {
+            margin: 0px auto;
+            background: rgba(77, 85, 98, 0.9);
+            -webkit-backdrop-filter: blur(40px);
+            backdrop-filter: blur(40px);
+            border-radius: 17px;
+            padding: 12px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .appInstall__img {
+            background: #ffffff;
+            border-radius: 13px;
+            min-width: 60px;
+            height: 60px;
+            margin-right: 12px;
+        }
+
+        .appInstall__img img {
+            width: 100%;
+        }
+
+        .appInstall__text {
+            margin-right: 5px;
+        }
+
+        .appInstall__text h5 {
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 18px;
+            color: #ffffff;
+            margin-bottom: 1px;
+        }
+
+        .appInstall__text span {
+            font-size: 12px;
+            line-height: 14px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .appInstall__text_rating {
+            margin-top: 5px;
+            margin-right: 5px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .appInstall__text_rating img {
+            margin-right: 6px;
+            font-weight: 500;
+            font-size: 10px;
+            line-height: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .appInstall__btn {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 101px;
+            height: 36px;
+            margin-left: auto;
+            background: -webkit-gradient(linear, right top, left top, from(#f58500), color-stop(47.4%, #f53b00), to(#f7281b));
+            background: -o-linear-gradient(right, #f58500 0%, #f53b00 47.4%, #f7281b 100%);
+            background: linear-gradient(270deg, #f58500 0%, #f53b00 47.4%, #f7281b 100%);
+            -webkit-box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 14px;
+            text-transform: uppercase;
+            color: #ffffff;
+        }
+
+        .appInstall__btn img {
+            margin-right: 9px;
+        }
+
+    </style>
+{% endif %}
+
+<div class="loading">
+    <div class="loading__popup">
+        <div class="loading__img">
+            {% if request.session.dark %}
+                <img src="{% static 'main/img/icons/pre-loader-logo-dark.svg' %}" alt="">
+            {% else %}
+                <img src="{% static 'main/img/icons/pre-loader-logo.svg' %}" alt="">
+            {% endif %}
+        </div>
+        <div class="spinner_wrapper">
+            <div class="spinner">
+            </div>
+        </div>
+
+    </div>
+    <div class="banners">
+        <div class="banners__item banners__item_small banners__item_active">
+            {% include banner.template with params=banner %}
+        </div>
+    </div>
+    <div class="loading__lights">
+        <div class="loading__light_purple">
+        </div>
+        <div class="loading__light_pink">
+        </div>
+    </div>
+</div>
