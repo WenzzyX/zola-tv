@@ -14,9 +14,8 @@ from django.template.loader import render_to_string
 from django.utils.timezone import now
 from datetime import datetime
 
-
 from main.models import (
-    Genre, Country, Language, SerieSeason,
+    Genre, Country, Language, SerieSeason,Subtitle,
     SportKind,
     ChannelProvider,
     Movie, Serie, SerieEpisode, Sport, Channel, Show, ShowSeason, ShowEpisode,
@@ -32,7 +31,8 @@ from main.serializers import (
     ShowLiveSearchSerializer,
     GenreFilterSerializer,
     CountryFilterSerializer,
-    LanguageFilterSerializer
+    LanguageFilterSerializer,
+    SubtitleLiveSearchSerializer
 )
 from analytics.utils.watch_analytics import add_view
 from users.models import UserProfile, Subscription, AppRating
@@ -127,19 +127,23 @@ class LiveSearchView(View):
             search_query, search_tab = (request.POST['q'], int(request.POST['tab']))
             result_dict = {
                 search_tab == 1: dumps(
-                    MovieLiveSearchSerializer(Movie.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
-                                              many=True).data),
+                    MovieLiveSearchSerializer(
+                        Movie.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
+                        many=True).data),
                 search_tab == 2: dumps(
-                    SerieLiveSearchSerializer(Serie.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
-                                              many=True).data),
+                    SerieLiveSearchSerializer(
+                        Serie.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
+                        many=True).data),
                 search_tab == 3: dumps(SportLiveSearchSerializer(
                     Sport.objects.filter(name__icontains=search_query, live_ch=False)[:return_count], many=True).data),
                 search_tab == 4: dumps(
-                    ChannelLiveSearchSerializer(Channel.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
-                                                many=True).data),
+                    ChannelLiveSearchSerializer(
+                        Channel.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
+                        many=True).data),
                 search_tab == 5: dumps(
-                    ShowLiveSearchSerializer(Show.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
-                                             many=True).data),
+                    ShowLiveSearchSerializer(
+                        Show.objects.filter(name__icontains=search_query, is_active=True)[:return_count],
+                        many=True).data),
             }[True]
             return HttpResponse(dumps(result_dict, ensure_ascii=False), content_type="application/json; charset=utf-8")
         except KeyError:
@@ -1694,6 +1698,7 @@ class GetPopup(TemplateView):
         except FirstAnalytics.DoesNotExist:
             return HttpResponse('Error')
 
+
 class SendRating(View):
     def post(self, request, *args, **kwargs):
         uid = request.POST.get('uid')
@@ -1721,3 +1726,15 @@ class SendRating(View):
             return HttpResponse('OK')
         except FirstAnalytics.DoesNotExist:
             return HttpResponse('USER-ERROR')
+
+
+class SubtitleLiveSearch(View):
+    def post(self, request):
+        return_count = 25
+        try:
+            search_query = request.POST.get('q')
+            result_dict = dumps(SubtitleLiveSearchSerializer(
+                Subtitle.objects.filter(file_name__icontains=search_query)[:return_count], many=True).data)
+            return HttpResponse(dumps(result_dict, ensure_ascii=False), content_type="application/json; charset=utf-8")
+        except KeyError:
+            return HttpResponseNotFound()
