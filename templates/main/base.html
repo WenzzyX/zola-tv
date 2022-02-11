@@ -10,66 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZolaTV | {% block title %}{% endblock title %}</title>
     {% get_settings as settings %}
-    {% if settings.ITS_APP and not settings.CLON_APP %}
-        <!-- Google Analytics App -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-NFFK67JEPK"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'G-NFFK67JEPK');
-        </script>
-
-    {% elif not settings.ITS_APP and not settings.CLON_APP %}
-        <!-- Google Analytics Webapp  -->
-        {% if request.META.HTTP_HOST == "wv.zola.cx" %}
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-TKBRR07RMN"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-
-                function gtag() {
-                    dataLayer.push(arguments);
-                }
-
-                gtag('js', new Date());
-
-                gtag('config', 'G-TKBRR07RMN');
-            </script>
-        {% else %}
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-6MTXRPDT88"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-
-                function gtag() {
-                    dataLayer.push(arguments);
-                }
-
-                gtag('js', new Date());
-
-                gtag('config', 'G-6MTXRPDT88');
-            </script>
-        {% endif %}
-
-    {% elif settings.ITS_APP and settings.CLON_APP %}
-        <!-- Google Analytics CloneApp -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-6XVLP5Z7RQ"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-
-            function gtag() {
-                dataLayer.push(arguments);
-            }
-
-            gtag('js', new Date());
-
-            gtag('config', 'G-6XVLP5Z7RQ');
-        </script>
-    {% endif %}
+    {% include "main/gtag.html" %}
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
