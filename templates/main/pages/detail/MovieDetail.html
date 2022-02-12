@@ -133,6 +133,9 @@
             {% include page.element10.path with component=page.element10 %}
         {% endif %}
     </main>
+    <div class="subtitle-popup">
+        {% include 'main/components/subtitles-popup.html' with name=movie.name %}
+    </div>
     <div class="comments-popup">
         {% include 'main/components/comments-popup.html' with c_type=1 c_model=movie %}
     </div>
@@ -162,7 +165,7 @@
             id: "mainpl",
             file: "{{ vurl }}",
             player: 1,
-            subtitle: "{{ subs }}",
+            subtitle: "{% if subs %}{{ subs }}{% else %}[En]/live.vtt{% endif %}",
             poster: "{{ movie.get_poster }}"
         });
         var MidrollAdPl = new Playerjs({
