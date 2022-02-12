@@ -182,6 +182,19 @@ class Language(models.Model):
         verbose_name = "Язык"
         verbose_name_plural = "Языки"
 
+class Subtitle(models.Model):
+    file_name = models.CharField("Название файла", max_length=512, null=False, blank=False)
+    file_extension = models.CharField("Расширение файла", max_length=100, null=False, blank=False)
+    language = models.CharField("Язык", max_length=100, null=True, blank=True)
+
+
+    def __str__(self):
+        return self.file_name
+
+    class Meta:
+        verbose_name = "Субтитры"
+        verbose_name_plural = "Субтитры"
+
 
 # /////////////////////////////
 

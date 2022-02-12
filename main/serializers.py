@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from main.models import (
-    Genre, Country, Language, SerieSeason,
+    Genre, Country, Language, SerieSeason, Subtitle,
     SportKind,
     ChannelProvider,
     Movie, Serie, SerieEpisode, Sport, Channel, Show, ShowSeason, ShowEpisode,
@@ -58,6 +58,11 @@ class GenreFilterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Genre
         fields = ('id', 'name')
+
+class SubtitleLiveSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subtitle
+        fields = ('id', 'file_name', 'file_extension', 'language')
 
 class CountryFilterSerializer(serializers.ModelSerializer):
     class Meta:

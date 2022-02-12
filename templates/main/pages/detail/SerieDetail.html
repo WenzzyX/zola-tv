@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load rating_tag %}
 {% load settings_tag %}
+{% load subtitle_tag %}
 {% block title %}{{ serie.name }}{% endblock title %}
 {% block head_links %}
     <script src="{% static 'main/js/MultiplePlayers.js' %}" type="text/javascript"></script>
@@ -12,9 +13,9 @@
     {% get_rating object=serie as rating %}
     {% csrf_token %}
     <div class="header-video">
-    {% if settings.SHOW_HEADERS %}
+        {% if settings.SHOW_HEADERS %}
             {% include 'main/components/header.html' with popup=0 %}
-    {% endif %}
+        {% endif %}
     </div>
     <main class="main-main vido video-body movie-card serie-card">
         <div class="main-video">
@@ -22,7 +23,8 @@
             {% if midroll %}
                 <div class="ad-midroll__wrapper" data-links="{{ midroll.links }}" data-bid="{{ midroll.id }}"
                      data-skiptime="{{ midroll.time_to_skip }}" data-timing="{{ midroll.timings }}"
-                     data-poster="{{ serie.get_poster }}" data-pixel="{{ midroll.pixel }}" data-remad="{% if not request.user.is_anonymous and request.user.user_profile.first %}{% with request.user.user_profile.first as user_p %}{% if user_p.ad_free_time > 0 %}true{% endif %}{% endwith %}{% endif %}">
+                     data-poster="{{ serie.get_poster }}" data-pixel="{{ midroll.pixel }}" data-remad="
+                        {% if not request.user.is_anonymous and request.user.user_profile.first %}{% with request.user.user_profile.first as user_p %}{% if user_p.ad_free_time > 0 %}true{% endif %}{% endwith %}{% endif %}">
                     <a href="" class="ad-midroll_link" target="_blank"
                        onclick="SaveEventAlanytics('cl_vid_midroll_b', {{ midroll.id }}); gtag('event', 'click_video_midroll');"></a>
                     <div class="ad-midroll" id="admid"></div>
@@ -31,9 +33,12 @@
         </div>
         {% if advideo %}
             <div class="ad-click">
-                <div class="ad-click__wrapper" style="background: url('{{ serie.get_poster }}'); background-position: center; background-repeat: no-repeat; background-size: cover"
-                     onclick="adCreateFrame(this, '{{ advideo.video.get_video }}', '{{ advideo.video.get_type }}', {{ advideo.time_to_skip }}, '{{ serie.get_poster }}', '{{ advideo.links }}', '{{ advideo.pixel }}', '{{ advideo.id }}' {% if not request.user.is_anonymous and request.user.user_profile.first %}{% with request.user.user_profile.first as user_p%}{% if user_p.ad_free_time > 0 %}, true{% endif %}{% endwith %}{% endif %});SaveEventAlanytics('sh_vid_b', {{ advideo.id }})"></div>
-                <a href="" class="ad-click__link" target="_blank" onclick="SaveEventAlanytics('cl_vid_b', {{ advideo.id }}); gtag('event', 'click_video_preroll');"></a>
+                <div class="ad-click__wrapper"
+                     style="background: url('{{ serie.get_poster }}'); background-position: center; background-repeat: no-repeat; background-size: cover"
+                     onclick="adCreateFrame(this, '{{ advideo.video.get_video }}', '{{ advideo.video.get_type }}', {{ advideo.time_to_skip }}, '{{ serie.get_poster }}', '{{ advideo.links }}', '{{ advideo.pixel }}', '{{ advideo.id }}'
+                             {% if not request.user.is_anonymous and request.user.user_profile.first %}{% with request.user.user_profile.first as user_p %}{% if user_p.ad_free_time > 0 %}, true{% endif %}{% endwith %}{% endif %});SaveEventAlanytics('sh_vid_b', {{ advideo.id }})"></div>
+                <a href="" class="ad-click__link" target="_blank"
+                   onclick="SaveEventAlanytics('cl_vid_b', {{ advideo.id }}); gtag('event', 'click_video_preroll');"></a>
                 <div class="ad-click__content" id="pljs"></div>
             </div>
         {% endif %}
@@ -69,6 +74,9 @@
                     {{ episode.duration }}
                 </div>
             </div>
+            <div class="subtitle-popup">
+                {% include 'main/components/subtitles-popup.html' with name=serie.name %}
+            </div>
             <div class="video__decription_text" id="text" style="padding-right: 62px; text-align: left;">
                 {{ serie.description }}
             </div>
@@ -77,13 +85,13 @@
             </button>
             {% include 'main/components/page-elements/detail/serie/SocialBlock.html' with episode=episode %}
 
-{#            {% if not settings.ITS_APP %}#}
-{#                {% include 'main/banner-templates/proxectxpratingptext.html' %}#}
-{#            {% else %}#}
-                {% if page.element1 != None %}
-                    {% include page.element1.path with component=page.element1 %}
-                {% endif %}
-{#            {% endif %}#}
+            {#            {% if not settings.ITS_APP %}#}
+            {#                {% include 'main/banner-templates/proxectxpratingptext.html' %}#}
+            {#            {% else %}#}
+            {% if page.element1 != None %}
+                {% include page.element1.path with component=page.element1 %}
+            {% endif %}
+            {#            {% endif %}#}
 
             {% include 'main/components/page-elements/detail/serie/UserRatingBlock.html' with rating=rating obj_title=obj_title %}
             {% include 'main/components/page-elements/detail/serie/SeasonsSlider.html' with serie=serie %}
@@ -124,7 +132,7 @@
     <div class="rating-popup">
         {% include 'main/components/rating-popup.html' with c_model=serie rating=rating %}
     </div>
-{% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="main" %} {% endif %}
+    {% if settings.SHOW_FOOTERS %} {% include 'main/components/footer.html' with page="main" %} {% endif %}
 {% endblock content %}
 {% block scripts %}
     <script>
@@ -139,11 +147,13 @@
         });
 
     </script>
+    {% get_subtitles sub_urls=serie.subtitle_urls as subs %}
     <script>
         var MainPlayer = new Playerjs({
             id: "mainpl",
             file: "{{ vurl }}",
             player: 1,
+            subtitle: "{% if subs %}{{ subs }}{% else %}[En]/live.vtt{% endif %}",
             poster: "{{ episode.get_poster }}"
         });
         var MidrollAdPl = new Playerjs({
@@ -182,22 +192,24 @@
                 setCookie('ref_url', window.location.href)
             }
         }
+
         function retToHome() {
             window.location = '/'
         }
-{#        {% get_settings as settings  %}#}
-{#        {% if not settings.ITS_APP %}#}
-{#            $(document).ready(function () {#}
-{#                let counter = 0#}
-{#                let inters = setInterval(() => {#}
-{#                    if (MainPlayer.api('time') > {{ settings.time_to_dapp }}) {#}
-{#                        window.location = document.location.protocol + "//" + document.location.hostname + "/" + currLocale + '/app-download?msg=1'#}
-{#                    }#}
-{#                    counter++#}
-{#                }, 1000)#}
-{##}
-{#            })#}
-{#        {% endif %}#}
+
+        {#        {% get_settings as settings  %}#}
+        {#        {% if not settings.ITS_APP %}#}
+        {#            $(document).ready(function () {#}
+        {#                let counter = 0#}
+        {#                let inters = setInterval(() => {#}
+        {#                    if (MainPlayer.api('time') > {{ settings.time_to_dapp }}) {#}
+        {#                        window.location = document.location.protocol + "//" + document.location.hostname + "/" + currLocale + '/app-download?msg=1'#}
+        {#                    }#}
+        {#                    counter++#}
+        {#                }, 1000)#}
+        {##}
+        {#            })#}
+        {#        {% endif %}#}
     </script>
 {% endblock scripts %}
 

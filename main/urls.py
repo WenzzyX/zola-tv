@@ -14,7 +14,7 @@ from main.views import (MainView, SportView, MoviesSeriesView, ShowsChannelsView
                         PhoneRecoverPassView, PassRecoveryPost, EmailRecoverPassView, changeLocaleView, downloadAppView,
                         workInProgressView,
                         getBonusView, buy2View, buy1View, ChannelCompilationListView, MinusAdf, createShareUrl,
-                        addDownload, GetPopup, SendRating
+                        addDownload, GetPopup, SendRating, SubtitleLiveSearch
                         )
 
 urlpatterns = [
@@ -24,6 +24,7 @@ urlpatterns = [
     path('movies-series', MoviesSeriesView.as_view(), name="movies-series_page"),
     path('shows-channels', ShowsChannelsView.as_view(), name="shows-channels_page"),
     path('live-search.json', LiveSearchView.as_view(), name="live-search-post"),
+    path('subtitle-search.json', SubtitleLiveSearch.as_view(), name="subtitle-search-post"),
     path('filter', FilterView.as_view(), name="filter-page"),
     path('filter.json', FilterPopupsView.as_view(), name="filter-popups-post"),
     path('filter-results', FilterResultsView.as_view(), name="filter-results"),

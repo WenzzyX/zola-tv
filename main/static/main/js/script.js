@@ -1816,45 +1816,106 @@ function updateAudioBtn() {
     pl_txt.innerHTML = MainPlayer.api('audiotrack')
 }
 
-var counter_subtitle_btn_pl = false
+// var counter_subtitle_btn_pl = false
 
-function openSubtitles() {
-    if (counter_subtitle_btn_pl == false) {
-        let player_lang_btn = document.querySelector('#mainpl_control_subtitle_btn')
-        let list_elem = document.createElement("pjsdiv")
-        list_elem.classList.add('player_subtitle_list')
-        player_lang_btn.appendChild(list_elem)
-        let ul_elem = document.createElement('ul')
-        list_elem.appendChild(ul_elem)
-        let curr_at = MainPlayer.api('subtitle')
-        let offsubs = document.createElement('li')
-        offsubs.setAttribute('onclick', `MainPlayer.api('subtitle', '-1');closeSubtitles();`)
-        offsubs.innerText = "Off"
-        ul_elem.appendChild(offsubs)
-        MainPlayer.api('subtitles').forEach((elem, id) => {
-
-            let li_elem = document.createElement('li')
-            if (elem == curr_at) {
-                li_elem.classList.add('player_subtitle_li_active')
-            }
-            li_elem.setAttribute('onclick', `MainPlayer.api('subtitle', '${id}');closeSubtitles();`)
-            li_elem.innerText = elem
-            if (elem != '') {
-                ul_elem.appendChild(li_elem)
-            }
-        })
+function selectSubtitle(name, disable = false) {
+    if (disable !== true) {
+        const sub_path = "http://wenzzy.loc/static/main/subs"
+        const subtitle_url = `${sub_path}/${name}`
+        MainPlayer.api('subtitle', subtitle_url)
     } else {
-        let player_lang_list = document.querySelector('pjsdiv.player_subtitle_list')
-        player_lang_list.remove()
+        MainPlayer.api('subtitle', -1)
     }
-    counter_subtitle_btn_pl = !counter_subtitle_btn_pl
+    closeSubtitles()
+
 }
+
+function debounce(func, wait, immediate) {
+    let timeout;
+
+    return function executedFunction() {
+        const context = this;
+        const args = arguments;
+
+        const later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+
+        const callNow = immediate && !timeout;
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(later, wait);
+
+        if (callNow) func.apply(context, args);
+    };
+}
+
+let subtitlesSearchListener = debounce((e) => subtitleSearchQtoDb(e.target.value), 250)
 
 function closeSubtitles() {
-    counter_subtitle_btn_pl = false
-    let list = document.querySelector('pjsdiv.player_subtitle_list')
-    list.remove()
+    const subtitlesPopup = document.querySelector(".subtitle-popup")
+    const subtitlesInput = subtitlesPopup.querySelector(".subtitle__input")
+    subtitlesPopup.classList.remove('subtitle-popup_active')
+    subtitlesInput.removeEventListener('keyup', subtitlesSearchListener)
+    document.body.style.overflowY = "auto"
 }
+
+
+function subtitleSearchQtoDb(q) {
+    console.log(q)
+    const csrf = $('input[name="csrfmiddlewaretoken"]').val()
+    const content = document.querySelector('.subtitle__results_ct')
+    request = $.ajax({
+        url: `/${currLocale}/subtitle-search.json`,
+        type: "post",
+        data: {
+            "csrfmiddlewaretoken": csrf,
+            "q": q,
+        }
+    })
+    request.done(function (response, textStatus, jqXHR) {
+        if (response.length > 0) {
+            response = JSON.parse(response)
+            template = `\
+                    <li>\
+                        <a data-id="{id}" class="subtitle-link" onclick="selectSubtitle('{language}/{file_name}{file_extension}')">\
+                            <span class="subtitle-link__name">{file_name}</span>\
+                            <span class="subtitle-link__lang">{language}</span>\
+                        </a>\
+                    </li>\
+            `
+            returnHTML = ''
+            response.forEach(element => {
+                returnHTML += template.fmt({
+                    id: element.id || "",
+                    file_name: element.file_name || "",
+                    file_extension: element.file_extension || "",
+                    language: element.language || "",
+                })
+            })
+            if (returnHTML.length < 1) {
+                content.innerHTML = ` \
+                <div class="subtitle__results_not-found">No match</div> \
+                `
+            } else {
+                content.innerHTML = returnHTML
+            }
+
+        }
+    })
+}
+
+function openSubtitles() {
+    const subtitlesPopup = document.querySelector(".subtitle-popup")
+    const subtitlesInput = subtitlesPopup.querySelector(".subtitle__input")
+    subtitlesPopup.classList.add('subtitle-popup_active')
+    subtitlesInput.addEventListener('keyup', subtitlesSearchListener)
+    MainPlayer.api('exitfullscreen')
+    document.body.style.overflowY = "hidden"
+}
+
 
 function setTimeCookie() {
     if (getCookie('time_start') == undefined) {
@@ -1932,7 +1993,7 @@ function showPPm() {
         console.log(actived_l[i].el.querySelector('.pp-register'))
         if (actived_l[i].el.querySelector('.pp-register')) {
             let cont = new RegExp("login|register|profile|recover-email|recover-phone").test(window.location.href)
-            if (cont){
+            if (cont) {
                 continue
             }
         }
@@ -1947,8 +2008,8 @@ function showPPm() {
                 upp = `${actived_l[i].el.getAttribute('data-id')};`
             }
             setCookie('upp', upp)
-            document.querySelectorAll('.pp_bg').forEach((el)=>{
-                el.addEventListener('click', (event)=> {
+            document.querySelectorAll('.pp_bg').forEach((el) => {
+                el.addEventListener('click', (event) => {
                     closePP()
                 })
             })
@@ -2027,6 +2088,7 @@ function ratingPopup() {
     } catch (e) {
     }
 }
+
 function closePP() {
     document.querySelectorAll('.ppm_popup_active').forEach((el) => {
         el.classList.remove('ppm_popup_active')

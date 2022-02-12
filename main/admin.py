@@ -11,7 +11,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext as _
 from django import forms
 from main.models import (
-    Genre, Country, Language, SerieSeason,
+    Genre, Country, Language, SerieSeason, Subtitle,
     SportKind,
     ChannelProvider,
     Movie, MovieAltLang, Serie, SerieEpisode, Sport, Channel, Show, ShowSeason, ShowEpisode,
@@ -499,6 +499,19 @@ class GenreAdmin(TranslationAdmin):
 
 
 admin.site.register(Genre, GenreAdmin)
+
+class SubtitleAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {'fields': ('file_name', 'file_extension', 'language')}),
+    )
+    list_display = ('file_name', 'file_extension', 'language')
+    search_fields = ('file_name', 'language')
+    ordering = ('file_name',)
+    save_on_top = True
+    # readonly_fields = ('date_pub',)
+
+
+admin.site.register(Subtitle, SubtitleAdmin)
 
 
 class CountryAdmin(admin.ModelAdmin):
