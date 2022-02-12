@@ -11,7 +11,7 @@
     --accent: #f5dd5d;
     --primary-fg: #fff;
 
-    --body-fg: #3bc4d9;
+    --body-fg: #3bd96d;
     --body-bg: #121212;
     --body-quiet-color: #e0e0e0;
     --body-loud-color: #ffffff;
@@ -46,7 +46,7 @@
 
     --button-fg: #fff;
     --button-bg: var(--primary);
-    --button-hover-bg: #609ab6;
+    --button-hover-bg: #60b66e;
     --default-button-bg: var(--secondary);
     --default-button-hover-bg: #205067;
     --close-button-bg: #333333;
