@@ -20,7 +20,7 @@
                         {% for sub in subtitles %}
                             <li>
                                 <a class="subtitle-link"
-                                   onclick="selectSubtitle('{{language}}/{{ sub.file_name }}{{ sub.file_extension }}')">
+                                   onclick="selectSubtitle('langs/{{ sub.language }}/unzipped/{{ sub.file_name }}{{ sub.file_extension }}')">
                                     <span class="subtitle-link__name">{{ sub.file_name }}</span>
                                     <span class="subtitle-link__lang">{{ sub.language }}</span>
                                 </a>
