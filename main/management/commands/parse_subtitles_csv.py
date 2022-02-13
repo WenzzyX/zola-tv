@@ -17,7 +17,7 @@ class Csv_parser:
                     file_name = line['filename']
                     language = line['lang']
                     try:
-                        subtitle = Subtitle.objects.get(file_name=file_name)
+                        subtitle = Subtitle.objects.get(file_name=file_name, language=language)
                         print(f"already exists: {file_name}")
                         continue
                     except Subtitle.DoesNotExist:
