@@ -1828,7 +1828,7 @@ function updateAudioBtn() {
 
 function selectSubtitle(name, disable = false) {
     if (disable !== true) {
-        const sub_path = "http://wenzzy.loc/static/main/subs"
+        const sub_path = "http://subs.zola.bz:8880"
         const subtitle_url = `${sub_path}/${name}`
         MainPlayer.api('subtitle', subtitle_url)
     } else {
@@ -1888,7 +1888,7 @@ function subtitleSearchQtoDb(q) {
             response = JSON.parse(response)
             template = `\
                     <li>\
-                        <a data-id="{id}" class="subtitle-link" onclick="selectSubtitle('{language}/{file_name}{file_extension}')">\
+                        <a data-id="{id}" class="subtitle-link" onclick="selectSubtitle('langs/{language}/unzipped/{file_name}{file_extension}')">\
                             <span class="subtitle-link__name">{file_name}</span>\
                             <span class="subtitle-link__lang">{language}</span>\
                         </a>\
