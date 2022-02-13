@@ -13,6 +13,7 @@ $(document).ready(function () {
                 delay: 5500,
                 disableOnInteraction: false,
             },
+
             navigation: {
                 nextEl: ".swiper-button-next",
                 prevEl: ".swiper-button-prev",
@@ -23,10 +24,13 @@ $(document).ready(function () {
 $(document).ready(function () {
     regSliderSelector = ".line-slider"
     if ($("div").is(regSliderSelector)) {
-        var bigSlider = new Swiper(regSliderSelector, {
+        var lineSlider = new Swiper(regSliderSelector, {
             slidesPerView: "auto",
-            // autoHeight: true,
             freeModeSticky: true,
+            slideToClickedSlide: true,
+            shortSwipes: false,
+            effect: "slide",
+            grabCursor: true,
             velocityRatio: 0.2,
             spaceBetween: 12,
             centeredSlides: false,
@@ -40,9 +44,13 @@ $(document).ready(function () {
 $(document).ready(function () {
     regSliderSelector = ".sport-slider"
     if ($("div").is(regSliderSelector)) {
-        var bigSlider = new Swiper(regSliderSelector, {
+        var sportSlider = new Swiper(regSliderSelector, {
             slidesPerView: "auto",
             autoHeight: true,
+            slideToClickedSlide: true,
+            shortSwipes: false,
+            effect: "slide",
+            grabCursor: true,
             freeModeSticky: true,
             velocityRatio: 0.2,
             spaceBetween: 12,
