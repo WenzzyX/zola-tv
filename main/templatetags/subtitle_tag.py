@@ -1,7 +1,7 @@
 from django import template
 import re
 from main.models import (
-    Language
+    Language, Subtitle
 )
 
 register = template.Library()
@@ -27,3 +27,7 @@ def get_subtitles(sub_urls):
             final_links.append(f'[{lang_iso3}]{link}')
             pass
     return ','.join(final_links)
+
+@register.simple_tag()
+def get_25_subs(name):
+    return Subtitle.objects.filter(file_name__icontains=name)[:25]

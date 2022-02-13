@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load rating_tag %}
 {% load settings_tag %}
+{% load subtitle_tag %}
 {% block title %}{{ serie.name }}{% endblock title %}
 {% block head_links %}
     <script src="{% static 'main/js/MultiplePlayers.js' %}" type="text/javascript"></script>
@@ -104,7 +105,9 @@
             {% include page.element10.path with component=page.element10 %}
         {% endif %}
     </main>
-
+    <div class="subtitle-popup">
+        {% include 'main/components/subtitles-popup.html' with name=serie.name %}
+    </div>
     <div class="comments-popup">
         {% include 'main/components/comments-popup.html' with c_type=3 c_model=episode %}
     </div>
@@ -127,12 +130,14 @@
         });
 
     </script>
+    {% get_subtitles sub_urls=serie.subtitle_urls as subs %}
     <script>
 
         var MainPlayer = new Playerjs({
             id: "mainpl",
             file: "{{ episode.get_video }}",
             player: 1,
+            subtitle: "{% if subs %}{{ subs }}{% else %}[En]/live.vtt{% endif %}",
             poster: "{{ episode.get_poster }}"
         });
         var MidrollAdPl = new Playerjs({

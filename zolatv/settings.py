@@ -17,7 +17,6 @@ AUTHENTICATION_BACKENDS = (
     'users.backends.PhoneOrEmailBackend',
 )
 
-
 INSTALLED_APPS = [
     'modeltranslation',
     'django.contrib.admin',
@@ -122,6 +121,7 @@ ADMIN_REORDER = (
          'main.Genre',
          'main.Country',
          'main.Language',
+         'main.Subtitle',
      )
      },
     {'app': 'users', 'label': 'Пользователи',
@@ -196,7 +196,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'zolatv.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -207,7 +206,6 @@ DATABASES = {
         'PORT': config["database"]["PORT"],
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -242,16 +240,15 @@ USE_TZ = True
 gettext = lambda s: s
 LANGUAGES = (
     ('en', gettext('English')),
-    ('hi', gettext('Hindi'))
+    ('hi', gettext('Hindi')),
+    ('es', gettext('Spanish'))
 )
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SOCIAL_AUTH_JSONFIELD_ENABLED = True

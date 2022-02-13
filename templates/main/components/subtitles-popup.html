@@ -1,0 +1,39 @@
+{% load subtitle_tag %}
+{% get_25_subs name=name as subtitles %}
+<div class="subtitle">
+    <div class="subtitle__wrapper">
+        <div class="subtitle__search">
+            <h3 class="subtitle__title">
+                Search subtitles
+            </h3>
+            <input type="text" class="subtitle__input" value="{{ name }}" placeholder="Type name...">
+        </div>
+        <div class="subtitle__content">
+            <ul class="subtitle__results">
+                <li>
+                    <a class="subtitle-link subtitle-link_disable" onclick="selectSubtitle('', disable=true)">
+                        <span class="subtitle-link__name subtitle-link__name_disable">Cancel</span>
+                    </a>
+                </li>
+                <div class="subtitle__results_ct">
+                    {% if subtitles %}
+                        {% for sub in subtitles %}
+                            <li>
+                                <a class="subtitle-link"
+                                   onclick="selectSubtitle('{{language}}/{{ sub.file_name }}{{ sub.file_extension }}')">
+                                    <span class="subtitle-link__name">{{ sub.file_name }}</span>
+                                    <span class="subtitle-link__lang">{{ sub.language }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <div class="subtitle__results_not-found">No match</div>
+                    {% endif %}
+
+                </div>
+
+            </ul>
+        </div>
+    </div>
+    <div class="subtitle__background" onclick="closeSubtitles()"></div>
+</div>
