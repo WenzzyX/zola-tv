@@ -240,7 +240,8 @@ USE_TZ = True
 gettext = lambda s: s
 LANGUAGES = (
     ('en', gettext('English')),
-    ('hi', gettext('Hindi'))
+    ('hi', gettext('Hindi')),
+    ('es', gettext('Spanish'))
 )
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 STATIC_URL = '/static/'

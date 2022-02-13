@@ -301,6 +301,7 @@ template {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
     min-height: 35px;
 }
 
@@ -502,7 +503,7 @@ body {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
-    width: 154px;
+    padding: 0 12px;
     height: 38px;
     background: -webkit-gradient(linear, right top, left top, from(#f58500), color-stop(47.4%, #f53b00), to(#f7281b));
     background: -o-linear-gradient(right, #f58500 0%, #f53b00 47.4%, #f7281b 100%);

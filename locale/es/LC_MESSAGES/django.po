@@ -1,0 +1,1005 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-09-16 17:46+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\main\admin.py:39 .\main\admin.py:106 .\main\admin.py:199
+#: .\main\admin.py:290 .\main\admin.py:332 .\main\admin.py:357
+msgid "Пользовательский рейтинг"
+msgstr "Calificación del usuario"
+
+#: .\main\admin.py:49 .\main\admin.py:116 .\main\admin.py:209
+msgid "IMDB-ID"
+msgstr "IMDB-ID"
+
+#: .\main\admin.py:56 .\main\admin.py:123 .\main\admin.py:216
+#: .\main\admin.py:307 .\main\admin.py:364 .\main\admin.py:401
+#: .\main\admin.py:477 .\main\admin.py:511 .\main\admin.py:545
+#: .\main\admin.py:579
+msgid "Poster"
+msgstr "Póster"
+
+#: .\main\admin.py:172 .\main\admin.py:265
+msgid "Preview"
+msgstr "Vista previa"
+
+#: .\main\admin.py:300 .\main\admin.py:374 .\main\admin.py:411
+#: .\main\admin.py:487 .\main\admin.py:521 .\main\admin.py:555
+#: .\main\admin.py:589 .\main\admin.py:636
+msgid "ID"
+msgstr "ID"
+
+#: .\main\admin.py:339 .\main\admin.py:434
+msgid "icon"
+msgstr "icono"
+
+#: .\main\views.py:365
+msgid "movie"
+msgstr "película"
+
+#: .\main\views.py:416
+msgid "serie"
+msgstr "serie"
+
+#: .\main\views.py:468
+msgid "show"
+msgstr "programa de TV"
+
+#: .\main\views.py:527
+msgid "channel"
+msgstr "canal"
+
+#: .\main\views.py:1447
+msgid "You are now on preview. To continue watching for free , please install Zola "
+"TV official app."
+msgstr "Ahora estás en la vista previa. Para continuar viendo gratis, por favor, instala la aplicación oficial de Zola TV."
+
+#: .\sett\settings.py:119 .\sett\w\c\settings.py:119 .\sett\w\settings.py:119
+#: .\zolatv\settings.py:127
+msgid "English"
+msgstr "Inglés"
+
+#: .\sett\settings.py:120 .\sett\w\c\settings.py:120 .\sett\w\settings.py:120
+#: .\zolatv\settings.py:128
+msgid "Hindi"
+msgstr "Hindi"
+
+#: .\templates\admin\base.html:48
+msgid "Welcome,"
+msgstr "Bienvenido,"
+
+#: .\templates\admin\base.html:55
+msgid "Documentation"
+msgstr "Documentación"
+
+#: .\templates\admin\base.html:59
+msgid "Change password"
+msgstr "Cambiar contraseña"
+
+#: .\templates\admin\base.html:61 .\templates\main\pages\auth\settings.html:25
+msgid "Log out"
+msgstr "Cerrar sesión"
+
+#: .\templates\admin\base.html:71
+msgid "Home"
+msgstr "Home"
+
+#: .\templates\admin\base_site.html:3
+msgid "Django site admin"
+msgstr "Administrador del sitio Django"
+
+#: .\templates\admin\base_site.html:6
+msgid "Django administration"
+msgstr "Administración de Django"
+
+#: .\templates\main\base.html:61
+msgid "COPY"
+msgstr "COPIAR"
+
+#: .\templates\main\components\comments-popup.html:7
+msgid "comments"
+msgstr "comentarios"
+
+#: .\templates\main\components\footer.html:9
+msgid "HOME"
+msgstr "HOME"
+
+#: .\templates\main\components\footer.html:16
+#: .\templates\main\components\live-search.html:30
+msgid "SPORT"
+msgstr "DEPORTES"
+
+#: .\templates\main\components\footer.html:23
+msgid "MOVIES/SERIES"
+msgstr "PELÍCULAS/SERIES"
+
+#: .\templates\main\components\footer.html:35
+msgid "SHOWS/CHANNELS"
+msgstr "PROGRAMAS DE TV/CANALES"
+
+#: .\templates\main\components\header-menu.html:17
+#: .\templates\main\pages\auth\login\loginForm.html:80
+#: .\templates\main\pages\auth\login\loginForm.html:124
+msgid "SIGN IN"
+msgstr "INICIAR SESIÓN"
+
+#: .\templates\main\components\header-menu.html:20
+msgid "Ver"
+msgstr "Versión"
+
+#: .\templates\main\components\header-menu.html:42
+msgid "My Watch List"
+msgstr "Mi lista de vídeos"
+
+#: .\templates\main\components\header-menu.html:48
+msgid "History"
+msgstr "Historia"
+
+#: .\templates\main\components\header-menu.html:54
+#: .\templates\main\components\page-elements\filter\FilterContent.html:8
+#: .\templates\main\pages\auth\register\ProfileCreation.html:54
+msgid "Movies"
+msgstr "Películas"
+
+#: .\templates\main\components\header-menu.html:60
+msgid "Series"
+msgstr "Series"
+
+#: .\templates\main\components\header-menu.html:66
+msgid "Live Sport"
+msgstr "Deportes en directo"
+
+#: .\templates\main\components\header-menu.html:76
+msgid "Sport Matches"
+msgstr "Partidos depotivos"
+
+#: .\templates\main\components\header-menu.html:82
+msgid "TV Channels"
+msgstr "Canales de TV"
+
+#: .\templates\main\components\header-menu.html:88
+msgid "TV Shows"
+msgstr "Programas de TV"
+
+#: .\templates\main\components\header-menu.html:103
+msgid "Settings"
+msgstr "Configuración"
+
+#: .\templates\main\components\header-menu.html:109
+msgid "Send Feedback"
+msgstr "Enviar comentarios"
+
+#: .\templates\main\components\header-menu.html:116
+#: .\templates\main\pages\profile.html:40
+msgid "Log Out"
+msgstr "Cerrar sesión"
+
+#: .\templates\main\components\header-menu.html:124
+msgid "INSTALL APP"
+msgstr "INSTALAR APLICACIÓN"
+
+#: .\templates\main\components\header.html:15
+msgid "Install APP"
+msgstr "Instalar aplicatión"
+
+#: .\templates\main\components\live-search.html:28
+#: .\templates\main\pages\movies-series.html:21
+msgid "MOVIES"
+msgstr "PELÍCULAS"
+
+#: .\templates\main\components\live-search.html:29
+#: .\templates\main\pages\movies-series.html:24
+msgid "SERIES"
+msgstr "SERIES"
+
+#: .\templates\main\components\live-search.html:31
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:17
+#: .\templates\main\pages\shows-channels.html:20
+msgid "CHANNELS"
+msgstr "CANALES"
+
+#: .\templates\main\components\live-search.html:32
+#: .\templates\main\pages\shows-channels.html:23
+msgid "TV SHOWS"
+msgstr "PROGRAMAS DE TV"
+
+#: .\templates\main\components\page-elements\channels\AllProvidersList.html:12
+#: .\templates\main\components\page-elements\channels\ProvidersList.html:12
+#: .\templates\main\components\page-elements\main\PopularChanelsList.html:14
+msgid "channels"
+msgstr "canales"
+
+#: .\templates\main\components\page-elements\channels\WeRecomendedList.html:23
+msgid "Viewers"
+msgstr "Espectadores"
+
+#: .\templates\main\components\page-elements\channels\WeRecomendedList.html:46
+msgid "Watch"
+msgstr "Ver ahora"
+
+#: .\templates\main\components\page-elements\detail\channel\TopChannelsSlider.html:6
+#: .\templates\main\components\page-elements\detail\movie\SimilarMoviesSlider.html:6
+#: .\templates\main\components\page-elements\detail\sport\TopChannelsSlider.html:6
+#: .\templates\main\components\page-elements\main\NewestMoviesSlider.html:7
+#: .\templates\main\components\page-elements\main\PopularChanelsList.html:7
+#: .\templates\main\components\page-elements\main\PopularTVShowsSlider.html:7
+#: .\templates\main\components\page-elements\main\SportLiveSlider.html:6
+#: .\templates\main\components\page-elements\movies\GenreSlider.html:7
+#: .\templates\main\components\page-elements\movies\NewestMoviesSlider.html:8
+#: .\templates\main\components\page-elements\movies\RecomendedToYouSlider.html:7
+#: .\templates\main\components\page-elements\movies\TopListsSlider.html:6
+#: .\templates\main\components\page-elements\series\GenreSlider.html:7
+#: .\templates\main\components\page-elements\series\WeRecomendedSlider.html:7
+#: .\templates\main\components\page-elements\tv-shows\TopListsSlider.html:6
+#: .\templates\main\components\page-elements\tv-shows\WeRecomendedSlider.html:7
+msgid "VIEW ALL"
+msgstr "VER TODO"
+
+#: .\templates\main\components\page-elements\detail\movie\SimilarMoviesSlider.html:25
+#: .\templates\main\components\page-elements\main\NewestMoviesSlider.html:27
+#: .\templates\main\components\page-elements\main\PopularTVShowsSlider.html:29
+#: .\templates\main\components\page-elements\movies\GenreSlider.html:27
+#: .\templates\main\components\page-elements\movies\NewestMoviesSlider.html:28
+#: .\templates\main\components\page-elements\movies\RecomendedToYouSlider.html:27
+#: .\templates\main\components\page-elements\series\GenreSlider.html:29
+#: .\templates\main\components\page-elements\series\WeRecomendedSlider.html:29
+#: .\templates\main\components\page-elements\tv-shows\WeRecomendedSlider.html:29
+msgid "Show all"
+msgstr "Mostrar todo"
+
+#: .\templates\main\components\page-elements\detail\movie\SocialBlock.html:6
+msgid "Add to Watch list"
+msgstr "Añadir a Mi lista"
+
+#: .\templates\main\components\page-elements\detail\movie\SocialBlock.html:10
+msgid "Share"
+msgstr "Compartir"
+
+#: .\templates\main\components\page-elements\detail\movie\SocialBlock.html:20
+msgid "Сomments"
+msgstr "Comentarios"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:6
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:6
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:6
+#: .\templates\main\components\rating-popup.html:38
+msgid "Rating"
+msgstr "Rating"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:8
+#: .\templates\main\components\rating-popup.html:39
+msgid "based on"
+msgstr "basado en"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:8
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:8
+#: .\templates\main\components\rating-popup.html:40
+msgid "people"
+msgstr "personas"
+
+#: .\templates\main\components\page-elements\detail\movie\UserRatingBlock.html:11
+#: .\templates\main\components\page-elements\detail\serie\UserRatingBlock.html:11
+#: .\templates\main\components\page-elements\detail\show\UserRatingBlock.html:11
+msgid "Rate"
+msgstr "Valorar"
+
+#: .\templates\main\components\page-elements\detail\serie\SeasonsSlider.html:12
+#: .\templates\main\components\page-elements\detail\show\SeasonsSlider.html:12
+msgid "Season"
+msgstr "Temporada"
+
+#: .\templates\main\components\page-elements\detail\serie\SeasonsSlider.html:15
+#: .\templates\main\components\page-elements\detail\show\SeasonsSlider.html:15
+msgid "EPISODES"
+msgstr "EPISODIOS"
+
+#: .\templates\main\components\page-elements\detail\serie\SeasonsSlider.html:39
+#: .\templates\main\components\page-elements\detail\show\SeasonsSlider.html:39
+msgid "EPISODE"
+msgstr "EPISODIO"
+
+#: .\templates\main\components\page-elements\filter-results\FilterResultsHeader.html:11
+msgid "FILTER RESULTS"
+msgstr "FILTRAR RESULTADOS"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:5
+msgid "TYPES"
+msgstr "TIPOS"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:13
+msgid "GENRES"
+msgstr "GÉNEROS"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:16
+#: .\templates\main\components\page-elements\filter\FilterContent.html:36
+#: .\templates\main\components\page-elements\filter\FilterContent.html:44
+#: .\templates\main\components\page-elements\filter\FilterPopup.html:25
+#: .\templates\main\pages\shows-channels.html:66
+#: .\templates\main\pages\shows-channels.html:99
+#: .\templates\main\pages\sport.html:58 .\templates\main\pages\sport.html:91
+msgid "ALL"
+msgstr "TODO"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:21
+msgid "YEARS"
+msgstr "AÑOS"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:33
+msgid "COUNTRY"
+msgstr "PAÍS"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:41
+#: .\templates\main\pages\settings\locale.html:15
+#: .\templates\main\pages\shows-channels.html:32
+#: .\templates\main\pages\shows-channels.html:43
+#: .\templates\main\pages\shows-channels.html:92
+#: .\templates\main\pages\sport.html:32 .\templates\main\pages\sport.html:84
+msgid "LANGUAGE"
+msgstr "IDIOMA"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:49
+msgid "RATING"
+msgstr "RATING"
+
+#: .\templates\main\components\page-elements\filter\FilterContent.html:61
+msgid "SHOW"
+msgstr "MOSTRAR"
+
+#: .\templates\main\components\page-elements\filter\FilterPopup.html:13
+#: .\templates\main\components\page-elements\filter\FilterPopup.html:32
+msgid "RESET"
+msgstr "REINICIAR"
+
+#: .\templates\main\components\page-elements\main\PopularChanelsList.html:15
+msgid "Based"
+msgstr "Basado en"
+
+#: .\templates\main\components\page-elements\main\SportLiveSlider.html:15
+#: .\templates\main\components\page-elements\sports\LiveList.html:12
+#: .\templates\main\components\page-elements\sports\MatchesList.html:13
+#: .\templates\main\pages\ComponentList.html:64
+msgid "LIVE"
+msgstr "EN DIRECTO"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:11
+msgid "WATCH LIST"
+msgstr "LISTA DE VIDEOS"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:23
+msgid "HISTORY"
+msgstr "HISTORIA"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:29
+msgid "DOWNLOADS"
+msgstr "DESCARGAS"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:42
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:72
+msgid ""
+"Register to create your own watch list, share/recommend videos to your "
+"friends"
+msgstr "Regístrate para crear tu propia lista de videos, compartir/recomendar películas a tus amigos"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:44
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:74
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:94
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:124
+msgid "REGISTER"
+msgstr "REGISTRARSE"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:62
+msgid "Add videos to watch them later or share with friends"
+msgstr "Añadir videos para verlos más tarde o compartirlos con amigos"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:83
+msgid "Add channels to watch them later or share with friends"
+msgstr " Añadir canales para verlos más tarde o compartirlos con amigos "
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:92
+msgid "Register to see your browsing history here"
+msgstr "Regístrate para ver tu historial de navegación aqui"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:112
+msgid "Videos you will watch will show up here"
+msgstr "Los videos que miras se mostrarán aquí"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:122
+msgid "Register to download any movie you want and watch it offline"
+msgstr "Regístrate para descargar cualquier película y verla sin conexión"
+
+#: .\templates\main\components\page-elements\profile\app\profileLists.html:128
+msgid "Your saved videos will appear here, you can watch them offline"
+msgstr "Tus videos guardados aparecerán aquí, puedes verlos sin conexión"
+
+#: .\templates\main\components\page-elements\sports\LiveList.html:22
+msgid "watching"
+msgstr "están viendo"
+
+#: .\templates\main\components\page-elements\sports\LiveList.html:27
+#: .\templates\main\components\page-elements\sports\MatchesList.html:28
+#: .\templates\main\pages\ComponentList.html:77
+msgid "SHARE"
+msgstr "COMPARTIR"
+
+#: .\templates\main\components\rating-popup.html:16
+msgid "Rate this"
+msgstr "Califica esto"
+
+#: .\templates\main\components\rating-popup.html:46
+msgid "UPDATE RATING"
+msgstr "ACTUALIZAR CALIFICACIÓN"
+
+#: .\templates\main\components\rating-popup.html:60
+msgid "SHARE THIS MOVIE"
+msgstr "COMPARTIR ESTA PELÍCULA"
+
+#: .\templates\main\components\rating-popup.html:64
+msgid "RATE"
+msgstr "CALIFICAR"
+
+#: .\templates\main\components\work-in-progressPopup.html:14
+#: .\templates\main\pages\buysub1.html:17
+#: .\templates\main\pages\buysub2.html:17
+#: .\templates\main\pages\newfeatures.html:17
+msgid "We’re working hard to get this feature done soon."
+msgstr "Estamos trabajando duro para hacer esta función pronto"
+
+#: .\templates\main\components\work-in-progressPopup.html:17
+#: .\templates\main\pages\buysub1.html:20
+#: .\templates\main\pages\buysub2.html:20
+#: .\templates\main\pages\newfeatures.html:20
+msgid "OKAY"
+msgstr "OK"
+
+#: .\templates\main\pages\FirstTimeScreen.html:12
+#: .\templates\main\pages\FirstTimeScreen.html:76
+#: .\templates\main\pages\FirstTimeScreen.html:102
+#: .\templates\main\pages\FirstTimeScreen.html:142
+msgid "SKIP"
+msgstr "SALTAR"
+
+#: .\templates\main\pages\FirstTimeScreen.html:62
+msgid "All you need in one app"
+msgstr "Todo lo que necesitas en una aplicación"
+
+#: .\templates\main\pages\FirstTimeScreen.html:63
+msgid "The Largest Amount of Movies, Series,"
+msgstr "La mayor cantidad de Películas, Series,"
+
+#: .\templates\main\pages\FirstTimeScreen.html:63
+msgid "Sport, TV-channels. Variety of languages"
+msgstr "Deportes, Canales de TV. Variedad de idiomas"
+
+#: .\templates\main\pages\FirstTimeScreen.html:72
+#: .\templates\main\pages\FirstTimeScreen.html:98
+#: .\templates\main\pages\FirstTimeScreen.html:138
+#: .\templates\main\pages\FirstTimeScreen.html:168
+msgid "REGISTER NOW"
+msgstr "REGÍSTRATE AHORA"
+
+#: .\templates\main\pages\FirstTimeScreen.html:90
+msgid "Watch for free. Share with"
+msgstr "Miralo gratis. Comparte con"
+
+#: .\templates\main\pages\FirstTimeScreen.html:90
+msgid "friends and watch without adds"
+msgstr "amigos y mira sin adiciones"
+
+#: .\templates\main\pages\FirstTimeScreen.html:114
+msgid "Live"
+msgstr "En directo"
+
+#: .\templates\main\pages\FirstTimeScreen.html:130
+msgid "Best and stable quality for"
+msgstr "La mejor y más estable calidad para"
+
+#: .\templates\main\pages\FirstTimeScreen.html:130
+msgid "Sport and TV streaming"
+msgstr "la transmisión de deportes y TV"
+
+#: .\templates\main\pages\FirstTimeScreen.html:158
+msgid "Download any movies you"
+msgstr "Descarga las películas que"
+
+#: .\templates\main\pages\FirstTimeScreen.html:158
+msgid "want and watch them offline"
+msgstr "quieras y míralas sin conexión"
+
+#: .\templates\main\pages\appInstall.html:27
+msgid ""
+"Zola TV - best free app to watch live sport translations, best movies and "
+"fresh tv-series"
+msgstr "Zola TV – la mejor aplicación para ver deportes en directo, las mejores películas y series de television frescas"
+
+#: .\templates\main\pages\appInstall.html:32
+msgid ""
+"We have to get you informed: it's not an official application from Google, "
+"so you have to allow extra permissions to get it up"
+msgstr "Tenemos que informarte: no es una aplicación oficial de Google, por lo que tienes que permitir permisos adicionales para subirla "
+
+#: .\templates\main\pages\appInstall.html:37
+msgid "DOWNLOAD ZOLA TV"
+msgstr "DESCARGAR ZOLA TV"
+
+#: .\templates\main\pages\auth\login\login.html:12
+msgid "Sign in to existing account"
+msgstr "Iniciar session en una cuenta existente"
+
+#: .\templates\main\pages\auth\login\login.html:13
+msgid "Haven’t Register yet?"
+msgstr "¿Aún no te has registrado?"
+
+#: .\templates\main\pages\auth\login\login.html:13
+msgid "Register"
+msgstr "Registrarse"
+
+#: .\templates\main\pages\auth\login\login.html:21
+#: .\templates\main\pages\auth\register\register.html:21
+msgid "via Phone or Email"
+msgstr "por teléfono o email"
+
+#: .\templates\main\pages\auth\login\login.html:29
+#: .\templates\main\pages\auth\register\register.html:29
+msgid "Continue with Google"
+msgstr "Continuar con Google"
+
+#: .\templates\main\pages\auth\login\login.html:37
+#: .\templates\main\pages\auth\register\register.html:37
+msgid "Continue with Facebook"
+msgstr "Continuar con Facebook"
+
+#: .\templates\main\pages\auth\login\login.html:45
+#: .\templates\main\pages\auth\register\register.html:45
+msgid "Continue with Twitter"
+msgstr "Continuar con Twitter"
+
+#: .\templates\main\pages\auth\login\login.html:50
+#: .\templates\main\pages\auth\register\register.html:50
+#: .\templates\main\pages\auth\register\registerForm.html:51
+#: .\templates\main\pages\auth\register\registerForm.html:79
+#: .\templates\main\pages\auth\register\registerForm.html:128
+msgid "By continuing, you agree to Zola TV"
+msgstr "Al continuar, aceptas Zola TV"
+
+#: .\templates\main\pages\auth\login\login.html:51
+#: .\templates\main\pages\auth\register\register.html:51
+#: .\templates\main\pages\auth\register\registerForm.html:53
+#: .\templates\main\pages\auth\register\registerForm.html:81
+#: .\templates\main\pages\auth\register\registerForm.html:130
+#: .\templates\main\pages\auth\settings.html:21
+msgid "Privacy Policy"
+msgstr "Politica de Privacidad"
+
+#: .\templates\main\pages\auth\login\login.html:51
+#: .\templates\main\pages\auth\register\register.html:51
+#: .\templates\main\pages\auth\register\registerForm.html:53
+#: .\templates\main\pages\auth\register\registerForm.html:81
+#: .\templates\main\pages\auth\register\registerForm.html:130
+#: .\venv\Lib\site-packages\django\db\models\base.py:1197
+#: .\venv\Lib\site-packages\django\forms\models.py:768
+msgid "and"
+msgstr "y"
+
+#: .\templates\main\pages\auth\login\login.html:51
+#: .\templates\main\pages\auth\register\register.html:52
+#: .\templates\main\pages\auth\register\registerForm.html:55
+#: .\templates\main\pages\auth\register\registerForm.html:83
+#: .\templates\main\pages\auth\register\registerForm.html:132
+msgid "Terms of Use"
+msgstr "Términos de uso"
+
+#: .\templates\main\pages\auth\login\loginForm.html:25
+#: .\templates\main\pages\auth\register\registerForm.html:25
+msgid "Email"
+msgstr "Email"
+
+#: .\templates\main\pages\auth\login\loginForm.html:29
+#: .\templates\main\pages\auth\register\registerForm.html:28
+msgid "Phone"
+msgstr "Teléfono"
+
+#: .\templates\main\pages\auth\login\loginForm.html:40
+msgid "Sign in using email"
+msgstr "Iniciar session con email"
+
+#: .\templates\main\pages\auth\login\loginForm.html:43
+#: .\templates\main\pages\auth\register\registerForm.html:71
+msgid "Enter email"
+msgstr "Ingresa email"
+
+#: .\templates\main\pages\auth\login\loginForm.html:57
+#: .\templates\main\pages\auth\login\loginForm.html:102
+#: .\templates\main\pages\auth\register\registerForm.html:112
+msgid "Enter password"
+msgstr "Introduce la contraseña"
+
+#: .\templates\main\pages\auth\login\loginForm.html:71
+#: .\templates\main\pages\auth\login\loginForm.html:115
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:26
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:26
+#: .\templates\main\pages\auth\register\registerForm.html:49
+#: .\templates\main\pages\auth\register\registerForm.html:77
+msgid "Recover a password"
+msgstr "Recuperar una contraseña"
+
+#: .\templates\main\pages\auth\login\loginForm.html:91
+msgid "Sign in using phone"
+msgstr "Iniciar session con teléfono"
+
+#: .\templates\main\pages\auth\login\loginForm.html:94
+#: .\templates\main\pages\auth\register\registerForm.html:38
+msgid "Enter phone"
+msgstr "ingresa teléfono"
+
+#: .\templates\main\pages\auth\privacyPolicy.html:15
+msgid "PRIVACY POLICY"
+msgstr "POLITICA DE PRIVACIDAD"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:28
+msgid "Enter your email to continue"
+msgstr "Ingresa tu email para continuar"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:36
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:129
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:35
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:127
+#: .\templates\main\pages\auth\register\ProfileCreation.html:34
+#: .\templates\main\pages\auth\register\ProfileCreation.html:80
+#: .\templates\main\pages\auth\register\registerForm.html:61
+#: .\templates\main\pages\auth\register\registerForm.html:89
+#: .\templates\main\pages\changeMode.html:33
+#: .\templates\main\pages\getBonus.html:69
+msgid "CONTINUE"
+msgstr "CONTINUAR"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:59
+msgid "Enter 6-number code sent to your email"
+msgstr "Ingresa el código de 6 números enviado a tu email"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:89
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:87
+#: .\templates\main\pages\auth\register\CodeVerification.html:60
+msgid "VERIFY"
+msgstr "VERIFICAR"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:111
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:109
+msgid "Enter new password"
+msgstr "Introduce una nueva contraseña"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:113
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:111
+msgid "New password"
+msgstr "Nueva contraseña"
+
+#: .\templates\main\pages\auth\recoverPass\emailRecover.html:120
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:118
+#: .\templates\main\pages\auth\register\registerForm.html:119
+msgid "Show"
+msgstr "Mostrar"
+
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:28
+msgid "Enter your phone to continue"
+msgstr "Ingresa tu teléfono para continuar"
+
+#: .\templates\main\pages\auth\recoverPass\phoneRecover.html:58
+msgid "Enter 6-number code sent to your phone"
+msgstr "Ingresa el código de 6 números enviado a tu teléfono"
+
+#: .\templates\main\pages\auth\register\CodeVerification.html:27
+msgid "Enter 6-number code sent to your"
+msgstr "Ingresa el código de 6 números enviado a tu"
+
+#: .\templates\main\pages\auth\register\CodeVerification.html:27
+msgid "email"
+msgstr "email"
+
+#: .\templates\main\pages\auth\register\CodeVerification.html:27
+msgid "phone"
+msgstr "teléfono"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:24
+msgid "Pick up any name you want. It can hold any symbols"
+msgstr "Elige el nombre que quieras. Puede contener cualquier símbolo"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:26
+msgid "Name"
+msgstr "Nombre"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:47
+#: .\templates\main\pages\auth\register\ProfileCreation.html:91
+msgid "Creating Profile"
+msgstr "Creación de Perfil"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:48
+msgid "1 of 2"
+msgstr "1 de 2"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:53
+msgid "Select what genres do you prefer to watch"
+msgstr "Selecciona qué géneros prefieres ver"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:64
+msgid "Sport"
+msgstr "Deportes"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:92
+msgid "2 of 2"
+msgstr "2 de 2"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:96
+msgid "To give you most accurate recommendation provide your gender and age"
+msgstr "Para darle la recomendación más precisa proporciona tu género y edad"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:97
+msgid "This info wont show anywhere"
+msgstr "Esta información no aparecerá en ninguna parte"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:98
+msgid "Gender"
+msgstr "Género"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:102
+msgid "Male"
+msgstr "Hombre"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:106
+msgid "Female"
+msgstr "Mujer"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:109
+msgid "Age"
+msgstr "Edad"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:114
+#: .\users\models.py:193
+msgid "Under 18"
+msgstr "Menores de 18 años"
+
+#: .\templates\main\pages\auth\register\ProfileCreation.html:144
+msgid "CREATE PROFILE"
+msgstr "CREAR PERFIL"
+
+#: .\templates\main\pages\auth\register\register.html:12
+msgid "Register In ZolaTV"
+msgstr "Registrarse en Zola TV"
+
+#: .\templates\main\pages\auth\register\register.html:13
+msgid "Have an account?"
+msgstr "¿Tienes una cuenta?"
+
+#: .\templates\main\pages\auth\register\register.html:13
+#: .\templates\main\pages\profile.html:26
+msgid "Sign in"
+msgstr "Iniciar sessión"
+
+#: .\templates\main\pages\auth\register\registerForm.html:36
+msgid "Register using phone"
+msgstr "Registrarse con teléfono"
+
+#: .\templates\main\pages\auth\register\registerForm.html:69
+msgid "Register using email"
+msgstr "Registrarse con email"
+
+#: .\templates\main\pages\auth\register\registerForm.html:110
+msgid "Сome up with password"
+msgstr "Crea una contraseña"
+
+#: .\templates\main\pages\auth\register\registerForm.html:138
+msgid "SEND CODE"
+msgstr "ENVIAR CÓDIGO"
+
+#: .\templates\main\pages\auth\sendFeedback.html:15
+msgid "SEND FEEDBACK"
+msgstr "ENVIAR COMENTARIOS"
+
+#: .\templates\main\pages\auth\sendFeedback.html:22
+msgid "Enter your feedback here, we always happy to hear from you"
+msgstr "Ingresa tus comentarios aquí, siempre estamos encantados de saber de tu"
+
+#: .\templates\main\pages\auth\sendFeedback.html:26
+msgid "Message"
+msgstr "Mensaje"
+
+#: .\templates\main\pages\auth\sendFeedback.html:38
+msgid "SEND"
+msgstr "ENVIAR"
+
+#: .\templates\main\pages\auth\sendFeedback.html:66
+msgid "Text cannot be smaller of 6 symbols."
+msgstr "El texto no puede tener menos de 6 símbolos"
+
+#: .\templates\main\pages\auth\settings.html:15
+msgid "SETTINGS"
+msgstr "CONFIGURACIÓN"
+
+#: .\templates\main\pages\auth\settings.html:20
+msgid "Subscription"
+msgstr "Suscripción"
+
+#: .\templates\main\pages\auth\settings.html:22
+msgid "Terms Of Use"
+msgstr "Términos de Uso"
+
+#: .\templates\main\pages\auth\settings.html:23
+msgid "Language"
+msgstr "Idioma"
+
+#: .\templates\main\pages\auth\subscription.html:15
+msgid "SUBSCRIPTION"
+msgstr "SUSCRIPCIÓN"
+
+#: .\templates\main\pages\auth\subscription.html:23
+msgid "Active Subscription"
+msgstr "Suscripción Activa"
+
+#: .\templates\main\pages\auth\subscription.html:23
+#: .\templates\main\pages\auth\subscription.html:40
+msgid "Month"
+msgstr "Mes"
+
+#: .\templates\main\pages\auth\subscription.html:25
+msgid "Next payment"
+msgstr "Siguiente pago"
+
+#: .\templates\main\pages\auth\subscription.html:32
+msgid "No active Subscriptions"
+msgstr "No hay suscripciones activas"
+
+#: .\templates\main\pages\auth\subscription.html:44
+msgid "Economy"
+msgstr "Economía"
+
+#: .\templates\main\pages\auth\subscription.html:45
+msgid "Eco."
+msgstr "Eco."
+
+#: .\templates\main\pages\auth\subscription.html:51
+msgid "CANCEL Subscription"
+msgstr "CANCELAR Suscripción"
+
+#: .\templates\main\pages\auth\termsOfUse.html:15
+msgid "TERMS OF USE"
+msgstr "TÉRMINOS DE USO"
+
+#: .\templates\main\pages\changeMode.html:13
+msgid "Choose your mode"
+msgstr "Elige tu modo"
+
+#: .\templates\main\pages\changeMode.html:26
+msgid "Light"
+msgstr "De luz"
+
+#: .\templates\main\pages\changeMode.html:27
+msgid "Dark"
+msgstr "Oscuro"
+
+#: .\templates\main\pages\changeMode.html:31
+msgid "You can always change it in"
+msgstr "Siempre puedes cambiarlo en"
+
+#: .\templates\main\pages\changeMode.html:31
+msgid "menu settings"
+msgstr "la configuración del menú"
+
+#: .\templates\main\pages\detail\ChannelDetail.html:39
+#: .\templates\main\pages\detail\SportDetail.html:35
+msgid "Watching"
+msgstr "Están viendo"
+
+#: .\templates\main\pages\detail\MovieDetail.html:70
+#: .\templates\main\pages\detail\SerieDetail.html:61
+#: .\templates\main\pages\detail\ShowDetail.html:62
+msgid "Read More"
+msgstr "Leer Más"
+
+#: .\templates\main\pages\detail\MovieDetail.html:73
+msgid "Download"
+msgstr "Descargar"
+
+#: .\templates\main\pages\detail\SerieDetail.html:34
+#: .\templates\main\pages\detail\ShowDetail.html:35
+msgid "Seasons"
+msgstr "Temporadas"
+
+#: .\templates\main\pages\detail\SerieDetail.html:40
+#: .\templates\main\pages\detail\ShowDetail.html:41
+msgid "Episodes"
+msgstr "Episodios"
+
+#: .\templates\main\pages\detail\SportDetail.html:37
+msgid "Views"
+msgstr "Vistas"
+
+#: .\templates\main\pages\getBonus.html:20
+msgid "Get 1 hour ad free time."
+msgstr "Obtén 1 hora de tiempo libre de anuncios"
+
+#: .\templates\main\pages\getBonus.html:22
+msgid "Complete any task below to get Bonus"
+msgstr "Completa cualquier tarea a continuación para obtener una bonificación"
+
+#: .\templates\main\pages\getBonus.html:27
+msgid "Invite friends to Register"
+msgstr "Invita a amigos a Registrarse"
+
+#: .\templates\main\pages\getBonus.html:36
+msgid "Hide ads completely"
+msgstr "Oculta anuncios por completo"
+
+#: .\templates\main\pages\profile.html:45
+msgid "Ad free time"
+msgstr "Tiempo libre de anuncios"
+
+#: .\templates\main\pages\profile.html:50
+msgid "GET MORE TIME"
+msgstr "OBTENER MÁS TIEMPO"
+
+#: .\templates\main\pages\settings\locale.html:19
+msgid "Change language"
+msgstr "Cambiar idioma"
+
+#: .\templates\main\pages\shows-channels.html:29
+#: .\templates\main\pages\shows-channels.html:40
+#: .\templates\main\pages\shows-channels.html:59
+#: .\templates\main\pages\sport.html:51
+msgid "GENRE"
+msgstr "GÉNERO"
+
+#: .\templates\main\pages\shows-channels.html:60
+#: .\templates\main\pages\sport.html:52
+msgid "RESET GENRES"
+msgstr "RESTABLECER GÉNEROS"
+
+#: .\templates\main\pages\shows-channels.html:79
+#: .\templates\main\pages\shows-channels.html:112
+#: .\templates\main\pages\sport.html:71 .\templates\main\pages\sport.html:104
+msgid "CHOOSE"
+msgstr "ELEGIR"
+
+#: .\templates\main\pages\shows-channels.html:93
+#: .\templates\main\pages\sport.html:85
+msgid "RESET LANGUAGES"
+msgstr "RESTABLECER IDIOMAS"
+
+#: .\templates\main\pages\sport.html:29
+msgid "ALL SPORTS"
+msgstr "TODOS LOS DEPORTES"
+
+#: .\templates\main\pages\wrongUrl.html:12
+msgid "Oops! something went wrong...."
+msgstr "¡Ups! Algo salió mal..."
+
+#: .\templates\main\pages\wrongUrl.html:15
+msgid "GO HOME"
+msgstr "HOME"
+
+#: .\users\models.py:128
+msgid "date joined"
+msgstr "fecha de registro"
+
+#: .\users\models.py:189
+msgid "male"
+msgstr "hombre"
+
+#: .\users\models.py:190
+msgid "female"
+msgstr "mujer"
