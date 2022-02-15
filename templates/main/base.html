@@ -67,12 +67,10 @@
     {% else %}
         var isDark = false
     {% endif %}
-    {% if not settings.ITS_APP %}
-        if (getCookie('darker') == undefined && isDark == false) {
-            setCookie('darker', true)
-            changeModeBtn()
-        }
-    {% endif %}
+    if (getCookie('darker') == undefined && isDark == false) {
+        setCookie('darker', true)
+        changeModeBtn()
+    }
     PopupManager()
     {#    {% if not settings.ITS_APP %}#}
     {#        if (getCookie('first_time') == undefined) {#}
