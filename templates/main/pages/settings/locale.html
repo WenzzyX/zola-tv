@@ -12,21 +12,18 @@
                     <img src="{% static 'main/img/icons/back-arrow.svg' %}" alt="">
                 {% endif %}
             </button>
-            <span>{% trans 'LANGUAGE' %}</span>
+            <span>LANGUAGE</span>
         </div>
         <div class="language">
-            <div class="language__drpdwn drpdwn">
-                <button class="drpdwn__btn">{% trans 'Change language' %}</button>
-                <div class="drpdwn__content">
+            <ul class="language__content">
                     {% get_current_language as LANGUAGE_CODE %}
                     {% get_available_languages as LANGUAGES %}
                     {% get_language_info_list for LANGUAGES as languages %}
                     {% for language in languages %}
-                        <div class="drpdwn__link {% if language.code == LANGUAGE_CODE %}drpdwn__link_active{% endif %}"
-                             onclick="changeLang('{{ language.code }}', '{% url 'set_language' %}')">{{ language.name_local }}</div>
+                        <li class="language__link {% if language.code == LANGUAGE_CODE %}language__link_active{% endif %}"
+                             onclick="changeLang('{{ language.code }}', '{% url 'set_language' %}')">{{ language.name_local }}</li>
                     {% endfor %}
-                </div>
-            </div>
+            </ul>
         </div>
     </main>
 {% endblock content %}
