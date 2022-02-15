@@ -743,6 +743,7 @@ class ProfileView(TemplateView):
         context.update({
             "title": "Profile page"
         })
+        return redirect('main_page')
         if not request.user.is_anonymous:
             if not request.user.is_activated:
                 return redirect('register-code-verificarion')
@@ -768,6 +769,7 @@ class RegisterView(TemplateView):
         context.update({
             "title": "Register page"
         })
+        return redirect('main_page')
         if request.user.is_anonymous:
             return self.render_to_response(context)
         elif not request.user.is_activated:
@@ -783,6 +785,7 @@ class RegisterFormView(TemplateView):
         #     return redirect('app-download-page')
         context = self.get_context_data(**kwargs)
         context['title'] = 'Register page'
+        return redirect('main_page')
         if request.user.is_anonymous:
             return self.render_to_response(context)
         elif request.user.is_activated:
@@ -828,6 +831,7 @@ class PhoneRecoverPassView(TemplateView):
         #     return redirect('app-download-page')
         context = self.get_context_data(**kwargs)
         context['title'] = "Password recovery"
+        return redirect('main_page')
         if not request.user.is_anonymous:
             return redirect('profile-page')
         return self.render_to_response(context)
@@ -841,6 +845,7 @@ class EmailRecoverPassView(TemplateView):
         #     return redirect('app-download-page')
         context = self.get_context_data(**kwargs)
         context['title'] = "Password recovery"
+        return redirect('main_page')
         if not request.user.is_anonymous:
             return redirect('profile-page')
         return self.render_to_response(context)
@@ -979,6 +984,7 @@ class CodeVerificationView(TemplateView):
         #     return redirect('app-download-page')
         context = self.get_context_data(**kwargs)
         context['title'] = 'Code verification'
+        return redirect('main_page')
         if request.user.is_anonymous:
             return redirect('register-page')
         elif request.user.is_activated:
@@ -1019,6 +1025,7 @@ class ProfileCreationView(TemplateView):
     def get(self, request, *args, **kwargs):
         # if not settings.ITS_APP:
         #     return redirect('app-download-page')
+        return redirect('main_page')
         if request.user.is_anonymous:
             return redirect('register-page')
         elif not request.user.is_activated:
@@ -1098,6 +1105,7 @@ class LoginView(TemplateView):
         context.update({
             "title": "Login page"
         })
+        return redirect('main_page')
         if request.user.is_anonymous:
             return self.render_to_response(context)
         elif not request.user.is_activated:
@@ -1114,6 +1122,7 @@ class LoginFormView(TemplateView):
         context = self.get_context_data(**kwargs)
         context['title'] = 'Login page'
         context['error_type'] = 0
+        return redirect('main_page')
         if request.user.is_anonymous:
             return self.render_to_response(context)
         elif request.user.is_activated:
