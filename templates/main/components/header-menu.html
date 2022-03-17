@@ -124,7 +124,7 @@
                 </li>
             {% endif %}
         </ul>
-        {% if not settings.ITS_APP %}
+        {% if settings.ITS_APP %}
             <div style="padding: 0px 17px; margin-bottom: 15px;margin-top: 10px;">
                 <a href="{% url 'app-download-page' %}" class="install-btn" onclick="gtag('event', 'click_banner_download_app');" style="height: 48px;">
                     <img src="{% static 'main/img/icons/android.svg' %}" alt="">

@@ -1,10 +1,14 @@
 {% load static %}
 {% load i18n %}
+{% load settings_tag %}
+{% get_settings as settings %}
 <div class="image-banner">
     <a href="" data-links="{{ params.links }}" data-bid="{{ params.id }}" target="_blank" class="image-banner__link" onclick="SaveEventAlanytics('cl_b', {{ params.id }}); gtag('event', 'click_banner_image');">
         <img src="{{ params.get_banner }}" alt="banner">
     </a>
+    {% if settings.ITS_APP %}
     <a href="{% url 'subscription-page' %}" class="image-banner__remove">{% trans 'REMOVE ADS' %}</a>
+    {% endif %}
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", () => {

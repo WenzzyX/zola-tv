@@ -1,5 +1,7 @@
 {% load static %}
 {% load i18n %}
+{% load settings_tag %}
+{% get_settings as settings %}
 <header>
     <div class="header">
         <div class="header__burger" id="burger"><span class="first"></span> <span class="middle"></span> <span
@@ -53,6 +55,7 @@
                 <a href="
 
 
+
                         {% if request.user.is_anonymous %}{% url 'login-page' %}{% else %}{% url 'profile-page' %}{% endif %}"
                    class="header__menu_flex {% if request.session.dark %}dc-signin-dark{% endif %}">
                     <img src="{% static 'main/img/icons/profile.svg' %}" alt="">
@@ -62,19 +65,20 @@
                         {% trans 'SIGN IN' %}
                     {% endif %}
                 </a>
-                </a>
             </div>
         </div>
         <div class="flex">
             {% if popup is 0 %}
             {% else %}
-                <a href="{% url 'app-download-page' %}" onclick="gtag('event', 'click_banner_download_app');"
-                   class="header__app popup__opens">
-                    <div class="header__app_img">
-                        <img src="{% static 'main/img/icons/android.svg' %}" alt="">
-                    </div>
-                    <div class="header__app_text"> {% trans 'Install APP' %} </div>
-                </a>
+                {% if settings.ITS_APP %}
+                    <a href="{% url 'app-download-page' %}" onclick="gtag('event', 'click_banner_download_app');"
+                       class="header__app popup__opens">
+                        <div class="header__app_img">
+                            <img src="{% static 'main/img/icons/android.svg' %}" alt="">
+                        </div>
+                        <div class="header__app_text"> {% trans 'Install APP' %} </div>
+                    </a>
+                {% endif %}
             {% endif %}
             <button onclick="openSearch()" class="header__search">
                 {% if request.session.dark %}
