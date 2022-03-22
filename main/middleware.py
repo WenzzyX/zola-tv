@@ -18,7 +18,8 @@ import re
 def timing(get_response):
     def middleware(request):
         req_path = request.path
-        req_lang = request.LANGUAGE_CODE
+        req_lang = settings.LANGUAGE_CODE if request.COOKIES == {} else request.LANGUAGE_CODE
+
         query_str = request.META['QUERY_STRING']
         req_gets = ''
         if query_str:

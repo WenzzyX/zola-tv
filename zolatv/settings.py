@@ -227,8 +227,6 @@ LOCALE_PATHS = (
 )
 print(LOCALE_PATHS)
 
-LANGUAGE_CODE = 'en'
-
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
@@ -239,10 +237,11 @@ USE_TZ = True
 
 gettext = lambda s: s
 LANGUAGES = (
+    ('es', gettext('Spanish')),
     ('en', gettext('English')),
-    ('hi', gettext('Hindi')),
-    ('es', gettext('Spanish'))
+    ('hi', gettext('Hindi'))
 )
+LANGUAGE_CODE = 'es'
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
