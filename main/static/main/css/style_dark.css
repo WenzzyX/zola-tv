@@ -4698,6 +4698,7 @@ hr.iti-ph {
 
 .pchannel__img {
     height: 100%;
+    background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
 
@@ -5702,6 +5703,8 @@ hr.iti-ph {
     width: 100%;
     height: 175px;
     position: relative;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .lslide__image img {
@@ -5805,9 +5808,6 @@ hr.iti-ph {
     position: relative;
 }
 
-.line-slider_lists .lslide__image img {
-    border-radius: 15px;
-}
 
 .line-slider_lists .lslide__image::after {
     content: '';
@@ -5825,12 +5825,13 @@ hr.iti-ph {
 }
 
 .line-slider_channels .lslide__image img {
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .line-slider_channels .lslide__image {
     background: white;
-    border-radius: 3px;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
 

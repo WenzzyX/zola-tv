@@ -4628,6 +4628,7 @@ hr.iti-ph {
 
 .pchannel__img {
     height: 100%;
+    background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
 
@@ -5726,10 +5727,6 @@ hr.iti-ph {
 
 }
 
-.line-slider_lists .lslide__image img {
-    border-radius: 15px;
-}
-
 .line-slider_lists .lslide__image::after {
     content: '';
     position: absolute;
@@ -5746,8 +5743,14 @@ hr.iti-ph {
 }
 
 .line-slider_channels .lslide__image img {
-    object-fit: cover;
+    object-fit: contain;
 }
+
+.line-slider_channels .lslide__image {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
 
 
 .sport-slider {
